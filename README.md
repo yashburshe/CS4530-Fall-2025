@@ -1,7 +1,8 @@
-# CS4530, Spring 2025: Fundamentals of Software Engineering
-This repository contains the source for the website for Northeastern's CS4530, Spring 2025 class. If you are looking to browse the site, you should visit it directly, at [https://neu-se.github.io/CS4530-Spring-2025/](https://neu-se.github.io/CS4530-Spring-2025/). If you are looking to edit the site, then you have come to the right place!
+# CS4530, Fall 2025: Fundamentals of Software Engineering
+This repository contains the source for the website for Northeastern's CS4530, Fall 2025 class. If you are looking to browse the site, you should visit it directly, at [https://neu-se.github.io/CS4530-Fall-2025/](https://neu-se.github.io/CS4530-Fall-2025/). If you are looking to edit the site, then you have come to the right place!
 
 ### Websites for prior versions of this class:
+* [Spring 2025](https://neu-se.github.io/CS4530-Spring-2025)
 * [Fall 2024](https://neu-se.github.io/CS4530-Fall-2024)
 * [Spring 2024](https://neu-se.github.io/CS4530-Spring-2024)
 * [Fall 2023](https://neu-se.github.io/CS4530-Fall-2023)
