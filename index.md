@@ -39,9 +39,9 @@ The course will be delivered in a "traditional" lecture style. Prof Wand's secti
 |---------------|---------------------------------------------------------------------------|----------------------------------------------|--------------------|
 | 1             | Prof Bhutta                                                               | MR 11:45 am - 1:25 pm                        | Robinson Hall 309 |
 | 2             | Prof Bhutta                                                               | TF 9:50 am - 11:30 am                        | Churchill Hall 103            |
-| 5             | Prof Bhutta                                                               | T 11:45 am - 1:25 pm & R 2:50 pm - 4:30pm    | West Village 104     |
-| 7             | Prof Mitra                                                                | TF 1:30 pm - 3:15 pm                         | West Village 104            |
-| 8             | Prof Mitra                                                                | TF 3:25 pm - 5:05 pm                         | West Village 104            |
+| 5             | Prof Bhutta                                                               | T 11:45 am - 1:25 pm & R 2:50 pm - 4:30pm    | West Village G 104     |
+| 7             | Prof Mitra                                                                | TF 1:30 pm - 3:15 pm                         | West Village G 104            |
+| 8             | Prof Mitra                                                                | TF 3:25 pm - 5:05 pm                         | West Village G 104            |
 | 9             | Prof Wand                                                                 | W 6:00 pm - 9:20 pm                          | Online             |
 
 ## Course Project
