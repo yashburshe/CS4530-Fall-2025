@@ -66,7 +66,7 @@ Given that you will be up-to-speed on the project codebase (and have been introd
 and that you will have a team of three or four, we expect that the feature that you propose will be more complex than the feature implemented in the individual projects.
 
 The project plan will focus on two sections:
-* User stories and conditions of satisfaction that describe the features that you plan to implement. **EACH CONDITION OF SATISFACTION MUST HAVE A PRIORITY (Essential, Desirable, or Extension)**. The set of essential items will constitute the "Minimum Viable Product" discussed above.
+* User stories and conditions of satisfaction that describe the features that you plan to implement. Each Condition of Satisfaction is prioritized (Priorities are: Essential, Desirable, or Extension). The set of essential items will constitute the "Minimum Viable Product" discussed above. Teams are responsible for all essential and desirable work. 
 * Work breakdown: Map your user stories to engineering tasks. Assign each task to a team member (or pair of team members), provide an estimate for how long each task will take, a brief rationale for that estimate, and schedule those stories into sprints.
 
 ### Creating a GitHub Repository
@@ -94,6 +94,7 @@ Your final team deliverable will be a "release" of your new feature on GitHub (w
 Your final team deliverable will include:
 * The implementation of your new features
 * Automated tests for your new features
+* deployment of your application
 * A Final Report
 * A Poster & Demo (each instructor will provide specifics of the demo, which might vary for each section)
     
