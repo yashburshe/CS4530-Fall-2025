@@ -142,7 +142,7 @@ Right now, you may run into errors regarding unknown properties. Once you finish
 ### 6. Explore Useful Resources
 
 1. Express Tutorial: [https://expressjs.com/en/guide/routing.html](https://expressjs.com/en/guide/routing.html)
-2. MongoDB tutorial: [A mini tutorial]({{site.baseurl}}{% link tutorials/week1-mongodb-mongoose.md %}).
+2. MongoDB tutorial: A mini tutorial
 3. Mongoose Queries: [https://mongoosejs.com/docs/queries.html](https://mongoosejs.com/docs/queries.html)
 4. Mongoose Documents: [https://mongoosejs.com/docs/documents.html](https://mongoosejs.com/docs/documents.html)
 5. Jest Basics: [https://jestjs.io/docs/getting-started](https://jestjs.io/docs/getting-started)
