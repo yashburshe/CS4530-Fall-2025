@@ -333,7 +333,7 @@ A community is a subgroup of users with common interests. A community can be pub
 
     - `toggleCommunityMembership(id, username)` takes a community ID and a username and adds the user with the given username as a participant to the community with the given ID if the user is not a participant. If the user is a participant in the community then it removes them from the community. It returns an object with the error property if the update to the relevant document fails.
 
-    - `createCommunity(community)
+    - `createCommunity(community)` creates a new community 
 
 5. Define the endpoints
 6. Add routes to endpoints
