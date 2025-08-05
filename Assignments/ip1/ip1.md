@@ -331,14 +331,38 @@ A community is a subgroup of users with common interests. A community can be pub
 
     - `getAllCommunities()` returns all communities in the community collection in the database. It returns an object with the error property if the retrieval fails.
 
-    - `toggleCommunityMembership(id, username)` takes a community ID and a username and adds the user with the given username as a participant to the community with the given ID if the user is not a participant. If the user is a participant in the community then it removes them from the community. It returns an object with the error property if the update to the relevant document fails.
+    - `toggleCommunityMembership(id, username)` takes a community ID and a username and adds the user with the given username as a participant to the community with the given ID if the user is not a participant. If the user is a participant but not an admin in the community then it removes them from the community. It returns an object with the error property if the update to the relevant document fails.
 
-    - `createCommunity(community)` creates a new community 
+    - `createCommunity(community)` creates a new community in the database with the given community data and returns the newyly created community. It returns an object with the error property if the creation fails.
+
+    - `deleteCommunity(id, username)` deletes an existing community with the given id from the database when requested by a user with the given username and if the user is an admin. It returns an object with the error property if deletion fails or the user is not an admin of the communnity.
 
 5. Define the endpoints
+
+    - `getCommunityRoute(req, res)` takes an HTTP request that contains a community ID and returns the found community as response.
+
+    - `getAllCommunitiesRoute(req, res)` takes an HTTP request and returns all communities as response. 
+
+    - `toggleMembershipRoute(req, res)` takes an HTTP request containing the username of the user that wants to leave/join a community with an ID. It returns the updated community object as response. 
+
+    - `createCommunityRoute(req, res)` takes an HTTP request containing the necessary metadata needed to create a community and returns the newly created community as response. 
+
+    - `deleteCommunityRoute(req, res)` takes an HTTP request containing the username of the user requesting the delete and the community ID that needs to be deleted. It returns the deleted community as response. 
+
 6. Add routes to endpoints
+
+    Define the appropriate API routes on the Express router for each of the functions implemented in the previous steps.
+
 7. Document endpoints as Open API spec (tentative)
+
+    Write JSDoc comments for every endpoint to generate an OpenAPI spec for them.
 8. Write unit tests
+
+    We’ve provided initial tests to provide some information on the expected behavior of the routes and functions. Using the requirement descriptions above, write additional tests for all the added functions and routes, covering different branches, edge cases, etc. to verify the correctness of your code.
+
+    Add your unit tests to the file `server/tests/services/community.service.spec.ts` and `server/tests/controllers/community.controller.spec.ts`
+
+    In addition to automated tests, you should also manually test your route using Postman and MongoDB Compass to ensure that any database queries are correct since we use database mocks while testing with Jest.
 
 ## Submission Instructions & Grading
 
