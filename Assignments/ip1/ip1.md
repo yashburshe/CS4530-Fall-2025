@@ -211,19 +211,36 @@ If you want to run specific tests, we recommend that you install vsc-jest-runner
 
 ## Implementation Tasks
 
-This deliverable has ...
+This deliverable has 2 parts; each part will be graded on its own rubric. 
 
-### Task 1: TBA
+### Task 1: Collection
 
-Currently ... 
+A collection is a curated set of questions related to a specific topic or theme. Users of the website should be able to do the following:
+
+1. Create a new collection.
+2. Delete an existing collection.
+3. Create a new question in an existing collection.
+3. Retrieve a collection by Id
+5. Retrieve all collections by the username of the user that created them.
 
 #### Steps to Achieve This
 
-1. **TBA**
+1. Create schema for collection
+2. Define a model for collection
+3. Define relevant types
+4. Implement the service layer functions
+5. Define the endpoints
+6. Add routes to endpoints
+7. Document endpoints as Open API spec
+8. Write unit tests
 
 #### Grading (X points)
 
-- TBA = 20 points
+- Schema and data model = 5 points
+- Types = 5 points
+- Service layer Implementation = 20 points
+- Endpoint integration = 10 points
+- Open API Spec = 5 points
 - Testing = 20 points
   - 2 points for each function
 
