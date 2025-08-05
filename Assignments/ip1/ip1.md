@@ -225,14 +225,57 @@ A collection is a curated set of questions related to a specific topic or theme.
 
 #### Steps to Achieve This
 
-1. Create schema for collection
-2. Define a model for collection
+1. Create the Mongoose schema for collection
+
+    The collection schema defines the structure for storing a collection document in the MongoDB database. Each collection must have the following:
+
+    - a __name__ of type string. This is required.
+    - an optional __description__ of type string.
+    - a list of __questions__ associated with the collection. An empty list denotes the collection has no questions yet.
+    - a required __username__ of type string of the user that created the collection.
+    - a boolean property __isPrivate__ to denote if the collection is private to the user that created it or if it can be used by other users. A collection is private by default.
+
+    Define the schema in `server/models/schema/collection.schema.ts`. You can verify the schema by running the scripts described in Section 4 of this document.
+2. Define a Mongoose model for collection
+
+    Mongoose requires us to construct a data layer object from a given schema. The data layer object serves as the interface to the database. To this end, define the collection model in `server/models/collection.model.ts`. 
 3. Define relevant types
+
+    Define the relevant types needed for the collections feature in `server/types/types.d.ts` as marked by *TODO: Task 1*. Be sure to avoid repeated or reduntant type definitions.
 4. Implement the service layer functions
+
+    The role of the service layer functions is to interact with the data layer object and the controllers. To this end, define the following functions in `server/services/collection.service.ts`:
+
+    - `createCollection(collection)` creates a new collection in the database if the collection does not exist.
+    - `deleteCollection(id, username)` removes a collection in the database with the given id and crated by a user with the given username. It returns the deleted collection if successful, otherwise throws an error.
+    - `getCollectionByUsername(username, currentUsername)` returns all collections stored in the databse for a given username. If the given username is not the same as the current user making the request then the private collections must not be returned. Throws an error if the relevant collections cannot be retrieved.
+    - `getCollectionById(id, username)` returns the collection for a given collection ID and created by a user with the username. Throws an error if the collection cannot be retrieved or a private collection is being requested by a user who did not create it.
+    - `addQuestionToCollection(id, questionId, username)` adds a question with a question ID to an existing collection with a given ID and username. If the question being added then removes the question and updates the collection, otherwise creates a new question with the given ID and updates the collection. In either case it returns the updated collection. Throws an error if the collection does not exist or could not be updated.
+
 5. Define the endpoints
+
+    Define the following express REST API endpoints in `server/controller/collection.controller.ts`:
+
+    - `createCollectionRoute(req, res)` takes an HTTP request containing the metadata in its body necessary to create a collection and creates a collection. It returns the created collection as reponse.
+    - `deleteCollectionRoute(req, res)` takes an HTTP request containing a collection ID and the username of the collection and deletes the corresponding collection. It returns the deleted collection as response of the delete was successful.
+    - `toggleSaveQuestionRoute(req, res)` takes an HTTP request with the question ID that needs to be saved and the collection ID where the question will be a part of. It returns the updated collection as response.
+    - `getCollectionsByUsernameRoute(req, res)` takes an HTTP request containing the username of the currenly logged in user and the username of some other user. It returns all collections for the username as response.
+    - `getCollectionByIdRoute(req, res)` takes an HTTP request containing the collection ID and the username of the user that created the collection. It returns the corresponding collection as response.
+
+    All endpoints return a status code of 200 in their response. However, in case of an error they return a status code 50 in their response and in case of an invalid request they return a status code of 400 in their reponse.
 6. Add routes to endpoints
-7. Document endpoints as Open API spec
+
+    Define the appropriate API routes on the Express router for each of the functions implemented in the previous steps.
+7. Document endpoints as Open API spec (tentative)
+
+    Write JSDoc comments for every endpoint to generate an OpenAPI spec for them.
 8. Write unit tests
+
+    We’ve provided initial tests to provide some information on the expected behavior of the routes and functions. Using the requirement descriptions above, write additional tests for all the added functions and routes, covering different branches, edge cases, etc. to verify the correctness of your code.
+
+    Add your unit tests to the file `server/tests/services/collection.service.spec.ts` and `server/tests/controllers/collection.controller.spec.ts`
+
+    In addition to automated tests, you should also manually test your route using Postman and MongoDB Compass to ensure that any database queries are correct since we use database mocks while testing with Jest.
 
 #### Grading (X points)
 
@@ -244,6 +287,58 @@ A collection is a curated set of questions related to a specific topic or theme.
 - Testing = 20 points
   - 2 points for each function
 
+### Task 2: Communities
+
+A community is a subgroup of users with common interests. A community can be public or private. A public community is open to all users of the platform. On the other hand a private community is only accessible to its members. A community always has an admin selected from its participants/members. Extend the current implementation with the following features:
+
+  1. Retrieve details of an existing community
+  2. Retrieve details of all communities
+  3. Join/leave a community
+  4. Create a new community
+  5. Delete an existing community
+
+#### Steps to Achieve This
+
+1. Create the schema
+
+    The community schema defines the structure of a document in the community collection of the MongoDB database. Each community must have the following:
+
+    - A required unique __name__ of type string.
+    - A required __description__ of type string.
+    - A list of __participants__ in the community.
+    - A __visibility__ type for the community -- always must be public or private. The default visibility of a community is public.
+    - a required __admin__ user of type string.
+
+    Define the schema in `server/models/schema/community.schema.ts`.
+
+    Make sure the Questions schema structure in `server/models/schema/question.schema.ts` has a reference to an existing `community`.
+
+    You can verify the schema by running the scripts described in Section 4 of this document.
+
+2. Define the mongoose model
+
+    Mongoose requires us to construct a data layer object from a given schema. The data layer object serves as the interface to the database. To this end, define the community model in `server/models/community.model.ts`.
+
+3. Define the relevant types
+
+    Define the relevant types needed for the communities feature in `server/types/types.d.ts` as marked by TODO: Task 2. Be sure to avoid repeated or reduntant type definitions.
+
+4. Implement the service Layer functions
+
+    Define the following functions in `server/services/community.service.ts`:
+
+    - `getCommunity(id)` returns an object based on the document in the community collection for an existing community ID. It returns an object with an error property if it fails to retreive the document.
+
+    - `getAllCommunities()` returns all communities in the community collection in the database. It returns an object with the error property if the retrieval fails.
+
+    - `toggleCommunityMembership(id, username)` takes a community ID and a username and adds the user with the given username as a participant to the community with the given ID if the user is not a participant. If the user is a participant in the community then it removes them from the community. It returns an object with the error property if the update to the relevant document fails.
+
+    - `createCommunity(community)
+
+5. Define the endpoints
+6. Add routes to endpoints
+7. Document endpoints as Open API spec (tentative)
+8. Write unit tests
 
 ## Submission Instructions & Grading
 
