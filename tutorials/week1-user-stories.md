@@ -42,14 +42,16 @@ To understand informed consent, we need to investigate how the concept works in 
 the pros and cons of taking an action. If the action involves collecting personal information then the following should be made explicit: (1) what is being collected, (2) who will have access to it, (3) how long will it be stored, (4) what will it be used for, and (5) whether the data will be anonymized. Comprehension is complex in a digital or virtual environment due to the lack of face-to-face interactions. Hence as designers, we will need to analyze the interventions that need to be
 created to ensure that the users understand the disclosures (e.g., a quiz). 
 
-The second construct of *consent* encompasses *voluntariness*, *competence*, and *agreement*. *Voluntariness* simply means to ensure that the action was not coerced or manipulated. For e.g., the decision to accept or reject disclosure will affect essential usage. *Competence* refers to the mental and physical capabilities needed to give consent. For e.g., web applications meant for children will need to be mindful of this component. Finally, *agreement* refers to a clear opportunity to accept or decline participation. For e.g., in this context, the ability accept or reject must be visible and
+The second construct of *consent* encompasses *voluntariness*, *competence*, and *agreement*. *Voluntariness* simply means to ensure that the action was not coerced or manipulated. For e.g., the decision to accept or reject disclosure will affect essential usage. *Competence* refers to the mental and physical capabilities needed to give consent. For e.g., web applications meant for children will need to be mindful of this component. Finally, *agreement* refers to a clear opportunity to accept or decline participation. For e.g., in this context, the ability to accept or reject must be visible and
 accessbile and not obscured in layers.  
 
-Now that we have reasoned about the idea of informed consent in our context, we need to think who are stakeholders that will be affected by this requirement. Considering different stakeholders is a part of the value investigation process. Suppose we identify the following stakeholders -- site users, site owners, advertisers, and regulators. This list is by no means comprehensive. The more diverse stakeholders you can think of the wholistic your requirements will be. Of course they
+Now that we have reasoned about the idea of informed consent in our context, we need to think of the stakeholders that will be affected by this requirement. Considering different stakeholder viewpoints is a part of the value investigation process. Stakeholders can be direct, that is those who directly interact with the system, and indirect, that is those who don't but are affected nevertheless. For the system we are developing, site users are direct stakeholders as they will interact with the system that will eventually implement informed consent. On the other hand, there are indirect stakeholders that might be affected such as site owners, advertising partners, and regulators. This list is by no means comprehensive. The more diverse stakeholders you can think of the more wholistic your requirements will be. Of course they
 also have to be realistic.   
 
-Once we have completed the emprical and value investigation of informed consent, we can think about how to implement it
-given our technical constraints. This is where we translate our observations into user stories and conditions of satisfaction (see Examples section). Before we see how to do this let's take a detour and understand the structural constraints of defining user stories and conditions of satisfactions. 
+Often stakeholders can have different goals, interests, and values. Sometimes they can align and other other times they might conflict with each other. For e.g., site users might want to browse the site anonymously whereas site owners might want to monetize site usage by making personal data available to advertisers. Value investigation also includes resolving such tensions in the requirements collection phase. Suppose for our system, we have identified that the following values are important for our stakeholders -- privacy for site users, accountability for site owners, transparency for advertisers, and compliance for regulators. These values will drive the requirements that we end up defining for our system.
+
+Once we have completed the emprical and value investigation of informed consent, that is, identified direct and indirect stakeholders and resolved the value tensions involved, we can think about how to implement it
+given our technical constraints. This is where we translate our analysis into user stories and conditions of satisfaction (see Examples section). Before we see how to do this let's take a detour and understand the structural constraints (or grammar) of defining user stories and conditions of satisfactions. 
 
 # User Stories and Conditions of Satisfaction
 
@@ -85,7 +87,7 @@ An MVP is a product that consists of all essential user stories. Developers shou
 We model the development process as a cycle of refinements:
 
 1. VSD analysis to gather requirements
-2. User Stories to dcoument gathered requirements
+2. User Stories to docoument gathered requirements
 3. Conditions of Satisfaction to refine the user stories
 4. Testable behaviors
 5. Executable Tests
@@ -105,7 +107,7 @@ As a user of stack overflow, I want to be able to reply to questions with answer
 
 ### User Story #2
 
-As a user of stack overflow, I want to be list my replies and how often they are upvoted so that I can see how well people react to my answers.  (Desirable)
+As a user of stack overflow, I want to list my replies and how often they are upvoted so that I can see how well people react to my answers.  (Desirable)
 
 ### User Story #3
 
@@ -113,19 +115,23 @@ As a user of stack overflow, I want to be able to play the codel (like the wordl
 
 ## Informed Consent User Stories (Using VSD)
 
-Based on the VSD analysis for informed consent we had resolved several value tensions and had identified the relevant stakeholders. We will use the observations from the analysis to document the following user stories:
+Based on the VSD analysis for informed consent we had resolved several value tensions and had identified the relevant stakeholders and values. We will use the observations from the analysis to document the following user stories:
 
 ### User Story #1 
 
-As a Stack Overflow user, I want to clearly understand what personal data Stack Overflow collects through cookies and control which cookies are set so that I can make an informed choice about my privacy while still accessing the programming help I need (Essential)
+As a Stack Overflow user, I want to clearly understand what personal data Stack Overflow collects through cookies and control which cookies are set so that I can make an informed choice about my privacy while still accessing the programming help I need. (Essential)
 
 ### User Story #2
 
-As a Stack Overflow site owner, I want to implement transparent cookie consent processes that comply with regulations while maintaining user engagement so that I can build user trust, avoid legal penalties, and sustain my business model without losing essential functionality (Essential)
+As a Stack Overflow site owner, I want to implement transparent cookie consent processes that comply with regulations while maintaining user engagement so that I can build user trust, avoid legal penalties, and sustain my business model without losing essential functionality. (Essential)
 
 ### User Story #3
 
-As an advertiser partnering with Stack Overflow, I want to access consented user data through cookies for targeted advertising so that I can deliver relevant ads to developers while respecting users' informed consent choices and maintaining advertising effectiveness
+As an advertiser partnering with Stack Overflow, I want to access consented user data through cookies for targeted advertising so that I can deliver relevant ads to developers while respecting users' informed consent choices and maintaining advertising effectiveness. (Essential)
+
+### User Story #4
+
+As a regulator, I want to verify that Stack Overflow's cookie implementation provides genuine informed consent so that I can ensure user rights are protected and the platform complies with data protection laws. (Essential)
 
 ## Conditions of Satisfaction
 
@@ -173,7 +179,7 @@ As an advertiser partnering with Stack Overflow, I want to access consented user
 * The system should provide summary reports demonstrating adherence to informed consent principles upon request. (Desirable)
 * The system should provide automated tools which regulators can use to verify if the personal data collection methods comply with local data protection laws. (Extension)
 
-Note how the user stories that resulted from VSD analysis on informed consent are markedly different from the user stories without VSD analysis. This illustrates how VSD helps us think about requirements more wholistically. 
+Note how the user stories that resulted from VSD analysis on informed consent are markedly different from the user stories without VSD analysis -- (1) they include more stakeholders as we explicitly reasoned about them, and (2) they explicitly encompass the values we considered were important to include in our requirements. This illustrates how combining VSD analysis with user stories not only helps us think about requirements more wholistically but also document them and track them systematically. 
 
 [User Stories](https://www.simplilearn.com/tutorials/agile-scrum-tutorial/user-stories#how_to_write_user_stories)
 [VSD](https://vsd.ccs.neu.edu/introduction/what-is-vsd/)
