@@ -45,20 +45,23 @@ created to ensure that the users understand the disclosures (e.g., a quiz).
 The second construct of *consent* encompasses *voluntariness*, *competence*, and *agreement*. *Voluntariness* simply means to ensure that the action was not coerced or manipulated. For e.g., the decision to accept or reject disclosure will affect essential usage. *Competence* refers to the mental and physical capabilities needed to give consent. For e.g., web applications meant for children will need to be mindful of this component. Finally, *agreement* refers to a clear opportunity to accept or decline participation. For e.g., in this context, the ability accept or reject must be visible and
 accessbile and not obscured in layers.  
 
+Now that we have reasoned about the idea of informed consent in our context, we need to think who are stakeholders that will be affected by this requirement. Considering different stakeholders is a part of the value investigation process. Suppose we identify the following stakeholders -- site users, site owners, advertisers, and regulators. This list is by no means comprehensive. The more diverse stakeholders you can think of the wholistic your requirements will be. Of course they
+also have to be realistic.   
+
 Once we have completed the emprical and value investigation of informed consent, we can think about how to implement it
 given our technical constraints. This is where we translate our observations into user stories and conditions of satisfaction (see Examples section). Before we see how to do this let's take a detour and understand the structural constraints of defining user stories and conditions of satisfactions. 
 
 # User Stories and Conditions of Satisfaction
 
-A user story is an informal, general explanation of a software feature written from the perspective of the **end user or customer**. A user story is always of the following form:
+A user story is an informal, general explanation of a software feature written from the perspective of the identified **stakeholders**. A user story is always of the following form:
 
-As a <code>&lt;role&gt;</code> I can <code>&lt;perform action&gt;</code> so that I can <code>&lt;receive benefit&gt;</code>
+As a <code>&lt;staekholder&gt;</code> I can <code>&lt;perform action&gt;</code> so that I can <code>&lt;receive benefit&gt;</code>
 
-User stories represent something the user/customer might want. There will be many ways to give the user/customer the benefit that they want.
+User stories represent something the stakeholder might want. There will be many ways to give them the benefit that they want.
 
 We need to refine these in order to determine what to build. We call these refinements “conditions of satisfaction” (COS)
 
-A COS should be a specific capability or behavior that the user expects, in the user’s terms.  It should be visible to and verifiable by the user.
+A COS should be a specific capability or behavior that the stakeholder expects, in the stakeholder’s terms.  It should be visible to and verifiable by the stakeholder.
 
 The COS is a guide to the implementation team. It should be specific enough so that the implementation team has a clear idea of what they are building.
 There still may be many ways to implement a COS. For example, a COS probably would not specify any of the graphic or layout details; these would likely be left to the implementation team.
@@ -83,16 +86,18 @@ We model the development process as a cycle of refinements:
 
 1. VSD analysis to gather requirements
 2. User Stories to dcoument gathered requirements
-2. Conditions of Satisfaction
-3. Testable behaviors
-4. Executable Tests
-5. Engineering Tasks (Code)
+3. Conditions of Satisfaction to refine the user stories
+4. Testable behaviors
+5. Executable Tests
+6. Engineering Tasks (Code)
 
 As we proceed down these refinements, we will likely go back and revisit design decisions that we made at earlier stages. This is the topic of Module 02.
 
 # Examples
 
 ## User Stories Without VSD
+
+The following user stories were defined without performing VSD analysis.
 
 ### User Story #1
 
@@ -106,10 +111,21 @@ As a user of stack overflow, I want to be list my replies and how often they are
 
 As a user of stack overflow, I want to be able to play the codel (like the wordle but for code) so that I can enjoy my time on the site. (Extension)
 
-## Informed Consent User Story (Using VSD)
+## Informed Consent User Stories (Using VSD)
 
-As a user of stack overflow, I want to understand what personal information is collected so that
-I can make an informed decision about my privacy when using the website. (Essential)
+Based on the VSD analysis for informed consent we had resolved several value tensions and had identified the relevant stakeholders. We will use the observations from the analysis to document the following user stories:
+
+### User Story #1 
+
+As a Stack Overflow user, I want to clearly understand what personal data Stack Overflow collects through cookies and control which cookies are set so that I can make an informed choice about my privacy while still accessing the programming help I need (Essential)
+
+### User Story #2
+
+As a Stack Overflow site owner, I want to implement transparent cookie consent processes that comply with regulations while maintaining user engagement so that I can build user trust, avoid legal penalties, and sustain my business model without losing essential functionality (Essential)
+
+### User Story #3
+
+As an advertiser partnering with Stack Overflow, I want to access consented user data through cookies for targeted advertising so that I can deliver relevant ads to developers while respecting users' informed consent choices and maintaining advertising effectiveness
 
 ## Conditions of Satisfaction
 
@@ -134,23 +150,30 @@ I can make an informed decision about my privacy when using the website. (Essent
 * I should be able to share how well I did on the codel without spoiling the answer. (Desirable)
 * Puzzles should generate randomly so there is always a new puzzle. (Extension)
 
-### For Informed Consent User Story
+### For Informed Consent User Story #1
 
-* The system shall clearly state that cookies are being used to collect login tokens, voting history, and search queries. (Essential) (relates to disclosure)
-* Only admins will have access to the information collected in the cookies (Essential) (relates to disclosure)
-* The data in cookies will expire in a week (Essentail) (relates to disclosure)
-* The data collected in cookies will be encrypted to prevent unauthorized access (Essential) (relates to disclosure)
-* The system shall make a clear distinction between essential and non-essential cookies (Essential) (relates to voluntariness)
-* The system shall allow users to read all posts and make their own posts even if they reject non-essential cookies (Essential) (relates to voluntariness)
-* The cookie consent interface shall provide equally prominent "Accept" and "Reject" buttons (Essential) (relates to agreement)
-* The system shall explain what the data collected in cookies will be used for (Desirable) (relates to comprehension)
-* The system shall provide interactive examples or tooltips explaining technical terms (Desirable) (relates to comprehension)
-* The system shall remember user preferences and not repeatedly prompt for consent (Extension) (relates to agreement)
-* Cookie settings shall be accessible via keyboard navigation and screen readers (Extension) (relates to competence)
+* The system should display a clear cookie banner explaining what personal data is collected before any cookies are set (Essential)
+* Users should be able to access granular cookie controls to accept/reject specific categories (functional, analytics, advertising, personalization) (Desirable)
+* The system should provide a "privacy dashboard" showing what data has been collected about the user over time (Extension)
 
-Note in addition to the planning labels, how the labels in the informed consent COS can be used to track if the COS
-meets the analysis laid out in the VSD process. Further, following a VSD process allowed us to defined more detailed
-COS as opposed to not using VSD in the user stories 1-3. 
+### For Informed Consent User Story #2
+
+* Cookie data containing personal information should be encrypted both in transit and at rest to prevent unauthorized access. (Essential)
+* The system should automatically expire cookies based on predefined retention periods. (Essential)
+* The system should allow users to read and search posts even if they reject data collection on cookies. (Desirable)
+* The platform should implement automated data retention policies that permanently delete expired cookie data. (Extension)
+
+### For Informed Consent User Story #3
+* The system should only share personal data with advertisers when users have explicitly consented to advertising cookies. (Essential)
+* The system should make data sharing policies explicitly available to advertising partners. (Desirable)
+* The platform should provide advertisers with aggregated insights about consent patterns while preserving individual user privacy. (Extension)
+
+### For Informed Consent User Story #4
+* The system should maintain audit logs of user consent choices and consent withdrawal actions. (Essential)
+* The system should provide summary reports demonstrating adherence to informed consent principles upon request. (Desirable)
+* The system should provide automated tools which regulators can use to verify if the personal data collection methods comply with local data protection laws. (Extension)
+
+Note how the user stories that resulted from VSD analysis on informed consent are markedly different from the user stories without VSD analysis. This illustrates how VSD helps us think about requirements more wholistically. 
 
 [User Stories](https://www.simplilearn.com/tutorials/agile-scrum-tutorial/user-stories#how_to_write_user_stories)
 [VSD](https://vsd.ccs.neu.edu/introduction/what-is-vsd/)
