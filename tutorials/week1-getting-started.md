@@ -22,7 +22,7 @@ If you run into any difficulties following any of these steps, please post (in a
 
 Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine.
 
-**For this class, you will need Node.js version 22 (22.12.0 was the latest version at time of writing, although any 22.x should work in theory).**
+**For this class, you will need Node.js version 22 (22.18.0 was the latest version at time of writing, although any 22.x should work in theory).**
 
 There are many ways that you can install Node.js: for instance, you can use a package manager like
 `snap` or `homebrew` to install it; you can download an installer directly from the Node.js website, and you can,
@@ -57,7 +57,7 @@ Before starting the installation, make sure to kill your Visual Studio Code if y
 
    - The output will look like:
 
-     `Now using node v22.12.0 (npm v10.9.0)`
+     `Now using node v22.18.0 (npm v10.9.3)`
 
 <!-- Removed step 10 because it overlaps with Verification -->
 
@@ -66,7 +66,7 @@ _Troubleshooting with VSCode_: Did you follow these instructions successfully, b
 ## Installation Steps (Linux / Mac)
 
 1. Run either `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash` or If `wget` is installed then run `wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash`.
-   - For more details, refer to the [NPM GitHub](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating).
+   - For more details, refer to the [NVM GitHub](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating).
 2. Close and reopen the active terminal.
    > Note: You can also restart your terminal by running `source ~/.bashrc` or `source ~/.zshrc` depending on your shell.
 3. Verify nvm is working by entering `command -v nvm`. If your terminal prints
@@ -74,10 +74,11 @@ _Troubleshooting with VSCode_: Did you follow these instructions successfully, b
    feedback, open a new terminal and trying again or restart from step 1.
 4. Install the required version of Node.js by typing `nvm install 22`.
 5. To use this version of NodeJS, run the command `nvm use 22`.
+   > Note: If this is your first time installing Node on your system, nvm will default to using version 22.x.x on every new terminal. You can run `nvm ls` to see the list of installed Node versions on your system.
 
    - The output will look like:
 
-     `Now using node v22.12.0 (npm v10.9.0)`
+     `Now using node v22.18.0 (npm v10.9.3)`
 
 ### Installing NVM when using the fish terminal (Linux / Mac)
 
@@ -90,7 +91,8 @@ _Troubleshooting with VSCode_: Did you follow these instructions successfully, b
 3. Verify nvm is working by entering `nvm -v`
 4. Install the required version of Node.js by typing `nvm install 22`.
 
-_Working with MacOS M1 Silicon_: If you have macOS on M1 Silicon 2022, you can find instructions [here](https://benscheer.medium.com/how-to-install-nvm-and-node-on-macos-m1-silicon-in-2022-172fba82d92f).
+<!-- Steps for M1 Macs and Intel Macs are the same -->
+<!-- _Working with MacOS M1 Silicon_: If you have macOS on M1 Silicon 2022, you can find instructions [here](https://benscheer.medium.com/how-to-install-nvm-and-node-on-macos-m1-silicon-in-2022-172fba82d92f). -->
 
 ## Verification
 
@@ -112,6 +114,7 @@ _Working with MacOS M1 Silicon_: If you have macOS on M1 Silicon 2022, you can f
 # Installing Visual Studio Code (VSCode)
 
 Visual Studio Code is a lightweight but powerful source code editor which runs on your desktop and is available for Windows, macOS and Linux. It comes with built-in support for JavaScript, TypeScript and Node.js and has a rich ecosystem of extensions for other languages (such as C++, C#, Java, Python, PHP, Go) and runtimes (such as .NET and Unity). VSCode also supports importing hotkey configurations from most other text editors and IDEs. Read more [here](https://code.visualstudio.com/docs).
+
 While you are required to use _an_ IDE for this class, it is not mandatory to use VSCode: if you already are comfortable developing TypeScript or JavaScript
 in another suitable IDE (like IntelliJ), then you are welcome to continue to use that. However, VSCode is the
 "supported" option: if you struggle to get things like the linter set up correctly in VSCode, we will be happy to help you.
@@ -121,7 +124,7 @@ However, we can't provide such support for all IDEs.
 
 - Administrative access on the host machine for software installation.
 
-## Installation Steps (Windows / Mac)
+## Installation Steps (Windows)
 
 1. Download the VSCode installer from the [VSCode website](https://code.visualstudio.com/download).
    - ![image](./assets/week1-getting-started/vsc/download.JPG)
@@ -138,6 +141,16 @@ However, we can't provide such support for all IDEs.
 7. Review the settings on the the "Ready to install" screen and click Install to begin installation.
 8. Once the installation is complete, you will see the below screen and you are ready to use VSCode.
    - ![image](./assets/week1-getting-started/vsc/finish.JPG)
+
+## Installation (Mac)
+
+1. Download the VSCode installer from the [VSCode website](https://code.visualstudio.com/download).
+2. Open the downloaded .zip file named along the lines of `VSCode-darwin/-arm64/-universal`.
+3. Drag the extracted `Visual Studio Code` app to the `Applications` folder (found at `/Applications`).
+4. Open VSCode from Launchpad or Spotlight Search.
+
+Alternatively, you can also install Visual Studio Code using `homebrew` using `brew install --cask visual-studio-code`
+which will install it as a normal application in your Mac.
 
 ## Installation (Linux)
 
