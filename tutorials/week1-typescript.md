@@ -110,7 +110,7 @@ let g: 100n = 100n
 ```
 
 *   _Usage_: 
-It lets you work with large integers without running into rounding errors. While the number type can only represent whole numbers it can hold numbers larger than 2<sup>53</sup> – 1. 
+It lets you work with large integers without running into rounding errors. While the number type can only represent whole numbers, BigInt can hold numbers larger than 2<sup>53</sup> – 1. 
 
 ### String
 
@@ -124,7 +124,9 @@ let c: string = a + ' ' + b       // string
 ```
 
 *   _Usage_: 
-Any functionality that requires the functionality of a  string of characters. Here are a couple of string operations:
+Any functionality that requires the functionality of a  string of characters.
+
+Here are a couple of string operations:
 
 **charAt()** : This method returns the character from the specified index. Characters in a string are indexed from left to right. The index of the first character is 0, and the index of the last character in a string, called stringName, is stringName.length – 1. 
 
@@ -186,7 +188,7 @@ let b: [string, string, number] = ['malcolm', 'gladwell', 1963]
  ```
 
 *   _Usage_: 
-In TypeScript Tuples support optional elements too. Just like in object types, ? means “optional”. Tuples also support rest elements, which you can use to type tuples with minimum lengths. Not only do tuple types safely encode heterogeneous lists, but they also capture the length of the list they type. 
+In TypeScript, tuples support optional elements too. Just like in object types, ? means “optional”. Tuples also support rest elements, which you can use to type tuples with minimum lengths. Not only do tuple types safely encode heterogeneous lists, but they also capture the length of the list they type. 
 
 ### Enums 
 
@@ -201,7 +203,7 @@ enum Language {
 }
 ```
 *   _Usage_: 
-There are two kinds of enums: enums that map from strings to strings, and enums that map from strings to numbers. Use it when you wish to provide flexibility making it easier to express and document intentions and use cases or when you want to save compile-time and runtime with inline code.
+There are two kinds of enums: enums that map from strings to strings, and enums that map from strings to numbers. Use it when you wish to provide flexibility, making it easier to express and document intentions and use cases or when you want to save compile-time and runtime with inline code.
 
 ### Any
 
@@ -413,7 +415,7 @@ Tips:
 
 ForEach, Map, reduce, and filter are all array methods in JavaScript. Each one will iterate over an array and perform a transformation or computation. Each will return a new array based on the result of the function.
 
-## ForEach
+### ForEach
 
 forEach() method calls a function for each element in the array. It returns the resultant array.
 
@@ -429,7 +431,7 @@ num.forEach(function (value) {
   console.log(value);
 }); 
 ```
-## Map
+### Map
 
 It is an array function that transforms the array according to the applied function and returns the updated array. It works on each element of an array.
 
@@ -455,7 +457,7 @@ console.log(newArr)  // Output : [1,8,27,64]
 ```
 In the above example, a function called “cube” is created and then is passed as a callback function into map().
 
-## Reduce
+### Reduce
 It also works on a callback for each element of an array. It reduces the result of this callback function from one array element to the other.
  
 Syntax
@@ -491,7 +493,7 @@ var totalSalary= employees .reduce(function (total, record) {
 //It will return the total salary of all the employees.  
 ```
 
-## Filter
+### Filter
 As the name suggests it can filter out the data/array elements on the basis of condition and return the result as a list. Basically, this function pushes the current element into a new array when the callback functions return true.
  
 Syntax
@@ -505,7 +507,7 @@ Return Type: List
  
 Examples
 ```ts 
-//Calculate a list of even elements from an array :    
+//Calculate a list of even elements from an array  
 arr = new Array(1, 2, 3, 6, 5, 4)  
 var newArr = arr.filter(function(record) {  
     return record % 2 == 0;  
@@ -513,7 +515,7 @@ var newArr = arr.filter(function(record) {
 ```
 
 ## Functions
-*   Functions usually "take in" data, process it, and "return" a result. **Remember one function/method one job!**
+*   Functions usually "take in" data, process it, and "return" a result. **Remember one function/method, one job!**
 
 *   There is a lot you can do with functions in JavaScript like assign them to variables, pass them to other functions, return them from functions, assign them to objects and prototypes, write properties to them, read those properties back, and so on, and TypeScript models all of those things with its rich type system, which we just learnt. 
 
@@ -587,20 +589,22 @@ log('User signed out')
 
 ## Rest Parameters
 
-If a function takes a list of arguments, you can of course simply pass the list in as an array:
+This allows a function to accept a variable number of arguments by grouping them into an array. It must be the last parameter of the function.
 
 ```ts
-function sum(numbers: number[]): number {
-  return numbers.reduce((total, n) => total + n, 0);
+function sum(...numbers: number[]): number {
+  return numbers.reduce((total, num) => total + num, 0);
 }
+
  
-sum([1, 2, 3]); // evaluates to 6
+sum(1, 2, 3); // evaluates to 6
+sum(4, 5); // evaluates to 9
 ```
 
 ## Functions as Constructors
 
-In Typescript/Javascript, Functions can be used as constructors for creating objects. This is similar to classes, but not quite the same.
-For Examples:
+In Typescript/Javascript, functions can be used as constructors for creating objects. This is similar to classes, but not quite the same.
+For example:
 *   Constructors can’t have type parameters - these belong on the outer class declaration
 *   Constructors can’t have return type annotations - the class instance type is always what’s returned
 
@@ -860,8 +864,8 @@ const student: IStudent = {
 
 type StringOrNumber = string | number;
 
-let x = 1;
-x = 'some string';
+let x: StringOrNumber = 1; // initialized with a `number`
+x = 'some string'; // can be reassigned to be a `string`
 ``` 
 
 ## Generics
@@ -892,10 +896,10 @@ interface IMyInterface<T> {
 
 ## Modules
 
-A Module in typescript is defined by using the 'Import' or 'Export' keywords within a file. Variables declared in a module are scoped locally and are not added to the global scope.
+A Module in typescript is defined by using the 'import' or 'export' keywords within a file. Variables declared in a module are scoped locally and are not added to the global scope.
 
-*   **Export** makes the variables and functions from a file visible outside it.
-*   **Import** allows use to use variables and functions exported by another file.
+*   **export** makes the variables and functions from a file visible outside it.
+*   **import** allows us to use variables and functions exported by another file.
 
 Examples:
 ```ts
@@ -918,7 +922,7 @@ function multiply(): void {
 
 // file2.ts
 import add from './file1'; // curly braces are not required if export default is used.
-// There can be only 1 export default in a while. Use it if file has only 1 export.
+// There can be only 1 export default in a file. Use it if file has only 1 export.
 import { subtract } from './file1';
 
 add(1, 2);
@@ -937,7 +941,7 @@ Object Oriented Programming or OOP is a programming paradigm that has four princ
 
 ## Inheritance
 
-TypeScript supports the concept of Inheritance. Inheritance is the ability of a program to create new classes from an existing class. The class that is extended to create newer classes is called the parent class/super class. The newly created classes are called the child/sub classes.
+TypeScript supports the concept of inheritance. Inheritance is the ability of a program to create new classes from an existing class. The class that is extended to create newer classes is called the parent class/super class. The newly created classes are called the child/sub classes.
 
 A class inherits from another class using the ‘extends’ keyword. Child classes inherit all properties and methods except private members and constructors from the parent class. However, TypeScript doesn’t support multiple inheritance.
 
@@ -997,7 +1001,7 @@ class PersonalCheckingAccount extends CheckingAccount {
 }
 ```
 
-In the above code sample shows, the two child classes have different business rules to implement when it comes to opening an account – mainly different opening balances. Because both children have a method to open the account but both children choose to do it differently means the behavior is polymorphic.
+In the above code sample, the two child classes have different business rules to implement when it comes to opening an account – mainly different opening balances. Because both children have a method to open the account but both children choose to do it differently means the behavior is polymorphic.
 
 To achieve polymorphism, inherit from a base class, then override methods and write implementation code in them. In addition to overriding methods, you can overload methods to achieve polymorphism.
 
@@ -1084,16 +1088,15 @@ What is the tsconfig.json file?
 * JavaScript projects can use a jsconfig.json file instead, which acts almost the same but has some JavaScript-related compiler flags enabled by default.
 * Note: In many packages, a configuration file is included, featuring predefined settings that typically require no alterations. Also, you may not need this for simple projects like hello world.
 A project is compiled in one of the following ways:
-
-Using tsconfig.json or jsconfig.json:
-* By invoking tsc with no input files, in which case the compiler searches for the tsconfig.json file starting in the current directory and continuing up the parent directory chain.
-* By invoking tsc with no input files and a --project (or just -p) command line option that specifies the path of a directory containing a tsconfig.json file, or a path to a valid .json file containing the configurations.
+  * By invoking tsc with no input files, in which case the compiler searches for the tsconfig.json file starting in the current directory and continuing up the parent directory chain.
+  * By invoking tsc with no input files and a --project (or just -p) command line option that specifies the path of a directory containing a tsconfig.json file, or a path to a valid .json file containing the configurations.
 When input files are specified on the command line, tsconfig.json files are ignored.
 
 Example tsconfig.json files:
 Using the files property
 
-```{
+```
+{
   "compilerOptions": {
     "module": "commonjs",
     "noImplicitAny": true,
