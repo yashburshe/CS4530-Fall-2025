@@ -1,12 +1,12 @@
 ---
 layout: page
-title: Requirments Engineering -- VSD, User Stories, and Conditions of Satisfaction
+title: Requirments Engineering with VSD
 permalink: /tutorials/week1-user-stories
 parent: Tutorials
 nav_order: 3
 ---
 This tutorial provides a description of Value Sensitive Design (VSD) and the process of applying it to define 
-user stories. Further, it provides examples for user stories, conditions of satisfaction and how a minimum viable product can be defined. The process description and the examples will help understand the process of collecting requirements
+requirements. Further, it provides examples for user stories, conditions of satisfaction and how a minimum viable product can be defined. The process description and the examples will help understand the process of collecting requirements
 as user stories and how to document them in a systematic way.
 
 Contents:
