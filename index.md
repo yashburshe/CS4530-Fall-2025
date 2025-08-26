@@ -37,7 +37,7 @@ The course will be delivered in a "traditional" lecture style. Prof Wand's secti
 
 | Section       | Instructor                                                                | Meeting Time                                 | Meeting Place      |
 |---------------|---------------------------------------------------------------------------|----------------------------------------------|--------------------|
-| 1             | Prof Bhutta                                                               | MR 11:45 am - 1:25 pm                        | Robinson Hall 309 |
+| 1             | Prof Bhutta                                                               | MR 11:45 am - 1:25 pm                        | Robinson Hall 109 |
 | 2             | Prof Bhutta                                                               | TF 9:50 am - 11:30 am                        | Churchill Hall 103            |
 | 5             | Prof Bhutta                                                               | T 11:45 am - 1:25 pm & R 2:50 pm - 4:30pm    | West Village G 104     |
 | 7             | Prof Mitra                                                                | TF 1:30 pm - 3:15 pm                         | West Village G 104            |
