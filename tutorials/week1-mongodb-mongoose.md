@@ -38,7 +38,13 @@ Mongoose provides representations of MongoDB concepts in the TypeScript/JavaScri
 - In any given program `mongoose` refers to a particular database in a particular MongoDB instance. For example, executing
 
   ```typescript
-  await mongoose.connect("mongodb://127.0.0.1:27017/pets");
+  try {
+    await mongoose.connect("mongodb://127.0.0.1:27017/pets");
+    console.log("Successfully connected to MongoDB");
+  } catch (error) {
+    console.error("Failed to connect to MongoDB:", error.message);
+    process.exit(1);
+  }
   ```
 
   connects Mongoose to the pets database in the local MongoDB instance.
@@ -94,6 +100,76 @@ By default, it is an ObjectId, a 12-byte value consisting of:
 This structure ensures global uniqueness and supports efficient queries and indexing.
 
 As mentioned above, references to documents are represented by properties with type `Types.ObjectID`, which is the type of the `_id` field.
+
+#### Common ObjectID Typing Mistakes
+
+A common mistake when defining schemas with references is trying to use the model name directly as a type. For example, this **will not work**:
+
+```typescript
+// ❌ INCORRECT - This will cause a TypeScript error
+const postSchema = new mongoose.Schema({
+  title: String,
+  content: String,
+  author: User, // Error: 'User' is not a valid schema type
+});
+```
+
+If you try to run this code, you'll get an error because `User` is a constructor function (model), not a valid schema type. 
+
+#### Running the Bad Code - What Actually Happens
+
+Let's see what happens when you actually try to execute the incorrect code:
+
+```typescript
+import mongoose from 'mongoose';
+
+// Define User model first
+const userSchema = new mongoose.Schema({
+  name: String,
+  email: String,
+});
+const User = mongoose.model("User", userSchema);
+
+// Now try to use User directly in another schema
+try {
+  const postSchema = new mongoose.Schema({
+    title: String,
+    content: String,
+    author: User, // This will throw an error
+  });
+  
+  const Post = mongoose.model("Post", postSchema);
+} catch (error) {
+  console.error("Schema creation failed:", error.message);
+  // Error: Invalid schema configuration. `User` is not a valid type
+  // at path `author`. See [mongoosejs.com/docs/schematypes.html]
+}
+```
+
+The error occurs because Mongoose expects primitive types (String, Number, Date, etc.) or specific Mongoose types like `mongoose.Schema.Types.ObjectId`, not model constructors.
+
+#### The Correct Approach
+
+The correct way is to use `Types.ObjectId` with a reference:
+
+```typescript
+// ✅ CORRECT - Use Types.ObjectId with ref
+const postSchema = new mongoose.Schema({
+  title: String,
+  content: String,
+  author: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+});
+```
+
+This tells Mongoose that the `author` field stores an ObjectID that references documents in the "User" collection. The actual typing and relationship is established through the `ref` property, not through direct type references.
+
+#### Why ObjectIDs Aren't "Typed" Like Regular References
+
+Unlike traditional object-oriented programming where you might have direct object references, MongoDB uses ObjectIDs as string-like identifiers. This means:
+
+1. **No compile-time type checking**: The reference is just an ID string, not a typed object
+2. **Runtime resolution**: The actual object is only retrieved when you explicitly populate the field
+3. **Database-level concern**: The relationship exists at the database schema level, not in the JavaScript type system
 
 ### Queries
 
@@ -404,3 +480,5 @@ A simple example (i.e, example.ts) can be accessed [here](./assets/week1-mongodb
 - [MongoDB Atlas (Cloud Database)](https://www.mongodb.com/atlas)
 - [Mongoose Validation Guide](https://mongoosejs.com/docs/validation.html)
 - [MongoDB Performance Best Practices](https://www.mongodb.com/docs/manual/administration/analyzing-mongodb-performance/)
+- [Mongoose SchemaTypes Documentation](https://mongoosejs.com/docs/schematypes.html) -(Comprehensive guide to valid schema types)
+- [MongoDB ObjectId Documentation](https://www.mongodb.com/docs/manual/reference/method/ObjectId/) - (Deep dive into ObjectId structure and usage)
