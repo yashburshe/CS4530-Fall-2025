@@ -40,6 +40,13 @@ Contents:
   - [Configuration](#configuration)
   - [Debugging Tests](#debugging-tests)
 - [General Guidelines For Writing Tests](#general-guidelines-for-writing-tests)
+- [Appendix: Using Vitest as an Alternative to Jest](#appendix-using-vitest-as-an-alternative-to-jest)
+    - [Why Vitest?](#why-vitest)
+    - [Installation](#installation-1)
+    - [Setup](#setup)
+    - [Writing Tests](#writing-tests)
+    - [Mocking](#mocking)
+    - [Running Tests](#running-tests)
 
 
 # Understanding Unit Testing
@@ -783,3 +790,82 @@ If everything is setup correctly, the debugger in VSCode will pause at the break
 9. If large test data is being used, ensure clean-up after tests to prevent memory leaks.
 10. Code coverage is a deceptive measure. 100% coverage does not mean 100% tested code.
 11. A well designed test suite improves the quality and reliability of code.
+
+# Appendix: Using Vitest as an Alternative to Jest
+
+While this tutorial focuses on Jest, you might prefer using Vitest, a modern testing framework that is fast, lightweight, and integrates seamlessly with Vite. Vitest offers a Jest-like API, so the transition is easy if you already know Jest.
+
+## Why Vitest?
+- Faster test execution (built on Vite and esbuild)
+- Jest compatible syntax (describe, it, expect)
+- Built-in mocking and snapshot testing
+- Optional UI for visual test running (vitest --ui)
+
+### Installation
+Install Vitest as a development dependency:
+```bash
+npm install --save-dev vitest
+```
+
+For coverage support:
+```bash
+npm install --save-dev @vitest/coverage-v8
+```
+
+### Setup
+Add a test script in your package.json:
+```json
+{
+  "scripts": {
+    "test": "vitest"
+  }
+}
+```
+
+If using Vite, configure the test environment in vite.config.ts:
+```ts
+import { defineConfig } from 'vitest/config';
+
+export default defineConfig({
+  test: {
+    globals: true,
+    environment: 'jsdom'
+  }
+})
+```
+
+### Writing Tests
+Vitest uses the same structure as Jest. Create calculator.test.ts:
+```ts
+import { describe, it, expect } from 'vitest';
+import Calculator from './calculator';
+
+describe('Calculator', () => {
+  it('should return 2 when inputs are 1 and 1', () => {
+    const calculator = new Calculator();
+    expect(calculator.add(1, 1).toBe(2));
+  });
+});
+```
+
+### Mocking
+Vitest uses vi instead of jest for mocks and spies:
+```ts
+import { vi } from 'vitest'
+
+it('should call console.log', () => {
+  const logSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
+  const calculator = new Calculator();
+  calculator.add(1, 1);
+  expect(logSpy).toHaveBeenCalled();
+  logSpy.mockRestore();
+});
+```
+
+### Running Tests
+Run tests in different modes:
+```bash
+npm run test          # Run all tests
+npm run test -- --watch  # Watch mode
+npm run test -- --ui      # UI test runner
+```
