@@ -6,14 +6,14 @@ parent: Tutorials
 nav_order: 5
 ---
 
-# A mini-tutorial on MongoDB and Mongoose
+# A Mini-tutorial on MongoDB and Mongoose
 
-This tutorial provides basic introduction to MondoDB and Mongoose:
+This tutorial provides basic introduction to MongoDB and Mongoose(current version of MongoDB: 8.0.13, current version of Mongoose: 8.18.0 as of August 2025).
 
-Contents:
+## Contents:
 
 - [MongoDB Concepts](#mongodb-concepts)
-- [Mongoose representation of MongoDB Concepts](#mongoose-representation-of-mongodb-concepts)
+- [Mongoose Representation of MongoDB Concepts](#mongoose-representation-of-mongodb-concepts)
 - [Databases, Collections, and Documents](#databases-collections-and-documents)
 - [ObjectIDs and References](#objectids-and-references)
 - [Queries](#queries)
@@ -26,10 +26,10 @@ Contents:
 - An _installation_ consists of a set of named _databases_.
 - A _database_ consists of a set of named _collections_.
 - A _collection_ consists of a set of _documents_.
-- A _document_ is a set of (property,value) pairs.
-- A _schema_ is a set of (property,type) pairs. All of the documents in a single collection should satisfy the same _schema_.
+- A _document_ is a set of (property,value) pairs stored in a BSON format.
+- A _schema_ is a set of (property,type) pairs. All documents in a single collection should satisfy the same _schema_.
 
-## Mongoose representation of MongoDB Concepts
+## Mongoose Representation of MongoDB Concepts
 
 ### Databases, Collections, and Documents
 
@@ -38,7 +38,13 @@ Mongoose provides representations of MongoDB concepts in the TypeScript/JavaScri
 - In any given program `mongoose` refers to a particular database in a particular MongoDB instance. For example, executing
 
   ```typescript
-  await mongoose.connect("mongodb://127.0.0.1:27017/pets");
+  try {
+    await mongoose.connect("mongodb://127.0.0.1:27017/pets");
+    console.log("Successfully connected to MongoDB");
+  } catch (error) {
+    console.error("Failed to connect to MongoDB:", error.message);
+    process.exit(1);
+  }
   ```
 
   connects Mongoose to the pets database in the local MongoDB instance.
@@ -58,15 +64,13 @@ Mongoose provides representations of MongoDB concepts in the TypeScript/JavaScri
 
   In this document, we will use the terms 'property' and 'field' interchangeably.
 
-- A MongoDB collection of documents
-  is represented in Mongoose by a TypeScript constructor created by `mongoose.model`. For example
+- A MongoDB collection of documents is represented in Mongoose by a TypeScript constructor created by `mongoose.model`. For example
 
   ```typescript
   const Kitten = mongoose.model("Kitten", kittySchema);
   ```
 
-  associates the `Kitten` variable with a collection named `Kitten`. Notice that Kitten is a constructor (like a class name), so
-we write it in upper case. All documents in this collection must follow the schema defined by `kittySchema`.
+Notice that 'Kitten' is a constructor (like a class name), so we write it in PascalCase. All documents in this collection must follow the schema defined by 'kittySchema'.
 
 - A document with schema `M` is represented by a TypeScript object created by saying `new C`, where `C` is constructor created by `mongoose.model`. For example
 
@@ -82,19 +86,94 @@ we write it in upper case. All documents in this collection must follow the sche
   await fluffy.save();
   ```
 
-Note that most of the operations that touch the database are asyncs.
+Note that most of the operations that interact with the databases are asynchronous and return Promises.
 
 ### ObjectIDs and References
 
 In MongoDB, every document has a unique identifier stored in its `_id` field. This `_id` field is automatically generated if not explicitly provided when a document is created.
 
-By default, it is an ObjectId, a 12-byte value consisting of a 4-byte timestamp (indicating creation time), a 5-byte random value (unique to the server), and a 3-byte incrementing counter (ensuring uniqueness within the same timestamp). This structure ensures global uniqueness and supports efficient queries and indexing.
+By default, it is an ObjectId, a 12-byte value consisting of:  
+- A 4-byte timestamp (indicating creation time)
+- A 5-byte random value (unique to the server)
+- A 3-byte incrementing counter (ensuring uniqueness within the same timestamp).
+
+This structure ensures global uniqueness and supports efficient queries and indexing.
 
 As mentioned above, references to documents are represented by properties with type `Types.ObjectID`, which is the type of the `_id` field.
 
+#### Common ObjectID Typing Mistakes
+
+A common mistake when defining schemas with references is trying to use the model name directly as a type. For example, this **will not work**:
+
+```typescript
+// ❌ INCORRECT - This will cause a TypeScript error
+const postSchema = new mongoose.Schema({
+  title: String,
+  content: String,
+  author: User, // Error: 'User' is not a valid schema type
+});
+```
+
+If you try to run this code, you'll get an error because `User` is a constructor function (model), not a valid schema type. 
+
+#### Running the Bad Code - What Actually Happens
+
+Let's see what happens when you actually try to execute the incorrect code:
+
+```typescript
+import mongoose from 'mongoose';
+
+// Define User model first
+const userSchema = new mongoose.Schema({
+  name: String,
+  email: String,
+});
+const User = mongoose.model("User", userSchema);
+
+// Now try to use User directly in another schema
+try {
+  const postSchema = new mongoose.Schema({
+    title: String,
+    content: String,
+    author: User, // This will throw an error
+  });
+  
+  const Post = mongoose.model("Post", postSchema);
+} catch (error) {
+  console.error("Schema creation failed:", error.message);
+  // Error: Invalid schema configuration. `User` is not a valid type
+  // at path `author`. See [mongoosejs.com/docs/schematypes.html]
+}
+```
+
+The error occurs because Mongoose expects primitive types (String, Number, Date, etc.) or specific Mongoose types like `mongoose.Schema.Types.ObjectId`, not model constructors.
+
+#### The Correct Approach
+
+The correct way is to use `Types.ObjectId` with a reference:
+
+```typescript
+// ✅ CORRECT - Use Types.ObjectId with ref
+const postSchema = new mongoose.Schema({
+  title: String,
+  content: String,
+  author: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+});
+```
+
+This tells Mongoose that the `author` field stores an ObjectID that references documents in the "User" collection. The actual typing and relationship is established through the `ref` property, not through direct type references.
+
+#### Why ObjectIDs Aren't "Typed" Like Regular References
+
+Unlike traditional object-oriented programming where you might have direct object references, MongoDB uses ObjectIDs as string-like identifiers. This means:
+
+1. **No compile-time type checking**: The reference is just an ID string, not a typed object
+2. **Runtime resolution**: The actual object is only retrieved when you explicitly populate the field
+3. **Database-level concern**: The relationship exists at the database schema level, not in the JavaScript type system
+
 ### Queries
 
-In Mongoose, a query is a recipe for retrieving documents from a collection. There are **lots** of ways to do this. Here are some examples:
+In Mongoose, a query is a recipe for retrieving documents from a collection. Here are some common patterns:
 
 - Find all documents in a collection:
 
@@ -385,13 +464,21 @@ Some additional, advanced examples:
 
 By using populate, you minimize boilerplate code for nested retrieval and ensure data consistency. You only need to ensure the one copy is updated, which is referenced in other places. This approach is especially useful with complex relationships as it reduces errors, simplifies data retrieval, and improves consistency by automating the lookup of references.
 
-However, if you find yourself using deeply nested populates, it's worth revisitng the database design and trying to simplify the schemas. Under the hood, populate executes additional queries for you, which can become very inefficient as database complexity and query size increase. In this toy example, we may want to get rid of the `Profile` collection, and instead define the fields directly within the `User` schema. These design decisions depend on the context and needs of the system.
-
+However, if you find yourself using deeply nested populates, consider revisiting the database design and simplifying the schemas.  Under the hood, populate performs additional queries for you, which can become inefficient as database complexity and query size grow.  In this toy example, we may want to remove the 'Profile' collection and define the fields directly in the 'User' schema.  These design decisions are based on the system's context and needs.
 ### Examples
 
 A simple example (i.e, example.ts) can be accessed [here](./assets/week1-mongodb-mongoose/tutorial.zip).
 
 ### Resources
 
-- [Official Mongoose/TypeScript docs](https://mongoosejs.com/docs/typescript.html)
-- [Mongoose Queries](https://mongoosejs.com/docs/queries.html)
+- [Official Mongoose Documentation](https://mongoosejs.com/)
+- [Mongoose TypeScript Guide](https://mongoosejs.com/docs/typescript.html)
+- [MongoDB Manual](https://www.mongodb.com/docs/manual/)
+- [MongoDB Query Operators](https://www.mongodb.com/docs/manual/reference/operator/query/)
+- [Mongoose Queries Documentation](https://mongoosejs.com/docs/queries.html)
+- [Mongoose Populate Guide](https://mongoosejs.com/docs/populate.html)
+- [MongoDB Atlas (Cloud Database)](https://www.mongodb.com/atlas)
+- [Mongoose Validation Guide](https://mongoosejs.com/docs/validation.html)
+- [MongoDB Performance Best Practices](https://www.mongodb.com/docs/manual/administration/analyzing-mongodb-performance/)
+- [Mongoose SchemaTypes Documentation](https://mongoosejs.com/docs/schematypes.html) -(Comprehensive guide to valid schema types)
+- [MongoDB ObjectId Documentation](https://www.mongodb.com/docs/manual/reference/method/ObjectId/) - (Deep dive into ObjectId structure and usage)
