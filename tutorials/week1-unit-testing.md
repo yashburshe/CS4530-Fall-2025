@@ -824,7 +824,7 @@ Add a test script in your package.json:
 
 If using Vite, configure the test environment in vite.config.ts:
 ```ts
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
   test: {
