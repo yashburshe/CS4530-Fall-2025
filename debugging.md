@@ -3,7 +3,7 @@ layout: page
 title: Debugging
 permalink: /policies/debugging/
 parent: Policies
-nav_order: 2
+nav_order: 3
 ---
 
 ## Debugging
