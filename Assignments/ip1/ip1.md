@@ -18,7 +18,7 @@ FakeStackOverFlow is a web application that consists of some code that runs in e
 This implementation effort will be split across two deliverables. In this first deliverable, you will implement and test the core backend components for this feature, and in the second deliverable, you will implement and test the frontend components.
 
 ## Change Log
-- NA
+- Test NA
 
 ## Objectives of this assignment
 
