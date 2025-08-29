@@ -2,6 +2,6 @@
 name: Vaishali Singh
 role: Teaching Assistant
 email: singh.vais@northeastern.edu
-photo: 
+photo: staff/vaishali.jpg
 
 ---
