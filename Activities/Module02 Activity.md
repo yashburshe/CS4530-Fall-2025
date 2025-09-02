@@ -8,7 +8,7 @@ nav_exclude: true
 
 This activity is intended to supplement the CS4530 lecture on test-driven development.
 
-Start by downloading and unpacking the [starter Code]({{ site.baseurl }}{% link Activities/module02-tdd-transcript-activity.zip %})
+Start by downloading and unpacking the [starter Code]({{ site.baseurl }}{% link Activities/module-02-tdd-transcript-activity.zip %})
 
 ## Steps
 The slides for module 2 list a number of decisions that were made in the negotiations with the client. However, the tests in `transcriptService.test.ts` do not check all of those decisions.
