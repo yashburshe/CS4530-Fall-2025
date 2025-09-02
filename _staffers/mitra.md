@@ -6,6 +6,6 @@ website: https://joymitra.github.io/
 photo: staff/joydeep.png
 section: CS4530 Sections 7 & 8 
 office-hours: |
-    * TBA
+    * In-Person: Mondays and Wednesdays 3pm-5pm, Meserve 339
 ---
 
