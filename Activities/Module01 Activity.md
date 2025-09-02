@@ -70,3 +70,9 @@ Please submit a total of:
 * 9 conditions of satisfaction with priorities
 
 When you are done, submit your work as required by your instructor (check the Canvas asssignment for details, if assigned). This may vary from section to section.
+
+### Grading Criteria: 10pts
+
+* High Level Requirement Chosen and Analysis (4 pts) 
+* 3 user stories (3 pts) 
+* 9 conditions of satisfaction with appropriate priorities (3 pts)
