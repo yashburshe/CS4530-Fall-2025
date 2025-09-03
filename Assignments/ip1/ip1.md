@@ -18,7 +18,7 @@ FakeStackOverFlow is a web application that consists of some code that runs in e
 This implementation effort will be split across two deliverables. In this first deliverable, you will implement and test the core backend components for this feature, and in the second deliverable, you will implement and test the frontend components.
 
 ## Change Log
-- Test NA
+- NA
 
 ## Objectives of this assignment
 
@@ -31,9 +31,9 @@ The objectives of this assignment are to:
 
 ## Getting started with this assignment
 
-Start by accepting our invitation. It will create a Github repository for you which will include the starter code for this assignment. In case you have enrolled in the course recently, you may not find your name in the list. Please create a piazza post to contact us and we will add you to the Github Classroom roster.
+Start by accepting our [invitation](https://classroom.github.com/a/8hNskYVM). It will create a Github repository for you which will include the starter code for this assignment. In case you have enrolled in the course recently, you may not find your name in the student list (which was populated with the list of enrolled students at the start of the semester, Wednesday night). Please create a piazza post to contact us and we will add you to the Github Classroom roster.
 
-If you are new to Git, you may want to review the getting started page available in your project repository (look for "The Basics of GitHub.md")!
+If you are new to Git, you may want to work on "Learning Basics of Git" [assignment](https://classroom.github.com/a/QkL5qQ90) first!
 
 ### 1. Prerequisites
 
