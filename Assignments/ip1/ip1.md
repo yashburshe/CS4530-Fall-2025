@@ -139,47 +139,6 @@ Right now, you may run into errors regarding unknown properties. Once you finish
 
 - We use [mockingoose](https://github.com/alonronin/mockingoose) to mock Mongoose functions when testing.
 
-#### Testing Dependencies
-
-For comprehensive testing of your backend implementation, familiarize yourself with these testing libraries:
-
-- **[Jest](https://jestjs.io/)** -Testing framework for unit tests. Jest provides test runners, assertion libraries, and mocking capabilities.
-
-- **[Supertest](https://github.com/visionmedia/supertest)** - A library for testing HTTP endpoints. Supertest allows you to make HTTP requests to your Express server during tests and assert on the responses. It's particularly useful for integration testing of your API routes.
-
-- **[Mockingoose](https://github.com/alonronin/mockingoose)** - Provides mocking functionality specifically for Mongoose operations. This allows you to test your service layer functions without actually connecting to a MongoDB database.
-
-- **[@types/jest](https://www.npmjs.com/package/@types/jest)** and **[@types/supertest](https://www.npmjs.com/package/@types/supertest)** - TypeScript type definitions for Jest and Supertest to enable proper type checking in your test files.
-
-#### Key Testing Concepts
-
-- *Unit Tests*: Test individual functions in isolation (service layer functions)
-- *Integration Tests*: Test how different parts work together (API endpoints with Supertest)
-- *Mocking*: Replace external dependencies (database calls) with controlled mock responses
-- *Test Coverage*: Ensure your tests cover different scenarios, edge cases, and error conditions
-
-Example Supertest usage for testing an API endpoint:
-```typescript
-import request from 'supertest';
-import app from '../app';
-
-describe('POST /api/collections/create', () => {
-  it('should create a new collection', async () => {
-    const response = await request(app)
-      .post('/api/collections/create')
-      .send({
-        name: 'Test Collection',
-        description: 'A test collection',
-        questions: [],
-        username: 'testuser'
-      })
-      .expect(200);
-    
-    expect(response.body.name).toBe('Test Collection');
-  });
-});
-```
-
 ### 6. Explore Useful Resources
 
 1. Express Tutorial: [https://expressjs.com/en/guide/routing.html](https://expressjs.com/en/guide/routing.html)
@@ -252,7 +211,7 @@ If you want to run specific tests, we recommend that you install vsc-jest-runner
 
 ## Implementation Tasks
 
-This deliverable has 2 parts; each part will be graded on its own rubric. 
+This deliverable has 2 parts; each part will be graded on its own rubric. You should complete the assignment one part at a time, in the order presented here.
 
 ### Task 1: Collection
 
@@ -282,15 +241,13 @@ A collection is a curated set of questions related to a specific topic or theme.
     Mongoose requires us to construct a data layer object from a given schema. The data layer object serves as the interface to the database. To this end, define the collection model in `server/models/collection.model.ts`. 
 3. Define relevant types
 
-    Define the relevant types needed for the collections feature in `server/types/types.d.ts` as marked by *TODO: Task 1*. Be sure to avoid repeated or reduntant type definitions.
-
-**Please Note:** Either modify or define types accordingly, some types have already been defined in the shared/types folder and they can be used or modified as needed.
+    Define the relevant types needed for the collections feature in `server/types/types.d.ts` as marked by *TODO: Task 1*. Be sure to avoid repeated or redundant type definitions.
 4. Implement the service layer functions
 
     The role of the service layer functions is to interact with the data layer object and the controllers. To this end, define the following functions in `server/services/collection.service.ts`:
 
     - `createCollection(collection)` creates a new collection in the database if the collection does not exist.
-    - `deleteCollection(id, username)` removes a collection in the database with the given id and crated by a user with the given username. It returns the deleted collection if successful, otherwise throws an error.
+    - `deleteCollection(id, username)` removes a collection in the database with the given id and created by a user with the given username. It returns the deleted collection if successful, otherwise throws an error.
     - `getCollectionByUsername(username, currentUsername)` returns all collections stored in the databse for a given username. If the given username is not the same as the current user making the request then the private collections must not be returned. Throws an error if the relevant collections cannot be retrieved.
     - `getCollectionById(id, username)` returns the collection for a given collection ID and created by a user with the username. Throws an error if the collection cannot be retrieved or a private collection is being requested by a user who did not create it.
     - `addQuestionToCollection(id, questionId, username)` adds a question with a question ID to an existing collection with a given ID and username. If the question being added then removes the question and updates the collection, otherwise creates a new question with the given ID and updates the collection. In either case it returns the updated collection. Throws an error if the collection does not exist or could not be updated.
@@ -299,25 +256,16 @@ A collection is a curated set of questions related to a specific topic or theme.
 
     Define the following express REST API endpoints in `server/controller/collection.controller.ts`:
 
-    - `createCollectionRoute(req, res)` takes an HTTP request containing the metadata in its body necessary to create a collection and creates a collection. It returns the created collection as reponse.
-    - `deleteCollectionRoute(req, res)` takes an HTTP request containing a collection ID and the username of the collection and deletes the corresponding collection. It returns the deleted collection as response of the delete was successful.
+    - `createCollectionRoute(req, res)` takes an HTTP request containing the metadata in its body necessary to create a collection and creates a collection. It returns the created collection as response.
+    - `deleteCollectionRoute(req, res)` takes an HTTP request containing a collection ID and the username of the collection and deletes the corresponding collection. It returns the deleted collection as response if the delete was successful.
     - `toggleSaveQuestionRoute(req, res)` takes an HTTP request with the question ID that needs to be saved and the collection ID where the question will be a part of. It returns the updated collection as response.
-    - `getCollectionsByUsernameRoute(req, res)` takes an HTTP request containing the username of the currenly logged in user and the username of some other user. It returns all collections for the username as response.
+    - `getCollectionsByUsernameRoute(req, res)` takes an HTTP request containing the username of the currently logged in user and the username of some other user. It returns all collections for the username as response.
     - `getCollectionByIdRoute(req, res)` takes an HTTP request containing the collection ID and the username of the user that created the collection. It returns the corresponding collection as response.
 
-    All endpoints return a status code of 200 in their response. However, in case of an error they return a status code 50 in their response and in case of an invalid request they return a status code of 400 in their reponse.
+    All endpoints return a status code of 200 in their response. However, in case of an error they return a status code 500 in their response and in case of an invalid request they return a status code of 400 in their reponse.
 6. Add routes to endpoints
 
-   **Collection Router Implementation Hints:**
-
-    - Add router definitions at the end of your collectionController function, before returning the router
-    - Use appropriate HTTP methods:
-        - POST for `/create` - creating new collections
-        - DELETE for `/delete/:collectionId` - removing collections (use collectionId as URL parameter)
-        - PATCH for `/toggleSaveQuestion` - updating collections with questions
-        - GET for retrieving collections (use URL parameters like `:username`, `:collectionId` where needed)
-    - Collection routes should include: `/create`, `/delete/:collectionId`, `/toggleSaveQuestion`, `/getCollectionsByUsername/:username`, `/getCollectionById/:collectionId`
-
+    Define the appropriate API routes on the Express router for each of the functions implemented in the previous steps.
 7. Document endpoints as Open API spec (tentative)
 
     Write JSDoc comments for every endpoint to generate an OpenAPI spec for them.
@@ -335,7 +283,6 @@ A collection is a curated set of questions related to a specific topic or theme.
 - Types = 5 points
 - Service layer Implementation = 20 points
 - Endpoint integration = 10 points
-- Open API Spec = 5 points
 - Testing = 20 points
   - 2 points for each function
 
@@ -343,17 +290,17 @@ A collection is a curated set of questions related to a specific topic or theme.
 
 A community is a subgroup of users with common interests. A community can be public or private. A public community is open to all users of the platform. On the other hand a private community is only accessible to its members. A community always has an admin selected from its participants/members. Extend the current implementation with the following features:
 
-1. Retrieve details of an existing community
-2. Retrieve details of all communities
-3. Join/leave a community
-4. Create a new community
-5. Delete an existing community
+  1. Retrieve details of an existing community
+  2. Retrieve details of all communities
+  3. Join/leave a community
+  4. Create a new community
+  5. Delete an existing community
 
 #### Steps to Achieve This
 
 1. Create the schema
 
-   The community schema defines the structure of a document in the community collection of the MongoDB database. Each community must have the following:
+    The community schema defines the structure of a document in the community collection of the MongoDB database. Each community must have the following:
 
     - A required unique __name__ of type string.
     - A required __description__ of type string.
@@ -361,11 +308,11 @@ A community is a subgroup of users with common interests. A community can be pub
     - A __visibility__ type for the community -- always must be public or private. The default visibility of a community is public.
     - a required __admin__ user of type string.
 
-   Define the schema in `server/models/schema/community.schema.ts`.
+    Define the schema in `server/models/schema/community.schema.ts`.
 
-   Make sure the Questions schema structure in `server/models/schema/question.schema.ts` has a reference to an existing `community`.
+    Make sure the Questions schema structure in `server/models/schema/question.schema.ts` has a reference to an existing `community`.
 
-   You can verify the schema by running the scripts described in Section 4 of this document.
+    You can verify the schema by running the scripts described in Section 4 of this document.
 
 2. Define the mongoose model
 
@@ -375,21 +322,19 @@ A community is a subgroup of users with common interests. A community can be pub
 
     Define the relevant types needed for the communities feature in `server/types/types.d.ts` as marked by TODO: Task 2. Be sure to avoid repeated or reduntant type definitions.
 
-   **Please Note:** Either modify or define types accordingly, some types have already been defined in the shared/types folder and they can be used or modified as needed.
-
 4. Implement the service Layer functions
 
     Define the following functions in `server/services/community.service.ts`:
 
-    - `getCommunity(id)` returns an object based on the document in the community collection for an existing community ID. It returns an object with an error property if it fails to retreive the document.
+    - `getCommunity(id)` returns an object based on the document in the community collection for an existing community ID. It returns an object with an error property if it fails to retrieve the document.
 
     - `getAllCommunities()` returns all communities in the community collection in the database. It returns an object with the error property if the retrieval fails.
 
     - `toggleCommunityMembership(id, username)` takes a community ID and a username and adds the user with the given username as a participant to the community with the given ID if the user is not a participant. If the user is a participant but not an admin in the community then it removes them from the community. It returns an object with the error property if the update to the relevant document fails.
 
-    - `createCommunity(community)` creates a new community in the database with the given community data and returns the newyly created community. It returns an object with the error property if the creation fails.
+    - `createCommunity(community)` creates a new community in the database with the given community data and returns the newly created community. It returns an object with the error property if the creation fails.
 
-    - `deleteCommunity(id, username)` deletes an existing community with the given id from the database when requested by a user with the given username and if the user is an admin. It returns an object with the error property if deletion fails or the user is not an admin of the communnity.
+    - `deleteCommunity(id, username)` deletes an existing community with the given id from the database when requested by a user with the given username and if the user is an admin. It returns an object with the error property if deletion fails or the user is not an admin of the community.
 
 5. Define the endpoints
 
@@ -405,17 +350,7 @@ A community is a subgroup of users with common interests. A community can be pub
 
 6. Add routes to endpoints
 
-   **Community Router Implementation Hints:**
-
-    - Add router definitions at the end of your communityController function, before returning the router
-    - Use appropriate HTTP methods:
-        - GET for `/getCommunity/:communityId` - retrieving a specific community (use communityId as URL parameter)
-        - GET for `/getAllCommunities` - retrieving all communities
-        - POST for `/toggleMembership` - updating community membership (sends data in request body)
-        - POST for `/create` - creating new communities
-        - DELETE for `/delete/:communityId` - removing communities (use communityId as URL parameter)
-    - Community routes should include: `/getCommunity/:communityId`, `/getAllCommunities`, `/toggleMembership`, `/create`, `/delete/:communityId`
-    - Note: `/toggleMembership` uses POST (not PATCH) and sends communityId and username in the request body.
+    Define the appropriate API routes on the Express router for each of the functions implemented in the previous steps.
 
 7. Document endpoints as Open API spec (tentative)
 
@@ -435,7 +370,7 @@ A community is a subgroup of users with common interests. A community can be pub
 - Service layer Implementation = 20 points
 - Endpoint integration = 10 points
 - Testing = 20 points
-    - 2 points for each function
+  - 2 points for each function
 
 ## Submission Instructions & Grading
 
@@ -445,14 +380,6 @@ This submission will be scored out of 100 points, 90 of which will be awarded fo
 
 Your code will automatically be evaluated for linter errors and warnings.
 
-Some of the common Linting Issues include
-1. Line Ending Errors (CRLF vs LF):
-    - You might see carriage return characters (\r, represented as ␍) at the end of lines.This usually happens when files have Windows-style line endings (\r\n) instead of Unix-style (\n).
-2. Unused Variables/Functions:
-    - ESLint will flag unused variables or functions.
-3. Import/Export Issues:
-    - Missing imports or incorrect module paths.
-
 - Each lint error or warning will result in a deduction of -2 points (up to a maximum of 30 points).
 - This will not affect the 10 style points.
 - Line endings will not be counted as errors.
@@ -461,13 +388,7 @@ The starter code comes with some lint problems, You are expected you to fix thes
 
 **The use of `eslint-disable` statements is NOT allowed. Each instance outside what is provided in the starter code will have points deducted.**
 
-You can run the following command within the client or server to check for  some common lint errors(please see next section for more details on linting in Manual Grading):
-```
-npm run lint
-```
-
-
-You can run the following command within the client or server to fix some common lint errors:
+You can run the following command within the client or server to fix some common lint errors
 
 ```
 npm run lint:fix
@@ -518,3 +439,6 @@ If you need help troubleshooting a problem, be sure to follow all the steps outl
 Please refer to the [course policy page](https://neu-se.github.io/CS4530-Fall-2025/policies/#academic-integrity) for more details.
 
 **For this assignment, the use of co-pilot or other generative AI technologies such as ChatGPT is not allowed.**
+
+
+```
