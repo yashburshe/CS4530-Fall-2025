@@ -476,7 +476,9 @@ npm run lint:fix
 
 You will be provided with starter code that includes a set of tests. Your task is to ensure that all existing tests pass and to create additional tests to cover any new functionality or edge cases.
 
-**Please Note**: The server tests will fail the first time students run them but this is expected behavior.Please rerun the tests.
+**Please Note**: The server tests will fail the first time students run them but this is expected behavior.Please rerun the tests after you have completed the implementation.All server tests will pass after students have implemented the features as well as the corresponding tests. Please also  take note until all tests have passed, the Github actions will fail; this is also an expected behavior.These actions will pass when 1.Community and Collection features are implemented and 2.Tests are implemented.
+
+
 
 ### Manual Grading
 
