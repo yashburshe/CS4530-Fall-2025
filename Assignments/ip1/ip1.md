@@ -137,7 +137,6 @@ Right now, you may run into errors regarding unknown properties. Once you finish
   connections to the server for convenience. This is fine for a development environment. In a
   production environment where the application is deployed on a cloud service, the CORS policy needs to be specified more strictly. Read more about CORS [https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS).
 
-- We use [mockingoose](https://github.com/alonronin/mockingoose) to mock Mongoose functions when testing.
 
 #### Testing Dependencies
 
@@ -146,8 +145,6 @@ For comprehensive testing of your backend implementation, familiarize yourself w
 - **[Jest](https://jestjs.io/)** -Testing framework for unit tests. Jest provides test runners, assertion libraries, and mocking capabilities.
 
 - **[Supertest](https://github.com/visionmedia/supertest)** - A library for testing HTTP endpoints. Supertest allows you to make HTTP requests to your Express server during tests and assert on the responses. It's particularly useful for integration testing of your API routes.
-
-- **[Mockingoose](https://github.com/alonronin/mockingoose)** - Provides mocking functionality specifically for Mongoose operations. This allows you to test your service layer functions without actually connecting to a MongoDB database.
 
 - **[@types/jest](https://www.npmjs.com/package/@types/jest)** and **[@types/supertest](https://www.npmjs.com/package/@types/supertest)** - TypeScript type definitions for Jest and Supertest to enable proper type checking in your test files.
 
@@ -188,7 +185,6 @@ describe('POST /api/collections/create', () => {
 4. Mongoose Documents: [https://mongoosejs.com/docs/documents.html](https://mongoosejs.com/docs/documents.html)
 5. Jest Basics: [https://jestjs.io/docs/getting-started](https://jestjs.io/docs/getting-started)
 6. Mocking in Jest: [https://jestjs.io/docs/mock-functions](https://jestjs.io/docs/mock-functions)
-7. Mocking Mongoose functions: [https://github.com/alonronin/mockingoose](https://github.com/alonronin/mockingoose)
 8. Postman tutorial: API Requests & Postman tutorial
 
 ## Server/Client Architecture
@@ -203,7 +199,7 @@ The starter code package, of which this is a part, is divided into 3 main direct
 
 ### Client
 
-Running `npm run start` will start a client on port 3000.
+Running `npm run dev` will start a client on port 3000.
 The client code uses Axios to send HTTP method requests to the server. You should review the client code to understand
 how axios sends requests and how the response from the server is processed. You don’t need to make any changes to the client code.
 
@@ -211,7 +207,7 @@ how axios sends requests and how the response from the server is processed. You 
 
 The server is responsible for taking HTTP requests from the client and executing them on the database. The server code resides in the `server/` directory. The server is responsible for all the data that is sent back and forth to the database.
 
-The main server script is in `server/server.ts`. Running `npm run start`
+The main server script is in `server/server.ts`. Running `npm run dev`
 will start an HTTP server, which will take HTTP requests on [**https://localhost:8000**](https://localhost:8000/), and execute them on the running database instance.
 
 You can send requests to the server using a tool like Postman, or by writing scripts that use axios to send requests to `localhost:8000`, as you did in the Async activity.
