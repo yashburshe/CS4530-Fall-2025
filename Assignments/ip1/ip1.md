@@ -137,7 +137,6 @@ Right now, you may run into errors regarding unknown properties. Once you finish
   connections to the server for convenience. This is fine for a development environment. In a
   production environment where the application is deployed on a cloud service, the CORS policy needs to be specified more strictly. Read more about CORS [https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS).
 
-- We use [mockingoose](https://github.com/alonronin/mockingoose) to mock Mongoose functions when testing.
 
 #### Testing Dependencies
 
@@ -146,8 +145,6 @@ For comprehensive testing of your backend implementation, familiarize yourself w
 - **[Jest](https://jestjs.io/)** -Testing framework for unit tests. Jest provides test runners, assertion libraries, and mocking capabilities.
 
 - **[Supertest](https://github.com/visionmedia/supertest)** - A library for testing HTTP endpoints. Supertest allows you to make HTTP requests to your Express server during tests and assert on the responses. It's particularly useful for integration testing of your API routes.
-
-- **[Mockingoose](https://github.com/alonronin/mockingoose)** - Provides mocking functionality specifically for Mongoose operations. This allows you to test your service layer functions without actually connecting to a MongoDB database.
 
 - **[@types/jest](https://www.npmjs.com/package/@types/jest)** and **[@types/supertest](https://www.npmjs.com/package/@types/supertest)** - TypeScript type definitions for Jest and Supertest to enable proper type checking in your test files.
 
@@ -188,7 +185,6 @@ describe('POST /api/collections/create', () => {
 4. Mongoose Documents: [https://mongoosejs.com/docs/documents.html](https://mongoosejs.com/docs/documents.html)
 5. Jest Basics: [https://jestjs.io/docs/getting-started](https://jestjs.io/docs/getting-started)
 6. Mocking in Jest: [https://jestjs.io/docs/mock-functions](https://jestjs.io/docs/mock-functions)
-7. Mocking Mongoose functions: [https://github.com/alonronin/mockingoose](https://github.com/alonronin/mockingoose)
 8. Postman tutorial: API Requests & Postman tutorial
 
 ## Server/Client Architecture
@@ -203,7 +199,7 @@ The starter code package, of which this is a part, is divided into 3 main direct
 
 ### Client
 
-Running `npm run start` will start a client on port 3000.
+Running `npm run dev` will start a client on port 3000.
 The client code uses Axios to send HTTP method requests to the server. You should review the client code to understand
 how axios sends requests and how the response from the server is processed. You don’t need to make any changes to the client code.
 
@@ -211,7 +207,7 @@ how axios sends requests and how the response from the server is processed. You 
 
 The server is responsible for taking HTTP requests from the client and executing them on the database. The server code resides in the `server/` directory. The server is responsible for all the data that is sent back and forth to the database.
 
-The main server script is in `server/server.ts`. Running `npm run start`
+The main server script is in `server/server.ts`. Running `npm run dev`
 will start an HTTP server, which will take HTTP requests on [**https://localhost:8000**](https://localhost:8000/), and execute them on the running database instance.
 
 You can send requests to the server using a tool like Postman, or by writing scripts that use axios to send requests to `localhost:8000`, as you did in the Async activity.
@@ -248,7 +244,7 @@ If you want to run specific tests, we recommend that you install vsc-jest-runner
 3. Start by defining the schemas in the server/models/schema directory to ensure the data structure is consistent.
 4. Ensure that you run all Jest tests. These tests are designed to catch issues early. Once all Jest tests pass, the Cypress tests should also pass, assuming no significant changes have been made to the client’s implementation.
 5. Use Postman to interact with and manually test your solutions and verify that database queries work as expected.
-6. Follow the [debugging policy](https://neu-se.github.io/CS4530-Fall-2025/policies/debugging/) to help in the debugging process.
+6. Follow the [debugging policy](https://neu-se.github.io/CS4530-Fall-2025/policies/debugging/) to help in the debugging process.During visiting office hours, TA's will expect you to have exhausted all initial debugging strategies as outlined in the provided link.
 
 ## Implementation Tasks
 
@@ -321,10 +317,8 @@ A collection is a curated set of questions related to a specific topic or theme.
         - GET for retrieving collections (use URL parameters like `:username`, `:collectionId` where needed)
     - Collection routes should include: `/create`, `/delete/:collectionId`, `/toggleSaveQuestion`, `/getCollectionsByUsername/:username`, `/getCollectionById/:collectionId`.
    
-7. Document endpoints as Open API spec (tentative)
 
-    Write JSDoc comments for every endpoint to generate an OpenAPI spec for them.
-8. Write unit tests
+7. Write unit tests
 
     We’ve provided initial tests to provide some information on the expected behavior of the routes and functions. Using the requirement descriptions above, write additional tests for all the added functions and routes, covering different branches, edge cases, etc. to verify the correctness of your code.
 
@@ -423,10 +417,8 @@ A community is a subgroup of users with common interests. A community can be pub
    - Community routes should include: `/getCommunity/:communityId`, `/getAllCommunities`, `/toggleMembership`, `/create`, `/delete/:communityId`
    - Note: `/toggleMembership` uses POST (not PATCH) and sends communityId and username in the request body
 
-7. Document endpoints as Open API spec (tentative)
 
-    Write JSDoc comments for every endpoint to generate an OpenAPI spec for them.
-8. Write unit tests
+7. Write unit tests
 
     We’ve provided initial tests to provide some information on the expected behavior of the routes and functions. Using the requirement descriptions above, write additional tests for all the added functions and routes, covering different branches, edge cases, etc. to verify the correctness of your code.
 
@@ -483,6 +475,8 @@ npm run lint:fix
 #### Testing
 
 You will be provided with starter code that includes a set of tests. Your task is to ensure that all existing tests pass and to create additional tests to cover any new functionality or edge cases.
+
+**Please Note**: The server tests will fail the first time students run them but this is expected behavior.Please rerun the tests.
 
 ### Manual Grading
 
