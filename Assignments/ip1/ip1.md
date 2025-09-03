@@ -441,6 +441,23 @@ You will submit your assignment using GitHub Classroom.
 
 This submission will be scored out of 100 points, 90 of which will be awarded for implementation of tasks and accompanying tests, and the remaining 10 for following style guidelines.
 
+The grading repo has the autograder's script files in server/.grading. You are not allowed or supposed to change those files. Editing those files will amount to 0 for the entire assignment. If you accidentally changed them then let us know and we can help you revert those changes. During grading we will verify to see if you changed these files.
+
+When you push to your repo, you will see the autograder run. In the actions tab of your repo look for Autograding Tests job to view your score and feedback from the autograder. The autograder has a total of 80 pts and the breakdown is as follows:
+
+* Style checks: 10 pts
+* Community Controller: 15 pts
+* Community Services: 10 pts
+* Collections controller: 15 pts
+* Collections Services: 10 pts
+* Regression Tests: 10 pts
+* Coverage 95% or more: 10 pts
+Partial Credit:
+* Coverage 90% or more: 6 pts
+* Coverage 85% or more: 2 pts
+* Coverage 80% or more: 1 pts
+* Coverage below 80%: 0 pts
+
 During development, you may encounter various linting errors. Some common errors include:
 1. Line Ending Errors (CRLF vs LF)
     - You might see carriage return characters (\r, represented as ␍) at the end of lines
@@ -471,6 +488,8 @@ You can run the following command within the client or server to fix some common
 ```
 npm run lint:fix
 ```
+
+
 
 #### Testing
 
