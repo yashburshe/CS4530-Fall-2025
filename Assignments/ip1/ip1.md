@@ -18,7 +18,7 @@ FakeStackOverFlow is a web application that consists of some code that runs in e
 This implementation effort will be split across two deliverables. In this first deliverable, you will implement and test the core backend components for this feature, and in the second deliverable, you will implement and test the frontend components.
 
 ## Change Log
-- NA
+- Test NA
 
 ## Objectives of this assignment
 
@@ -139,6 +139,47 @@ Right now, you may run into errors regarding unknown properties. Once you finish
 
 - We use [mockingoose](https://github.com/alonronin/mockingoose) to mock Mongoose functions when testing.
 
+#### Testing Dependencies
+
+For comprehensive testing of your backend implementation, familiarize yourself with these testing libraries:
+
+- **[Jest](https://jestjs.io/)** -Testing framework for unit tests. Jest provides test runners, assertion libraries, and mocking capabilities.
+
+- **[Supertest](https://github.com/visionmedia/supertest)** - A library for testing HTTP endpoints. Supertest allows you to make HTTP requests to your Express server during tests and assert on the responses. It's particularly useful for integration testing of your API routes.
+
+- **[Mockingoose](https://github.com/alonronin/mockingoose)** - Provides mocking functionality specifically for Mongoose operations. This allows you to test your service layer functions without actually connecting to a MongoDB database.
+
+- **[@types/jest](https://www.npmjs.com/package/@types/jest)** and **[@types/supertest](https://www.npmjs.com/package/@types/supertest)** - TypeScript type definitions for Jest and Supertest to enable proper type checking in your test files.
+
+#### Key Testing Concepts
+
+- *Unit Tests*: Test individual functions in isolation (service layer functions)
+- *Integration Tests*: Test how different parts work together (API endpoints with Supertest)
+- *Mocking*: Replace external dependencies (database calls) with controlled mock responses
+- *Test Coverage*: Ensure your tests cover different scenarios, edge cases, and error conditions
+
+Example Supertest usage for testing an API endpoint:
+```typescript
+import request from 'supertest';
+import app from '../app';
+
+describe('POST /api/collections/create', () => {
+  it('should create a new collection', async () => {
+    const response = await request(app)
+      .post('/api/collections/create')
+      .send({
+        name: 'Test Collection',
+        description: 'A test collection',
+        questions: [],
+        username: 'testuser'
+      })
+      .expect(200);
+    
+    expect(response.body.name).toBe('Test Collection');
+  });
+});
+```
+
 ### 6. Explore Useful Resources
 
 1. Express Tutorial: [https://expressjs.com/en/guide/routing.html](https://expressjs.com/en/guide/routing.html)
@@ -242,6 +283,8 @@ A collection is a curated set of questions related to a specific topic or theme.
 3. Define relevant types
 
     Define the relevant types needed for the collections feature in `server/types/types.d.ts` as marked by *TODO: Task 1*. Be sure to avoid repeated or reduntant type definitions.
+
+**Please Note:** Either modify or define types accordingly, some types have already been defined in the shared/types folder and they can be used or modified as needed.
 4. Implement the service layer functions
 
     The role of the service layer functions is to interact with the data layer object and the controllers. To this end, define the following functions in `server/services/collection.service.ts`:
@@ -265,7 +308,16 @@ A collection is a curated set of questions related to a specific topic or theme.
     All endpoints return a status code of 200 in their response. However, in case of an error they return a status code 50 in their response and in case of an invalid request they return a status code of 400 in their reponse.
 6. Add routes to endpoints
 
-    Define the appropriate API routes on the Express router for each of the functions implemented in the previous steps.
+   **Collection Router Implementation Hints:**
+
+    - Add router definitions at the end of your collectionController function, before returning the router
+    - Use appropriate HTTP methods:
+        - POST for `/create` - creating new collections
+        - DELETE for `/delete/:collectionId` - removing collections (use collectionId as URL parameter)
+        - PATCH for `/toggleSaveQuestion` - updating collections with questions
+        - GET for retrieving collections (use URL parameters like `:username`, `:collectionId` where needed)
+    - Collection routes should include: `/create`, `/delete/:collectionId`, `/toggleSaveQuestion`, `/getCollectionsByUsername/:username`, `/getCollectionById/:collectionId`
+
 7. Document endpoints as Open API spec (tentative)
 
     Write JSDoc comments for every endpoint to generate an OpenAPI spec for them.
@@ -277,7 +329,7 @@ A collection is a curated set of questions related to a specific topic or theme.
 
     In addition to automated tests, you should also manually test your route using Postman and MongoDB Compass to ensure that any database queries are correct since we use database mocks while testing with Jest.
 
-#### Grading (X points)
+#### Grading (60 points)
 
 - Schema and data model = 5 points
 - Types = 5 points
@@ -291,17 +343,17 @@ A collection is a curated set of questions related to a specific topic or theme.
 
 A community is a subgroup of users with common interests. A community can be public or private. A public community is open to all users of the platform. On the other hand a private community is only accessible to its members. A community always has an admin selected from its participants/members. Extend the current implementation with the following features:
 
-  1. Retrieve details of an existing community
-  2. Retrieve details of all communities
-  3. Join/leave a community
-  4. Create a new community
-  5. Delete an existing community
+1. Retrieve details of an existing community
+2. Retrieve details of all communities
+3. Join/leave a community
+4. Create a new community
+5. Delete an existing community
 
 #### Steps to Achieve This
 
 1. Create the schema
 
-    The community schema defines the structure of a document in the community collection of the MongoDB database. Each community must have the following:
+   The community schema defines the structure of a document in the community collection of the MongoDB database. Each community must have the following:
 
     - A required unique __name__ of type string.
     - A required __description__ of type string.
@@ -309,11 +361,11 @@ A community is a subgroup of users with common interests. A community can be pub
     - A __visibility__ type for the community -- always must be public or private. The default visibility of a community is public.
     - a required __admin__ user of type string.
 
-    Define the schema in `server/models/schema/community.schema.ts`.
+   Define the schema in `server/models/schema/community.schema.ts`.
 
-    Make sure the Questions schema structure in `server/models/schema/question.schema.ts` has a reference to an existing `community`.
+   Make sure the Questions schema structure in `server/models/schema/question.schema.ts` has a reference to an existing `community`.
 
-    You can verify the schema by running the scripts described in Section 4 of this document.
+   You can verify the schema by running the scripts described in Section 4 of this document.
 
 2. Define the mongoose model
 
@@ -322,6 +374,8 @@ A community is a subgroup of users with common interests. A community can be pub
 3. Define the relevant types
 
     Define the relevant types needed for the communities feature in `server/types/types.d.ts` as marked by TODO: Task 2. Be sure to avoid repeated or reduntant type definitions.
+
+   **Please Note:** Either modify or define types accordingly, some types have already been defined in the shared/types folder and they can be used or modified as needed.
 
 4. Implement the service Layer functions
 
@@ -351,7 +405,17 @@ A community is a subgroup of users with common interests. A community can be pub
 
 6. Add routes to endpoints
 
-    Define the appropriate API routes on the Express router for each of the functions implemented in the previous steps.
+   **Community Router Implementation Hints:**
+
+    - Add router definitions at the end of your communityController function, before returning the router
+    - Use appropriate HTTP methods:
+        - GET for `/getCommunity/:communityId` - retrieving a specific community (use communityId as URL parameter)
+        - GET for `/getAllCommunities` - retrieving all communities
+        - POST for `/toggleMembership` - updating community membership (sends data in request body)
+        - POST for `/create` - creating new communities
+        - DELETE for `/delete/:communityId` - removing communities (use communityId as URL parameter)
+    - Community routes should include: `/getCommunity/:communityId`, `/getAllCommunities`, `/toggleMembership`, `/create`, `/delete/:communityId`
+    - Note: `/toggleMembership` uses POST (not PATCH) and sends communityId and username in the request body.
 
 7. Document endpoints as Open API spec (tentative)
 
@@ -364,6 +428,15 @@ A community is a subgroup of users with common interests. A community can be pub
 
     In addition to automated tests, you should also manually test your route using Postman and MongoDB Compass to ensure that any database queries are correct since we use database mocks while testing with Jest.
 
+#### Grading (60 points)
+
+- Schema and data model = 5 points
+- Types = 5 points
+- Service layer Implementation = 20 points
+- Endpoint integration = 10 points
+- Testing = 20 points
+    - 2 points for each function
+
 ## Submission Instructions & Grading
 
 You will submit your assignment using GitHub Classroom.
@@ -371,6 +444,14 @@ You will submit your assignment using GitHub Classroom.
 This submission will be scored out of 100 points, 90 of which will be awarded for implementation of tasks and accompanying tests, and the remaining 10 for following style guidelines.
 
 Your code will automatically be evaluated for linter errors and warnings.
+
+Some of the common Linting Issues include
+1. Line Ending Errors (CRLF vs LF):
+    - You might see carriage return characters (\r, represented as ␍) at the end of lines.This usually happens when files have Windows-style line endings (\r\n) instead of Unix-style (\n).
+2. Unused Variables/Functions:
+    - ESLint will flag unused variables or functions.
+3. Import/Export Issues:
+    - Missing imports or incorrect module paths.
 
 - Each lint error or warning will result in a deduction of -2 points (up to a maximum of 30 points).
 - This will not affect the 10 style points.
@@ -380,7 +461,13 @@ The starter code comes with some lint problems, You are expected you to fix thes
 
 **The use of `eslint-disable` statements is NOT allowed. Each instance outside what is provided in the starter code will have points deducted.**
 
-You can run the following command within the client or server to fix some common lint errors
+You can run the following command within the client or server to check for  some common lint errors(please see next section for more details on linting in Manual Grading):
+```
+npm run lint
+```
+
+
+You can run the following command within the client or server to fix some common lint errors:
 
 ```
 npm run lint:fix
@@ -431,6 +518,3 @@ If you need help troubleshooting a problem, be sure to follow all the steps outl
 Please refer to the [course policy page](https://neu-se.github.io/CS4530-Fall-2025/policies/#academic-integrity) for more details.
 
 **For this assignment, the use of co-pilot or other generative AI technologies such as ChatGPT is not allowed.**
-
-
-```
