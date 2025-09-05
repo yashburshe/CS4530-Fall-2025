@@ -812,6 +812,8 @@ For coverage support:
 npm install --save-dev @vitest/coverage-v8
 ```
 
+Also, if you're using Vitest, grab the VSCode extension - makes testing way smoother and lets you run/debug tests right from the editor with inline results. Super convenient for TDD! Just search "Vitest" in extensions.
+
 ### Setup
 Add a test script in your package.json:
 ```json
@@ -822,14 +824,14 @@ Add a test script in your package.json:
 }
 ```
 
-If using Vite, configure the test environment in vite.config.ts:
+If using Vite, configure the test environment in vitest.config.ts:
 ```ts
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
   test: {
     globals: true,
-    environment: 'jsdom'
+    environment: 'node'
   }
 })
 ```
