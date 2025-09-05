@@ -87,7 +87,7 @@ The starter code package, of which this is a part, is divided into 3 main direct
 
 ```shell
 cd client/
-npm install
+npm install from the project root
 cd ../server
 npm install
 cd ../testing
@@ -96,6 +96,8 @@ npm install
 
 Once you install the dependencies, you might see the following ESlint errors in some files. The linter error indicates that the code contains carriage return characters (\r, represented as ␍) at the end of each line and usually happens when the file has Windows-style line endings (\r\n) instead of Unix-style line endings (\n). To fix this, you can click on the "CRLF" icon on the lower right corner of VSCode and change it to "LF". Note that this does not count as a linting error when grading.
 ![image]({{site.baseurl}}{% link /Assignments/ip1/linter-errors.png %})
+
+**Note:** Please ignore the testing directory as it contains cypress tests that we do not cover in grading.
 
 ### 3. Setup Environment Variables\*\*
 
@@ -109,7 +111,7 @@ REACT_APP_SERVER_URL=http://localhost:8000
 
 ```
 MONGODB_URI=mongodb://127.0.0.1:27017
-CLIENT_URL=http://localhost:3000
+CLIENT_URL=http://localhost:4530
 PORT=8000
 ```
 
@@ -199,7 +201,7 @@ The starter code package, of which this is a part, is divided into 3 main direct
 
 ### Client
 
-Running `npm run dev` will start a client on port 3000.
+Running `npm run dev` will start a client on port 4530.
 The client code uses Axios to send HTTP method requests to the server. You should review the client code to understand
 how axios sends requests and how the response from the server is processed. You don’t need to make any changes to the client code.
 
@@ -226,7 +228,7 @@ If you want to run specific tests, we recommend that you install vsc-jest-runner
 
 |                   |                                                                        |
 | :---------------- | :--------------------------------------------------------------------- |
-| Client Instance   | [https://localhost:3000/](https://localhost:3000/)                     |
+| Client Instance   | [https://localhost:4530/](https://localhost:4530/)                     |
 | Server Instance   | [https://localhost:8000/](https://localhost:8000/)                     |
 | Database Instance | [mongodb://127.0.0.1:27017/fake_so](mongodb://127.0.0.1:27017/fake_so) |
 
@@ -278,7 +280,7 @@ A collection is a curated set of questions related to a specific topic or theme.
     Mongoose requires us to construct a data layer object from a given schema. The data layer object serves as the interface to the database. To this end, define the collection model in `server/models/collection.model.ts`. 
 3. Define relevant types
 
-    Define the relevant types needed for the collections feature in `server/types/types.d.ts` as marked by *TODO: Task 1*. Be sure to avoid repeated or reduntant type definitions.
+    Define the relevant types needed for the collections feature in `server/types/types.d.ts`. Be sure to avoid repeated or reduntant type definitions.
    
     **Please Note:** Either modify or use defined types accordingly, some types have already been defined in the shared/types folder and they can be used or modified as needed.
 
@@ -326,15 +328,6 @@ A collection is a curated set of questions related to a specific topic or theme.
 
     In addition to automated tests, you should also manually test your route using Postman and MongoDB Compass to ensure that any database queries are correct since we use database mocks while testing with Jest.
 
-#### Grading (60 points)
-
-- Schema and data model = 5 points
-- Types = 5 points
-- Service layer Implementation = 20 points
-- Endpoint integration = 10 points
-- Open API Spec = 5 points
-- Testing = 20 points
-  - 2 points for each function
 
 ### Task 2: Communities
 
@@ -370,7 +363,7 @@ A community is a subgroup of users with common interests. A community can be pub
 
 3. Define the relevant types
 
-    Define the relevant types needed for the communities feature in `server/types/types.d.ts` as marked by TODO: Task 2. Be sure to avoid repeated or reduntant type definitions.
+    Define the relevant types needed for the communities feature in `server/types/types.d.ts`. Be sure to avoid repeated or reduntant type definitions.
 
    **Please Note:** Either modify or use defined types accordingly, some types have already been defined in the shared/types folder and they can be used or modified as needed.
 
@@ -426,14 +419,7 @@ A community is a subgroup of users with common interests. A community can be pub
 
     In addition to automated tests, you should also manually test your route using Postman and MongoDB Compass to ensure that any database queries are correct since we use database mocks while testing with Jest.
 
-#### Grading (60 points)
 
-- Schema and data model = 5 points
-- Types = 5 points
-- Service layer Implementation = 20 points
-- Endpoint integration = 10 points
-- Testing = 20 points
-    - 2 points for each function
 
 ## Submission Instructions & Grading
 
@@ -444,19 +430,24 @@ This submission will be scored out of 100 points, 90 of which will be awarded fo
 The grading repo has the autograder's script files in server/.grading. You are not allowed or supposed to change those files. Editing those files will amount to 0 for the entire assignment. If you accidentally changed them then let us know and we can help you revert those changes. During grading we will verify to see if you changed these files.
 
 When you push to your repo, you will see the autograder run. In the actions tab of your repo look for Autograding Tests job to view your score and feedback from the autograder. The autograder has a total of 80 pts and the breakdown is as follows:
+* **Task 1 (Collections)** - 25 pts
+    * Correctness tests for service layer - 15 pts
+    * Correctness tests for controller layer - 10 pts
+* **Task 2 (Communities)** - 25 pts
+    * Correctness tests for service layer - 15 pts
+    * Correctness tests for controller layer - 10 pts
+* **Style checks for lint** - 10 pts *(no partial credit is awarded)*
+* **Regression tests** - 10 pts
+  * **Coverage for tests** - 10 pts
 
-* Style checks: 10 pts
-* Community Controller: 15 pts
-* Community Services: 10 pts
-* Collections controller: 15 pts
-* Collections Services: 10 pts
-* Regression Tests: 10 pts
-* Coverage 95% or more: 10 pts
-Partial Credit:
-* Coverage 90% or more: 6 pts
-* Coverage 85% or more: 2 pts
-* Coverage 80% or more: 1 pts
-* Coverage below 80%: 0 pts
+  | Coverage Percentage | Points Awarded |
+  |-------------------|----------------|
+  | ≥ 95% | 10 pts (Full Credit) |
+  | ≥ 90% | 6 pts |
+  | ≥ 85% | 2 pts |
+  | ≥ 80% | 1 pt |
+  | < 80% | 0 pts |
+        
 
 During development, you may encounter various linting errors. Some common errors include:
 1. Line Ending Errors (CRLF vs LF)
@@ -503,15 +494,15 @@ You will be provided with starter code that includes a set of tests. Your task i
 
 Your code will be manually evaluated for conformance to our [course style guide](https://neu-se.github.io/CS4530-Fall-2025/policies/style/). **Do not wait to run the linter until the last minute**. To check for linter errors, run the command `npm run lint` from the terminal. The handout contains the same ESlint configuration that is used by our grading script.
 
-This manual evaluation will account for 10% of your total grade on this assignment. We will manually evaluate your code for style on the following rubric:
+This manual evaluation will account for 20 points on this assignment. We will manually evaluate your code for style on the following rubric:
 
-To receive all 10 points:
+* **Manual grading** - 20 pts
+    * **Documentation & design compliance** - 6 pts
+        * All public properties and methods (other than getters, setters, and constructors) are documented with JSDoc-style comments that describe what the property/method does, as defined in our style guide.
+        * The code and tests that you write generally follows the design principles discussed in week one. In particular, your design does not have duplicated code that could have been refactored into a shared method.
+        * No duplicate code is allowed.
+    * **Manual testing with Postman** - 14 pts
 
-- All new names (e.g. for local variables, methods, and properties) follow the naming conventions defined in our style guide
-- There are no unused local variables
-- All public properties and methods (other than getters, setters, and constructors) are documented with JSDoc-style comments that describe what the property/method does, as defined in our style guide
-- The code and tests that you write generally follows the design principles discussed in week one. In particular, your design does not have duplicated code that could have been refactored into a shared method.
-- No duplicate code is allowed.
 
 We will review your code and note each violation of this rubric. We will deduct 2 points for each violation, up to a maximum of deducting all 10 style points.
 
