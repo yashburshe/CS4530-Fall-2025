@@ -86,12 +86,8 @@ The starter code package, of which this is a part, is divided into 3 main direct
 2. Install the dependencies for each directory by running the following commands:
 
 ```shell
-cd client/
+
 npm install from the project root
-cd ../server
-npm install
-cd ../testing
-npm install
 ```
 
 Once you install the dependencies, you might see the following ESlint errors in some files. The linter error indicates that the code contains carriage return characters (\r, represented as ␍) at the end of each line and usually happens when the file has Windows-style line endings (\r\n) instead of Unix-style line endings (\n). To fix this, you can click on the "CRLF" icon on the lower right corner of VSCode and change it to "LF". Note that this does not count as a linting error when grading.
@@ -425,7 +421,7 @@ A community is a subgroup of users with common interests. A community can be pub
 
 You will submit your assignment using GitHub Classroom.
 
-This submission will be scored out of 100 points, 90 of which will be awarded for implementation of tasks and accompanying tests, and the remaining 10 for following style guidelines.
+This submission will be scored out of 100 points, 80 of which will be awarded for implementation of tasks and accompanying tests, and the remaining 20 in the manual testing section covered below.
 
 The grading repo has the autograder's script files in server/.grading. You are not allowed or supposed to change those files. Editing those files will amount to 0 for the entire assignment. If you accidentally changed them then let us know and we can help you revert those changes. During grading we will verify to see if you changed these files.
 
@@ -438,7 +434,7 @@ When you push to your repo, you will see the autograder run. In the actions tab 
     * Correctness tests for controller layer - 10 pts
 * **Style checks for lint** - 10 pts *(no partial credit is awarded)*
 * **Regression tests** - 10 pts
-  * **Coverage for tests** - 10 pts
+* **Coverage for tests** - 10 pts
 
   | Coverage Percentage | Points Awarded |
   |-------------------|----------------|
@@ -460,8 +456,7 @@ During development, you may encounter various linting errors. Some common errors
 
 Your code will automatically be evaluated for linter errors and warnings.
 
-- Each lint error or warning will result in a deduction of -2 points (up to a maximum of 30 points).
-- This will not affect the 10 style points.
+- Lint errors result in a style score of 0/10. No partial credit is awarded in this case.
 - Line endings will not be counted as errors.
 
 The starter code comes with some lint problems, You are expected you to fix these linter problems, many of them will be fixed as you implement the tasks.
