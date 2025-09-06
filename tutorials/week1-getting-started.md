@@ -160,6 +160,32 @@ which will install it as a normal application in your Mac.
 2. Install VSCode by running `sudo snap install --classic code`.
 3. Open VSCode as an application on your desktop.
 
+## Connecting to your GitHub Repository
+
+If you try and clone your GitHub classroom repository and get a prompt asking for your GitHub username and password, you might not have set up your Git credentials. These are required for cloning, pulling and pushing to a private repository.
+
+### Setup for HTTPS (Git Credential Manager)
+
+[These instructions](https://github.com/git-ecosystem/git-credential-manager/blob/release/docs/install.md) help you install the Git Credential Manager on Mac/Windows/Linux
+
+After installing Git Credential Manager, no special setup is needed. The next time you use `git pull` or any other git command in reference to a private repository, it will bring up a dialog which will allow you to authenticate with your GitHub account. This is a one-time setup and you will not be required to authenticate on every action.
+
+If for some reason, HTTPS is not working well and you are getting errors like 'The 'neu-cs4530' organization has enabled or enforced SAML SSO' or 'refusing to allow an OAuth App to create or update workflow' when you try to clone/push to your repository, look below for the instructions for setting up SSH authentication.
+
+### Setup for SSH (SSH Keys)
+
+To connect to GitHub with SSH, follow the links below one by one. All links contain guides for Windows/Mac/Linux
+
+1. [Checking for existing SSH keys](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/checking-for-existing-ssh-keys)
+
+2. [Generating a new SSH key and adding it to the ssh-agent](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+
+3. [Adding a new SSH key to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
+
+4. [Testing your SSH connection](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/testing-your-ssh-connection)
+
+5. [Working with SSH Key Passphrases (Optional)](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/working-with-ssh-key-passphrases)
+
 ## Additional Extensions (Optional)
 
 VSCode comes with a rich set of extensions to aid in software development.
