@@ -2,6 +2,6 @@
 name: Saran Jagadeesan Uma 
 role: Teaching Assistant
 email: jagadeesanuma.s@northeastern.edu
-photo: 
+photo: staff/saran.jpg
 
 ---
