@@ -1,18 +1,18 @@
 ---
 layout: page
-title: Weather Station Observer Pattern Activity Handout
+title: Web Socket Activity
 nav_exclude: true
 ---
 
-This project will give you practice in coding using the *observer* design pattern. 
+## Test Adequacy Activity
+This project will give you practice in working with web sockets which enable you to use emitter pattern. 
 
 Start by downloading the [starter code]({{ site.baseurl }}{% link Activities/module-05-websocket-activity.zip %}).
 
-## Instructions
+### Instructions
 The current protocol, in `webSocketsSimple/shared.ts', has the server start the conversation with each client by sending it a `ping`
 
 Modify this system in the following ways:
-
 1. The server should keep track of the number of clients that are connected.
 2. When a new client joins, the client should send the server a `hello` message with its name.
 3. When the server sees the new client, it should print to the console the name of the new client and the total number of connected clients. It should then send an initial ping to the new client, as it does now.
