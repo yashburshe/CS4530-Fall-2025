@@ -8,22 +8,17 @@ We will gain experience improving test suites using two adequacy criteria: line 
 
 ### Test Coverage
 
-As usual, download the [starter code]({{ site.baseurl }}{% link Activities/module03-test-adequacy.zip %}) and run `npm install`. Run the tests with `npm test` and observe that all tests pass.
+As usual, download the [starter code]({{ site.baseurl }}{% link Activities/module03-test-adequacy.zip %}) and run `npm install`. Run the tests with `npm test` and observe that all tests pass, but lines 91 and 110 are not covered.
 
 Please write tests so that lines 91 and 110 are covered. (1 point each)
 
-Create a file called `newTests.test.ts`. Add tests to that file to cover those lines. You can run `npm test` to see if your tests are passing.
+Create a file called `newTests.test.ts`. Add tests to that file so that lines 91 and 110 are covered. You can run `npm test` to see if your tests are passing.
 
 ### Mutation Testing
 
-Then run Stryker to perform mutation testing by running `npm run stryker`. You should find that there are 12 surviving mutants. for each of the surviving mutants, determine whether the mutant is
-1. Equivalent (i.e., the system with the mutant is functionally identical to the original code)
-2. The mutant is not functionally identical, but the mutant is not a real bug.
-3. The mutant is a real bug that should be fixed.
+Then run Stryker to perform mutation testing by running `npm run stryker`. You should find that there are 12 surviving mutants. for each of the surviving mutants, determine whether the mutant is innocuous or represents a real bug. 
 
- For each surviving mutant in categories 1 and 2, write a short justification of why you believe the mutant is equivalent or not a real bug. Write your justifications as comments in `newTests.test.ts`.
-
-For each surviving mutant that represents a real bug, write a test that will kill the mutant. Put all your new tests in `newTests.test.ts`. 
+For each non-innocuous surviving mutant, add tests to `newTests.test.ts` that will kill the mutant.  For each innocuous surviving mutant, write a short justification in `newTests.test.ts` of why you believe the mutant is not a real bug.
 
 When you are done, submit that file only.
 
