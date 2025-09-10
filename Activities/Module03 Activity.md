@@ -16,7 +16,7 @@ Create a file called `newTests.test.ts`. Add tests to that file so that lines 91
 
 ### Mutation Testing
 
-Then run Stryker to perform mutation testing by running `npm run stryker`. You should find that there are 12 surviving mutants. for each of the surviving mutants, determine whether the mutant is innocuous or represents a real bug. 
+Then run Stryker to perform mutation testing by running `npm run stryker`. You should find that there are 1 surviving mutants. for each of the surviving mutants, determine whether the mutant is innocuous or represents a real bug. 
 
 For each non-innocuous surviving mutant, add tests to `newTests.test.ts` that will kill the mutant.  For each innocuous surviving mutant, write a short justification in `newTests.test.ts` of why you believe the mutant is not a real bug.
 
