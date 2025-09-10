@@ -19,7 +19,9 @@ Your team leader, Adrian, has asked you to critique Whitley's code based on the 
 
 ### The Task
 
-Write a new file, called `betterTrafficLight.ts`, which uses the Principles of this module to address some of the problems raised by the customer.  Put comments in your code that document your improvements. Test your code by changing `TrafficLight.test.ts` to import from `betterTrafficLight.ts`and add some additional tests to test your improvements. Your code should pass the tests in `TrafficLight.test.ts` without change.  
+Write a new file, called `betterTrafficLight.ts`, which uses the Principles of this module to address some of the problems raised by the customer.  Put comments in your code that document your improvements. 
+
+Update `TrafficLight.test.ts` to import from `betterTrafficLight.ts`. Your code should pass all the existing tests without any modifications to them. After confirming that the existing tests pass, you are encouraged to add your own new tests in the same file to verify any extra improvements you make.
 
 There should be no linting errors or warnings in `betterTrafficLight.ts`.
 
