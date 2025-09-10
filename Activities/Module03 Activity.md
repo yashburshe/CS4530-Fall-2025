@@ -8,7 +8,7 @@ We will gain experience improving test suites using two adequacy criteria: line 
 
 ### Test Coverage
 
-As usual, download the [starter code]({{ site.baseurl }}{% link Activities/module03-test-adequacy.zip %}) and run `npm install`. Run the tests with `npm test` and observe that all tests pass, but lines 91 and 110 are not covered.
+As usual, download the [starter code]({{ site.baseurl }}{% link Activities/module03-test-adequacy.zip %}) and run `npm install`.
 
 Then run the tests, using `npm test`. You should see that all tests pass, but lines 91 and 110 are not covered. Write tests to cover those lines. Put your new tests in a file `newTests.test.ts`.
 
