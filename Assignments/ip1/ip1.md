@@ -36,6 +36,8 @@ This implementation effort will be split across two deliverables. In this first 
 ## Change Log
 - September 8, 2025: Added important repository sync instructions. All students with existing repositories must merge the "Sync Assignment" PR before continuing work.
 
+- Septemeber 11, 2025: Added clarification. If you find inconsistencies between the handout and the JSDoc commetns for the schema, **refer to `server/seedData/data`** to define the schema.
+
 ## Objectives of this assignment
 
 The objectives of this assignment are to:
