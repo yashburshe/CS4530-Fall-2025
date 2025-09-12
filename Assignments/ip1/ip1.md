@@ -9,7 +9,7 @@ submission_notes: Submit through Github Classroom
 ---
 
 {: .warning }
-> ## 🔄 Important Update: Repository Sync Required
+> ### 🔄 Important Update: Repository Sync Required
 > If you've already accepted the assignment and have a repo set up:
 > 1. Check your assignment repo—you should see a Pull Request called "Sync Assignment" waiting to be merged
 > 2. **Merge this PR first** before starting any new work (this is super important!)
@@ -34,9 +34,9 @@ FakeStackOverFlow is a web application that consists of some code that runs in e
 This implementation effort will be split across two deliverables. In this first deliverable, you will implement and test the core backend components for this feature, and in the second deliverable, you will implement and test the frontend components.
 
 ## Change Log
-- September 8, 2025: Added important repository sync instructions. All students with existing repositories must merge the "Sync Assignment" PR before continuing work.
-
-- Septemeber 11, 2025: Added clarification. If you find inconsistencies between the handout and the JSDoc comments for the schema, **refer to `server/seedData/data`** to define the schema.
+- 9/5/2025: Added a note about invitations to join neu-cs4530 organization 
+- 9/8/2025: Added important repository sync instructions. All students with existing repositories must merge the "Sync Assignment" PR before continuing work.
+- 9/11/2025: Added clarification. If you find inconsistencies between the handout and the JSDoc comments for the schema, **refer to `server/seedData/data`** to define the schema.
 
 ## Objectives of this assignment
 
@@ -49,7 +49,9 @@ The objectives of this assignment are to:
 
 ## Getting started with this assignment
 
-Start by accepting our [invitation](https://classroom.github.com/a/VQb9V2XG). It will create a Github repository for you which will include the starter code for this assignment. In case you have enrolled in the course recently, you may not find your name in the student list (which was populated with the list of enrolled students at the start of the semester, Wednesday night). Please create a piazza post to contact us and we will add you to the Github Classroom roster.
+We have invited all students to our organization. Check your northeastern email (or your spam/junk folder) and accept the invitation to join neu-cs4530.
+
+Start by accepting our [invitation](https://classroom.github.com/a/VQb9V2XG). It will create a Github repository for you which will include the starter code for this assignment. In case you have enrolled in the course recently, you may not find your name in the student list (which was populated with the list of enrolled students at the start of the semester, Wednesday night) or may not have received the invitation to join the org. Please create a piazza post to contact us and we will add you to the Github Classroom roster.
 
 If you are new to Git, you may want to work on "Learning Basics of Git" [assignment](https://classroom.github.com/a/QkL5qQ90) first!
 

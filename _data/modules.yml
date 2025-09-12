@@ -101,6 +101,10 @@ tp4:
   name: Project Final Deliverable
   type: deadline
   page: 
+tp5:
+  name: Individual Reflection
+  type: deadline
+  page: 
 veteransday:
   name: Veteran's Day (No class)
   type: holiday
