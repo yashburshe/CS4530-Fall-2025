@@ -45,17 +45,15 @@ All students are encouraged to meet with the instructor during office hours atle
 
 ## Academic Integrity
 
-Students must work individually on all homework assignments.
-We encourage you to have high-level discussions with other students in the class about the assignments, however, we require that when you turn in an assignment, it is only your work. That is, copying any part of another student's assignment is strictly prohibited. 
+Students must work individually on all homework assignments. We encourage you to have high-level discussions with other students in the class about the assignments, however, we require that when you turn in an assignment, it is only your work. That is, copying any part of another student's assignment is strictly prohibited. 
 
 If you steal someone else's work, you fail the class. You are responsible for protecting your work. If someone uses your work, with or without your permission, you fail the class.
 
-You are free to reuse small snippets of example code found on the Internet (e.g., via StackOverflow) provided that it is properly attributed. Submitting {blindly} copy-pasted code from any online resources is never ok. **For individual projects and activities, use of co-pilot or other generative AI technologies such as ChatGPT is not allowed.** For final projects, you will be allowed to use co-pilot and other generative AI technologies as long as they are clearly attributed in your submissions.  
+**To ensure that students have completed the work themselves (and have gained necessary understanding), instructors might require students to explain the work they have submitted. We will consider adjusting grades based on your understanding of the course material.**
 
-**To ensure that students have completed the work themselves (and have gained necessary understanding), instructors might require students to explain the work they have submitted. We will consider adjusting grades based on your understanding of the course material.**    
+Be sure to review our policy on use of AI.
 
-If you are concerned that by reusing and attributing that copied code it may appear that you didn't complete the assignment yourself, then please raise a discussion with the instructor. If you are in doubt whether using others' work is allowed, you should assume that it is NOT allowed unless the instructors confirm otherwise.
-
+If you are concerned that by reusing and attributing that copied code it may appear that you didn’t complete the assignment yourself, then please raise a discussion with the instructor. If you are in doubt whether using others’ work is allowed, you should assume that it is NOT allowed unless the instructors confirm otherwise.
 
 ## Classroom Environment
 To create and preserve a classroom atmosphere that optimizes teaching and learning, all participants share a responsibility in creating a civil and non-disruptive forum for the discussion of ideas. Students are expected to conduct themselves at all times in a manner that does not disrupt teaching or learning. Your comments to others should be constructive and free from harassing statements. You are encouraged to disagree with other students and the instructor, but such disagreements need to respectful and be based upon facts and documentation (rather than prejudices and personalities). The instructors reserve the right to interrupt conversations that deviate from these expectations. Repeated unprofessional or disrespectful conduct may result in a lower grade or more severe consequences. Part of the learning process in this course is respectful engagement of ideas with others.
