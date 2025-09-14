@@ -91,6 +91,6 @@ You can write all three solutions in same file. You can name your 3 solutions i
 
 ### Grading Rubric
 
-This assignment is worth 10 points.  Submit only the file examples.ts 
--- If you write an async function for importGrades, and you provide concurrent implementation for one of the tasks (listed as items numbered 1, 2 or 3 at the end of the README), you get 5 points
--- If you write an async function for importGrades and you provide concurrent implementations for all of the tasks (listed as items numbered 1, 2 and 3 at the end of the README), you get 10 points.
+This assignment is worth 10 points. Submit only the file examples.ts 
+- If you write an async function for importGrades, and you provide concurrent implementation for one of the tasks (listed as items numbered 1, 2 or 3 at the end of the instructions above), you get 5 points
+- If you write an async function for importGrades and you provide concurrent implementations for all of the tasks (listed as items numbered 1, 2 and 3 at the end of the instructions above), you get 10 points.
