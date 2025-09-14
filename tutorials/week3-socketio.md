@@ -6,9 +6,10 @@ parent: Tutorials
 nav_order: 8
 ---
 
-This tutorial covers the basic concepts of Socket.IO. By the end of the tutorial, you'll have an introduction to the concept of sockets for client-server communication, understand in what situations they are useful, and learn how to emit and listen for events for real-time updates.
+This tutorial covers the basic concepts of Socket.IO. By the end of the tutorial, you'll have an introduction to the concept of sockets for client-server communication, understand in which situations they are useful, and learn how to emit and listen for events for real-time updates.
 
-Contents:
+
+## Contents:
 
 - [What is Socket.IO](#what-is-socketio)
   - [How Does It Work?](#how-does-it-work)
@@ -22,7 +23,7 @@ Contents:
 
 # What is Socket.IO?
 
-Socket.IO is a library that enables real-time, bidirectional, and persistent communication between client(s) and server(s). Bi-directional means that both the client and the server can send or receive messages. These features make it particularly useful for applications requiring continuous data sharing, such as live dashboards and chat apps.
+Socket.IO is a library that enables real-time, bidirectional, and persistent communication between client(s) and server(s). Bidirectional means that both the client and the server can send or receive messages. These features make it particularly useful for applications requiring continuous data sharing, such as live dashboards and chat apps.
 
 ## How Does It Work?
 
@@ -51,11 +52,11 @@ A brief comparison between communication with Socket.IO and REST APIs:
 
 Socket.IO is great for any use case where real-time updates are essential, or when the client and server need continuous communication. A few examples are:
 
-1. Chat Room - This is a simple use case outlined in the documentation (linked below). Users need to send and receive messages in real-time (instantly). With Socket.IO, the user can emit a message to the server, which then broadcasts it with the other connected users. If you were to use a REST API here, there would a lot of overhead and latency in sending/receiving messages from the need of constant requests to the API.
+1. **Chat Room** – This is a simple use case outlined in the documentation (linked below). Users need to send and receive messages in real time (instantly). With Socket.IO, the user can emit a message to the server, which then broadcasts it to the other connected users. If you were to use a REST API here, there would be a lot of overhead and latency in sending/receiving messages due to the need for constant requests to the API.
 
-2. Multiplayer Games - Real-time game state sharing with low latency is essential for smooth multiplayer gameplay. By emitting socket events with the updated game state, you can make sure that all of the connected player clients have the same synchronized copy of the game state to display.
+2. **Multiplayer Games** – Real-time game state sharing with low latency is essential for smooth multiplayer gameplay. By emitting socket events with the updated game state, you can ensure that all connected player clients have the same synchronized copy of the game state to display.
 
-3. Collaborative Tools - For applications like collaborative text editors or whiteboards, sockets can help keep the state synchronized across the clients. When a user makes a change, the change will be emitted to the server, which may internally update the "source of truth" for the application. Then, the updated state would be emitted to all other connected clients, so that everyone sees the edits in real-time.
+3. **Collaborative Tools** – For applications like collaborative text editors or whiteboards, sockets can help keep the state synchronized across clients. When a user makes a change, the change will be emitted to the server, which may internally update the "source of truth" for the application. Then, the updated state would be emitted to all other connected clients, so that everyone sees the edits in real time.
 
 # Using Socket.IO
 
@@ -139,7 +140,7 @@ To get started with Socket.IO, you'll need to set up a Node.js project. Follow t
    });
    ```
 
-   This will setup a basic HTTP server that uses Socket.IO to establish connections. Now, let's create a simple client.
+  This will set up a basic HTTP server that uses Socket.IO to establish connections. Now, let's create a simple client.
 
 4. **Create a Client-Side HTML File**
 
@@ -179,7 +180,7 @@ To get started with Socket.IO, you'll need to set up a Node.js project. Follow t
    </html>
    ```
 
-   This HTML file sets up a basic client-side script that connects to the server using Socket.IO.
+  This HTML file sets up a basic client-side script that connects to the server using Socket.IO.
 
 5. **Run Your Project**
 
@@ -189,7 +190,7 @@ To get started with Socket.IO, you'll need to set up a Node.js project. Follow t
    ts-node server.ts
    ```
 
-   Then, open a browser and go to `http://localhost:3000`. You should see "Hello Socket.IO!" on the page, and in the browser's developer console, you'll see a message confirming the connection.
+  Then, open a browser and go to `http://localhost:3000`. You should see "Hello Socket.IO!" on the page, and in the browser's developer console, you'll see a message confirming the connection.
 
 ## Emitting and Receiving Socket Events
 
@@ -280,10 +281,11 @@ Now that you've set up a basic project, let's dive into how you can emit and rec
    On the client-side, you need to subscribe to the event to receive the emitted messages:
 
    ```typescript
-   // Client-side
-   socket.on("chat message", (data: { user: string; message: string }) => {
-     console.log(`${data.user}: ${data.message}`);
-   });
+
+  // Listen for chat messages
+  socket.on("chat message", (data) => {
+    console.log(`${data.user}: ${data.message}`);
+  });
    ```
 
    This will allow the client to receive and handle chat messages sent from the server (or other clients).
@@ -326,10 +328,12 @@ Client-Side (`index.html`):
 </script>
 ```
 
+
 This example sets up a basic chat app where users can send and receive messages in real time.
 
 # Useful Resources
 
-- [Socket.IO Introduction (Documentation)](https://socket.io/docs/v4/tutorial/introduction)
-- [Socket.IO Chat App Tutorial (Documentation)](https://socket.io/get-started/chat)
+
+- [Socket.IO Introduction (Documentation)](https://socket.io/docs/)
+- [Socket.IO Chat App Tutorial (Documentation)](https://socket.io/docs/v4/tutorial/chat/)
 - [Learn Socket.io In 30 Minutes - Web Dev Simplified](https://www.youtube.com/watch?v=ZKEqqIO7n-k)
