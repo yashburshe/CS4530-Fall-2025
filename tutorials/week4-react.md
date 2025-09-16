@@ -48,6 +48,7 @@ Let's use **npx** and **create-next-app** to create a new Next.Js project
     - Note 1: This will create a new project directory called my-app under the current directory.
     - Note 2: This will create a git repo in my-app, so you probably shouldn't do this inside a pre-existing git repository.
     - Note 3: Create the project with the following details after executing the command
+    - Note 4: It will ask you bunch of questions. Follow the image below to answer the questions.
     ![image](./assets/week4-react/start-details.png)
 
 2. Navigate to the project directory using the command:
@@ -204,17 +205,18 @@ export default Header;
 - In App.tsx:
   - Remove the code in h1 tags.
   - Import the Header component as below:
-    - ```tsx
-       import Header from './Header';
-      ```
+  ```tsx
+    import Header from './Header';
+  ```
+
   - Update the contents of return as below:
-    - ```tsx
+    ```tsx
        <div className="App-header">
          <Header />
          <Header name="John" />
          <Header name="Jane" />
-       </div>
-      ```
+       </div> 
+       ```
   - Save all files and run npm start
 
 A few things to note from the above example:
@@ -487,6 +489,32 @@ export default Counter;
 
 If we give this a try in the running app, we should find the count variable's value to keep incrementing by one every time the button is clicked.
 After we've got our heads around the code needed to define state, accessing and setting state is fairly simple and elegant.
+
+#### Alternative way to update state
+
+```tsx
+import { useState } from "react";
+function Counter() {
+    const [count, setCount] = useState(0);
+    function incrementCount() {
+        setCount(prevCount => prevCount + 1);
+    }
+    return (
+        <div>
+            <h1>Count: {count}</h1>
+            <button onClick={incrementCount}>Click me!</button>
+        </div>
+    );
+}
+
+export default Counter;
+```
+
+Notes: 
+- setState is asynchronous, so we need to use the previous state to update the state.
+- setState(prevState => prevState + 1) is the same as setState(prevState + 1)
+
+
 
 
 #### Updating Arrays in State
