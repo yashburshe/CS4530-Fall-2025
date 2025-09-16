@@ -17,7 +17,7 @@ In this activity, you will experiment with asynchronous programming constructs i
 
 ### Getting started
 
-As usual, download the [starter code]({{ site.baseurl }}{% link Activities/module06-async-activity.zip %}) and run `npm install`. 
+As usual, download the [starter code]({{ site.baseurl }}{% link Activities/module06-async-matmult-activity.zip %}) and run `npm install`. 
 
 ### Instructions
 
