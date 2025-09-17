@@ -5,7 +5,7 @@ nav_exclude: true
 ---
 
 ## Web Socket Activity
-This project will give you practice in working with web sockets and the typed emitter pattern.
+This project will give you practice in working with web sockets and the typed emitter pattern. You should review the tutorial on [Socket IO]({{site.baseurl}}{% link tutorials/week3-socketio.md %}) first.
 
 Start by downloading the [starter code]({{ site.baseurl }}{% link Examples/module-05-interaction-level-design.zip %}).
 
