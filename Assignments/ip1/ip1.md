@@ -4,7 +4,7 @@ title: "Individual Project 1"
 permalink: /assignments/ip1
 parent: Assignments
 nav_order: 1
-due_date: "Wednesday September 17, 2025 12:00pm EST (Noon)"
+due_date: "Thursday September 18, 2025 12:00pm EST (Noon)"
 submission_notes: Submit through Github Classroom
 ---
 
@@ -37,6 +37,7 @@ This implementation effort will be split across two deliverables. In this first 
 - 9/5/2025: Added a note about invitations to join neu-cs4530 organization 
 - 9/8/2025: Added important repository sync instructions. All students with existing repositories must merge the "Sync Assignment" PR before continuing work.
 - 9/11/2025: Added clarification. If you find inconsistencies between the handout and the JSDoc comments for the schema, **refer to `server/seedData/data`** to define the schema.
+- 9/17/2025: Extended deadline by 24 hrs.
 
 ## Objectives of this assignment
 
