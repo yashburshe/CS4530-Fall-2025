@@ -268,7 +268,7 @@ Recent releases of Cypress (versions 14 and later) introduced several powerful c
   });
   ```
 
-These new commands allow you to control test execution, simulate real keyboard interactions, and stub or spy on network requests to build more resilient and comprehensive test suites.
+These new commands allow you to control test execution, simulate real keyboard interactions, and stub or spy on network requests to build more resilient and comprehensive test suites:
 
 ## Useful Resources
 
