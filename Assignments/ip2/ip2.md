@@ -25,7 +25,7 @@ The objectives of this assignment are to:
 
 ## Getting started with this assignment
 
-Start by accepting our invitation. It will create a Github repository for you which will include the starter code for this assignment. Run npm install within `./client` and `./server` to fetch the dependencies. You should not install any additional dependencies: **‘package.json’ must be unchanged**.
+Start by accepting our [invitation](https://classroom.github.com/a/WXtob0gc). It will create a Github repository for you which will include the starter code for this assignment. Run npm install within `./client` and `./server` to fetch the dependencies. You should not install any additional dependencies: **‘package.json’ must be unchanged**.
 
 {: .note }
 Refer to [IP1](https://neu-se.github.io/CS4530-Fall-2025/assignments/ip1) for instructions related to setting up MongoDB, setting environment variables, and running the client and server.
