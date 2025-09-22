@@ -12,7 +12,7 @@ Welcome back to the Stack Overflow team! In this second deliverable, you will be
 
 ## Change Log
 
-- None.
+- 2024-09-21: 1. Removed Note on the Server tests will fail.2. All sections that say “Complete the component defined in that directory” in collections have been removed.3. Implement community service functions now has the same level of detail as Implement collection service functions.4. Corrected service function names in community service functions.5. Added comprehensive Cypress testing section.
 
 ## Objectives of this assignment
 
@@ -56,7 +56,7 @@ Create a new file `./client/src/hooks/useAllCollectionsPage.ts`. In this file, y
 
 **Complete the `AllCollectionsPage` component**
 
-In `./client/src/components/main/collections/allCollectionsPage/index.tsx`, we've defined a component to display all collections. Update the component to use the `useAllCollectionsPage` hook. Remove the state management and collection fetching logic from the component. Use the returned values from the hook to display the collections list.
+Update the component to use the `useAllCollectionsPage` hook. Remove the state management and collection fetching logic from the component. Use the returned values from the hook to display the collections list.
 
 **Create `useCollectionPage` custom hook**
 
@@ -64,7 +64,7 @@ Create a new file `./client/src/hooks/useCollectionPage.ts`. This hook manages t
 
 **Complete the `CollectionPage` component**
 
-In `./client/src/components/main/collections/collectionPage/index.tsx`, we've defined a component to display a single collection's details. Use the `useCollectionPage` hook for state management.
+Use the `useCollectionPage` hook for state management.
 
 **Create `useDeleteCollectionButton` custom hook**
 
@@ -94,8 +94,8 @@ In `./client/src/components/main/collections/saveToCollectionModal/index.tsx`, i
 
 In `./client/src/services/collectionService.ts`, implement the following service functions:
 
-- `getCollectionsByUsername`: Fetches all collections for a user
-  - The getCollectionsByUsername function retrieves all collections for a specific user with proper authorization. Make a GET request using axios.get(). The usernameToView is a path parameter, while currentUsername is a query parameter for permissions. Check for status 200 and throw "Error while fetching all collections" if it fails. Return res.data, containing an array of PopulatedDatabaseCollection objects.
+- `getAllCollectionsByUsername`: Fetches all collections for a user
+  - The getAllCollectionsByUsername function retrieves all collections for a specific user with proper authorization. Make a GET request using axios.get(). The usernameToView is a path parameter, while currentUsername is a query parameter for permissions. Check for status 200 and throw "Error while fetching all collections" if it fails. Return res.data, containing an array of PopulatedDatabaseCollection objects.
 
 - `getCollectionById`: Fetches a single collection by ID
   - The getCollectionById function fetches a single collection by ID with user authorization. Use axios.get(), where the collectionId is specified as the path parameter and the username is included as the query parameter. Verify status 200 and throw "Error while fetching collection" on failure. Return res.data with the PopulatedDatabaseCollection object.
@@ -183,11 +183,16 @@ In `./client/src/components/main/communities/newCommunityPage/index.tsx`, create
 
 In `./client/src/services/communityService.ts`, implement the following service functions:
 
-- `getCommunity`: Retrieves a single community by ID
-- `getAllCommunities`: Retrieves all communities
-- `toggleMembership`: Toggles user membership in a community
+- `getCommunityById`: Retrieves a single community by ID
+  - The getCommunityById function fetches one community using its ID. Use api.get() with the communityId as a path parameter.Verify the response status is 200; otherwise, throw "Error while fetching community". Return res.data as a DatabaseCommunity object.
+- `getCommunities`: Retrieves all communities
+  - The getCommunities function returns the full list of communities. Make a GET request with api.get().Check for status 200 and throw "Error while fetching all communities" if it fails. Return res.data, which should be an array of DatabaseCommunity objects.
+- `changeCommunityMembership`: Toggles user membership in a community
+    - The changeCommunityMembership function adds or removes a user from a community using toggle logic. Send a PATCH request via api.patch()  with { communityId, username } in the request body. Confirm status 200; if not, throw "Error while changing community membership". Return res.data containing the updated community.
 - `createCommunity`: Creates a new community
+  - The createCommunity function creates a community by sending a POST request with the new Community object as the request body using api.post() to an endpoint.Ensure the response status is 200; otherwise throw "Error while creating community". Return res.data containing the created DatabaseCommunity.
 - `deleteCommunity`: Deletes a community
+  - The deleteCommunity function removes a community permanently by ID. Use api.delete() with the communityId as a path parameter.Verify status 200; if it fails, throw "Error while deleting community". Return res.data with the deletion confirmation or result.
 
 #### Grading (90 points)
 
@@ -232,9 +237,35 @@ npm run lint:fix
 
 You will be provided with starter code that includes a set of tests. Your task is to ensure that all existing tests pass and to create additional tests to cover any new functionality or edge cases in the server. You do not need to write Jest tests for socket code in the server (e.g. `socket.emit` statements in `chat.controller.ts`, `joinChat`, `leaveChat` events). However, you will be able to identify if it's working correctly by interacting with the frontend client.
 
-**Please Note**: The server tests will fail the first time students run them but this is expected behavior.Please rerun the tests after you have completed the implementation.All server tests will pass after students have implemented the features as well as the corresponding tests. Please also  take note until all tests have passed, the Github actions will fail; this is also an expected behavior.These actions will pass when 1.Community and Collection features are implemented and 2.Tests are implemented.
-
 You do not need to write automated tests for the frontend, but are encouraged to extensively manually test your implementation.
+##### Cypress Tests
+
+**Please Note -  Running Cypress tests is optional.Cypress tests requires significant system resources, and without them, the tests may be flaky. We will use these tests for grading.**
+
+The Cypress tests (located in the `testing/` directory) are provided as an example of GUI and end-to-end (E2E) tests. They can be used to check the correctness of your implementation, but **you are not expected to write** Cypress tests. Initially, some tests may fail because implementations are missing. Please see the README for full instructions on running the Cypress tests.
+
+##### Running the Cypress tests (optional)
+
+These are end-to-end (E2E) tests and are provided to help validate your implementation. Follow the steps below to set up and run them.
+
+1. Install dependencies for the tests
+```bash
+npm install in /testing
+```
+2.Create the .env file used by the tests
+```bash
+# in the testing/ directory create a .env file containing:
+MONGODB_URI=mongodb://127.0.0.1:27017
+```
+3. Start the server and client
+4. Open the Cypress UI
+```bash
+# from the testing/ directory
+npx cypress open
+```
+5.Run tests via the Cypress UI
+- choose "e2e testing", then click Start, and click any test file to run it
+
 
 ### Manual Grading
 
