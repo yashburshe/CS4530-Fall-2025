@@ -12,7 +12,7 @@ Welcome back to the Stack Overflow team! In this second deliverable, you will be
 
 ## Change Log
 
-- 2024-09-21: 1. Removed Note on the Server tests will fail.2. All sections that say “Complete the component defined in that directory” in collections have been removed.3. Implement community service functions now has the same level of detail as Implement collection service functions.4. Corrected service function names in community service functions.5. Added comprehensive Cypress testing section.
+- NA
 
 ## Objectives of this assignment
 
