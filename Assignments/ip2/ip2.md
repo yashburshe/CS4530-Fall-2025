@@ -26,7 +26,10 @@ The objectives of this assignment are to:
 
 ## Getting started with this assignment
 
-Start by accepting our [invitation](https://classroom.github.com/a/xDVyfLJZ). It will create a Github repository for you which will include the starter code for this assignment. Run npm install within `./client` and `./server` to fetch the dependencies. You should not install any additional dependencies: **‘package.json’ must be unchanged**. You should also not delete the **package-lock.json** file. 
+Start by accepting our [invitation](https://classroom.github.com/a/xDVyfLJZ). It will create a Github repository for you which will include the starter code for this assignment. Run `npm install` in the root directory to fetch all dependencies for the `client`, `server`, and `shared` folders. You should not install any additional dependencies: **'package.json' must be unchanged**. You should also not delete the **package-lock.json** file.
+
+{: .note }
+**Note:** You may see warnings about vulnerabilities after running npm install. These should be ignored. Do NOT run `npm audit fix` or `npm audit fix --force` as this will change your package-lock.json file. 
 
 {: .note }
 Refer to [IP1](https://neu-se.github.io/CS4530-Fall-2025/assignments/ip1) for instructions related to setting up MongoDB, setting environment variables, and running the client and server.
@@ -62,7 +65,7 @@ Create a new file `./client/src/hooks/useAllCollectionsPage.ts`. In this file, y
 
 **Complete the `AllCollectionsPage` component**
 
-Update the component to use the `useAllCollectionsPage` hook. Remove the state management and collection fetching logic from the component. Use the returned values from the hook to display the collections list.
+Update the component to use the `useAllCollectionsPage` hook. Implement state management using the `useAllCollectionsPage` hook. Use the returned values from the hook to display the collections list.
 
 **Create `useCollectionPage` custom hook**
 
@@ -86,7 +89,7 @@ Create a new file `./client/src/hooks/useNewCollectionPage.ts`. Implement the ho
 
 **Complete the `NewCollectionPage` component**
 
-In `./client/src/components/main/collections/newCollectionPage/index.tsx`, create the form for adding a new collection. Use the `useNewCollectionPage` hook. Remove the existing state management and use the hook's returned values.
+In `./client/src/components/main/collections/newCollectionPage/index.tsx`, create the form for adding a new collection. Use the `useNewCollectionPage` hook. Implement state management using the `useNewCollectionPage` hook.
 
 **Create `useSaveToCollectionModal` custom hook**
 
@@ -101,19 +104,19 @@ In `./client/src/components/main/collections/saveToCollectionModal/index.tsx`, i
 In `./client/src/services/collectionService.ts`, implement the following service functions:
 
 - `getAllCollectionsByUsername`: Fetches all collections for a user
-  - The getAllCollectionsByUsername function retrieves all collections for a specific user with proper authorization. Make a GET request using axios.get(). The usernameToView is a path parameter, while currentUsername is a query parameter for permissions. Check for status 200 and throw "Error while fetching all collections" if it fails. Return res.data, containing an array of PopulatedDatabaseCollection objects.
+  - The getAllCollectionsByUsername function retrieves all collections for a specific user with proper authorization. Make a GET request using api.get(). The usernameToView is a path parameter, while currentUsername is a query parameter for permissions. Check for status 200 and throw "Error while fetching all collections" if it fails. Return res.data, containing an array of PopulatedDatabaseCollection objects.
 
 - `getCollectionById`: Fetches a single collection by ID
-  - The getCollectionById function fetches a single collection by ID with user authorization. Use axios.get(), where the collectionId is specified as the path parameter and the username is included as the query parameter. Verify status 200 and throw "Error while fetching collection" on failure. Return res.data with the PopulatedDatabaseCollection object.
+  - The getCollectionById function fetches a single collection by ID with user authorization. Use api.get(), where the collectionId is specified as the path parameter and the username is included as the query parameter. Verify status 200 and throw "Error while fetching collection" on failure. Return res.data with the PopulatedDatabaseCollection object.
 
 - `createCollection`: Creates a new collection
-  - The createCollection function creates a new collection by sending a POST request with the collection object as the request body. Use axios.post() to send the request and check if the response status is 200; if it is not, throw an error with the message "Error while creating collection." Return res.data containing the created collection object.
+  - The createCollection function creates a new collection by sending a POST request with the collection object as the request body. Use api.post() to send the request and check if the response status is 200; if it is not, throw an error with the message "Error while creating collection." Return res.data containing the created collection object.
 
 - `deleteCollection`: Deletes a collection
-  - The deleteCollection function permanently removes a collection with user verification. Use axios.delete() to request where both parameters are included in the URL (no request body needed). Verify status 200 and throw "Error while deleting collection" on failure. Return res.data with the deletion confirmation.
+  - The deleteCollection function permanently removes a collection with user verification. Use api.delete() to request where both parameters are included in the URL (no request body needed). Verify status 200 and throw "Error while deleting collection" on failure. Return res.data with the deletion confirmation.
 
 - `toggleSaveQuestion`: Adds or removes a question from a collection
-  - The toggleSaveQuestion function adds or removes questions from collections using toggle logic. Send a PATCH request, passing { collectionId, questionId, username } as the request body. Check for status 200 and throw "Error while toggling save question" if failed. Return res.data with the operation result.
+  - The toggleSaveQuestion function adds or removes questions from collections using toggle logic. Send a PATCH request using api.patch(), passing { collectionId, questionId, username } as the request body. Check for status 200 and throw "Error while toggling save question" if failed. Return res.data with the operation result.
 
 #### Grading (90 points)
 
@@ -143,7 +146,7 @@ Create a new file `./client/src/hooks/useAllCommunitiesPage.ts`. This hook manag
 
 **Complete the `AllCommunitiesPage` component**
 
-In `./client/src/components/main/communities/allCommunitiesPage/index.tsx`, we've defined a component to display all communities. Update the component to use the `useAllCommunitiesPage` hook. Remove the state management logic and use the hook's returned values.
+In `./client/src/components/main/communities/allCommunitiesPage/index.tsx`, we've defined a component to display all communities. Update the component to use the `useAllCommunitiesPage` hook. Implement state management using the `useAllCommunitiesPage` hook.
 
 **Create `useCommunityCard` custom hook**
 
