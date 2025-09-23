@@ -26,7 +26,7 @@ The objectives of this assignment are to:
 
 ## Getting started with this assignment
 
-Start by accepting our [invitation](https://classroom.github.com/a/xDVyfLJZ). It will create a Github repository for you which will include the starter code for this assignment. Run `npm install` in the root directory to fetch all dependencies for the `client`, `server`, and `shared` folders. You should not install any additional dependencies: **'package.json' must be unchanged**. You should also not delete the **package-lock.json** file.
+Start by accepting our [invitation](https://classroom.github.com/a/HTonpwlZ). It will create a Github repository for you which will include the starter code for this assignment. Run `npm install` in the root directory to fetch all dependencies for the `client`, `server`, and `shared` folders. You should not install any additional dependencies: **'package.json' must be unchanged**. You should also not delete the **package-lock.json** file.
 
 {: .note }
 **Note:** You may see warnings about vulnerabilities after running npm install. These should be ignored. Do NOT run `npm audit fix` or `npm audit fix --force` as this will change your package-lock.json file. 
