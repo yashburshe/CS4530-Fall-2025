@@ -26,7 +26,10 @@ The objectives of this assignment are to:
 
 ## Getting started with this assignment
 
-Start by accepting our [invitation](https://classroom.github.com/a/xDVyfLJZ). It will create a Github repository for you which will include the starter code for this assignment. Run npm install within `./client` and `./server` to fetch the dependencies. You should not install any additional dependencies: **‘package.json’ must be unchanged**. You should also not delete the **package-lock.json** file. 
+Start by accepting our [invitation](https://classroom.github.com/a/xDVyfLJZ). It will create a Github repository for you which will include the starter code for this assignment. Run npm install in the root directory to fetch the dependencies for both `client` and `server`. You should not install any additional dependencies: **‘package.json’ must be unchanged**. You should also not delete the **package-lock.json** file. 
+
+{: .note }
+When you run `npm install` your terminal will show a warning similar to "`13 vulnerabilities (10 low, 1 high, 2 critical)`". These are expected and you are not required to fix them. Do not run **`npm audit`** to fix these vulnerabilities as this may update your `package-lock.json`.
 
 {: .note }
 Refer to [IP1](https://neu-se.github.io/CS4530-Fall-2025/assignments/ip1) for instructions related to setting up MongoDB, setting environment variables, and running the client and server.
