@@ -12,13 +12,13 @@
   page: /modules/3-test-adequacy
 2b:
   name: Code-Level Design Principles
-  page: 
+  page: /modules/4-code-level-design
 3a:
   name: Interaction-Level Design Patterns
-  page: 
+  page: /modules/5-interaction-level-design-patterns
 3b:
   name: Concurrency Patterns
-  page: 
+  page: /modules/6-concurrency-patterns-in-typescript
 4a:
   name: Software Processes & Agile
   page: 
@@ -99,6 +99,10 @@ tp3:
   page: 
 tp4:
   name: Project Final Deliverable
+  type: deadline
+  page: 
+tp5:
+  name: Individual Reflection
   type: deadline
   page: 
 veteransday:
