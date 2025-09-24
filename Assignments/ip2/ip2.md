@@ -61,11 +61,11 @@ In IP1, you implemented the backend functionality for Collections. In this task,
 
 **Create `useAllCollectionsPage` custom hook**
 
-Create a new file `./client/src/hooks/useAllCollectionsPage.ts`. In this file, you will implement the `useAllCollectionsPage` custom hook, which manages the state and logic for displaying all collections belonging to a user. The hook should fetch collections when the component mounts using the `getCollectionsByUsername` service function and handle loading states.
+Create a new file `./client/src/hooks/useAllCollectionsPage.ts`. In this file, you will implement the `useAllCollectionsPage` custom hook, which manages the state and logic for displaying all collections belonging to a user. The hook should fetch collections when the component mounts using the `getAllCollectionsByUsername` service function and handle loading states.
 
 **Complete the `AllCollectionsPage` component**
 
-Update the component to use the `useAllCollectionsPage` hook. Implement state management using the `useAllCollectionsPage` hook. Use the returned values from the hook to display the collections list.
+In `./client/src/components/main/collections/allCollectionsPage/index.tsx`, update the component to use the `useAllCollectionsPage` hook. Implement state management using the `useAllCollectionsPage` hook. Use the returned values from the hook to display the collections list.
 
 **Create `useCollectionPage` custom hook**
 
@@ -73,7 +73,7 @@ Create a new file `./client/src/hooks/useCollectionPage.ts`. This hook manages t
 
 **Complete the `CollectionPage` component**
 
-Use the `useCollectionPage` hook for state management.
+In `./client/src/components/main/collections/collectionPage/index.tsx`, use the `useCollectionPage` hook for state management.
 
 **Create `useDeleteCollectionButton` custom hook**
 
@@ -85,7 +85,7 @@ In `./client/src/components/main/collections/deleteCollectionButton/index.tsx`, 
 
 **Create `useNewCollectionPage` custom hook**
 
-Create a new file `./client/src/hooks/useNewCollectionPage.ts`. Implement the hook to manage form state for creating a new collection. The `postCollection` function should validate inputs and submit using the `createCollection` service.
+Create a new file `./client/src/hooks/useNewCollectionPage.ts`. Implement the hook to manage form state for creating a new collection. Create a `postCollection` function within this hook that validates inputs and submits using the `createCollection` service.
 
 **Complete the `NewCollectionPage` component**
 
@@ -104,32 +104,32 @@ In `./client/src/components/main/collections/saveToCollectionModal/index.tsx`, i
 In `./client/src/services/collectionService.ts`, implement the following service functions:
 
 - `getAllCollectionsByUsername`: Fetches all collections for a user
-  - The getAllCollectionsByUsername function retrieves all collections for a specific user with proper authorization. Make a GET request using api.get(). The usernameToView is a path parameter, while currentUsername is a query parameter for permissions. Check for status 200 and throw "Error while fetching all collections" if it fails. Return res.data, containing an array of PopulatedDatabaseCollection objects.
+  - The getAllCollectionsByUsername function retrieves all collections for a specific user with proper authorization. Make a GET request using api.get(). The usernameToView is a path parameter, while currentUsername is a query parameter for permissions. Check for status 200 and throw "Error when fetching all collections" if it fails. Return res.data, containing an array of PopulatedDatabaseCollection objects.
 
 - `getCollectionById`: Fetches a single collection by ID
-  - The getCollectionById function fetches a single collection by ID with user authorization. Use api.get(), where the collectionId is specified as the path parameter and the username is included as the query parameter. Verify status 200 and throw "Error while fetching collection" on failure. Return res.data with the PopulatedDatabaseCollection object.
+  - The getCollectionById function fetches a single collection by ID with user authorization. Use api.get(), where the collectionId is specified as the path parameter and the username is included as the query parameter. Verify status 200 and throw "Error when fetching collection" on failure. Return res.data with the PopulatedDatabaseCollection object.
 
 - `createCollection`: Creates a new collection
-  - The createCollection function creates a new collection by sending a POST request with the collection object as the request body. Use api.post() to send the request and check if the response status is 200; if it is not, throw an error with the message "Error while creating collection." Return res.data containing the created collection object.
+  - The createCollection function creates a new collection by sending a POST request with the collection object as the request body. Use api.post() to send the request and check if the response status is 200; if it is not, throw an error with the message "Error when creating collection." Return res.data containing the created collection object.
 
 - `deleteCollection`: Deletes a collection
-  - The deleteCollection function permanently removes a collection with user verification. Use api.delete() to request where both parameters are included in the URL (no request body needed). Verify status 200 and throw "Error while deleting collection" on failure. Return res.data with the deletion confirmation.
+  - The deleteCollection function permanently removes a collection with user verification. Use api.delete() with collectionId as a path parameter and username as a query parameter. The request URL should be formatted as `/api/collection/delete/${collectionId}?username=${username}`. Verify status 200 and throw "Error when deleting collection" on failure. Return res.data with the deletion confirmation.
 
 - `toggleSaveQuestion`: Adds or removes a question from a collection
-  - The toggleSaveQuestion function adds or removes questions from collections using toggle logic. Send a PATCH request using api.patch(), passing { collectionId, questionId, username } as the request body. Check for status 200 and throw "Error while toggling save question" if failed. Return res.data with the operation result.
+  - The toggleSaveQuestion function adds or removes questions from collections using toggle logic. Send a PATCH request using api.patch(), passing { collectionId, questionId, username } as the request body. Check for status 200 and throw "Error when toggling save question" if failed. Return res.data with the operation result.
 
 #### Grading (90 points)
 
-- `useAllCollectionsPage` hook = 10 points
-- `AllCollectionsPage` component = 10 points
+- `useAllCollectionsPage` hook = 8 points
+- `AllCollectionsPage` component = 8 points
 - `useCollectionPage` hook = 10 points
-- `CollectionPage` component = 7 points
+- `CollectionPage` component = 6 points
 - `useDeleteCollectionButton` hook = 5 points
 - `DeleteCollectionButton` component = 3 points
 - `useNewCollectionPage` hook = 8 points
 - `NewCollectionPage` component = 5 points
 - `useSaveToCollectionModal` hook = 7 points
-- `SaveToCollectionModal` component = 20 points
+- `SaveToCollectionModal` component = 15 points
 - Collection service functions = 15 points
 
 ### Task 2: Communities Frontend Implementation (90 points)
@@ -142,7 +142,7 @@ In IP1, you implemented the backend functionality for Communities. In this task,
 
 **Create `useAllCommunitiesPage` custom hook**
 
-Create a new file `./client/src/hooks/useAllCommunitiesPage.ts`. This hook manages the state for displaying all communities. It should fetch communities using the `getAllCommunities` service function and handle filtering based on visibility.
+Create a new file `./client/src/hooks/useAllCommunitiesPage.ts`. This hook manages the state for displaying all communities. It should fetch communities using the `getCommunities` service function and handle filtering based on visibility.
 
 **Complete the `AllCommunitiesPage` component**
 
@@ -182,7 +182,7 @@ In `./client/src/components/main/communities/newCommunityButton/index.tsx`, crea
 
 **Create `useNewCommunityPage` custom hook**
 
-Create a new file `./client/src/hooks/useNewCommunityPage.ts`. Implement the hook to manage form state for creating communities. The `postCommunity` function should validate inputs and submit using the service.
+Create a new file `./client/src/hooks/useNewCommunityPage.ts`. Implement the hook to manage form state for creating communities. Create a `postCommunity` function within this hook that validates inputs and submits using the `createCommunity` service.
 
 **Complete the `NewCommunityPage` component**
 
@@ -193,15 +193,15 @@ In `./client/src/components/main/communities/newCommunityPage/index.tsx`, create
 In `./client/src/services/communityService.ts`, implement the following service functions:
 
 - `getCommunityById`: Retrieves a single community by ID
-  - The getCommunityById function fetches one community using its ID. Use api.get() with the communityId as a path parameter.Verify the response status is 200; otherwise, throw "Error while fetching community". Return res.data as a DatabaseCommunity object.
+  - The getCommunityById function fetches one community using its ID. Use api.get() with the communityId as a path parameter. Verify the response status is 200; otherwise, throw "Error when fetching community". Return res.data as a DatabaseCommunity object.
 - `getCommunities`: Retrieves all communities
-  - The getCommunities function returns the full list of communities. Make a GET request with api.get().Check for status 200 and throw "Error while fetching all communities" if it fails. Return res.data, which should be an array of DatabaseCommunity objects.
+  - The getCommunities function returns the full list of communities. Make a GET request with api.get(). Check for status 200 and throw "Error when fetching all communities" if it fails. Return res.data, which should be an array of DatabaseCommunity objects.
 - `changeCommunityMembership`: Toggles user membership in a community
-    - The changeCommunityMembership function adds or removes a user from a community using toggle logic. Send a PATCH request via api.patch()  with { communityId, username } in the request body. Confirm status 200; if not, throw "Error while changing community membership". Return res.data containing the updated community.
+    - The changeCommunityMembership function adds or removes a user from a community using toggle logic. Send a PATCH request via api.patch() with { communityId, username } in the request body. Confirm status 200; if not, throw "Error when changing community membership". Return res.data containing the updated community.
 - `createCommunity`: Creates a new community
-  - The createCommunity function creates a community by sending a POST request with the new Community object as the request body using api.post() to an endpoint.Ensure the response status is 200; otherwise throw "Error while creating community". Return res.data containing the created DatabaseCommunity.
+  - The createCommunity function creates a community by sending a POST request with the new Community object as the request body using api.post() to an endpoint. Ensure the response status is 200; otherwise throw "Error when creating community". Return res.data containing the created DatabaseCommunity.
 - `deleteCommunity`: Deletes a community
-  - The deleteCommunity function removes a community permanently by ID. Use api.delete() with the communityId as a path parameter.Verify status 200; if it fails, throw "Error while deleting community". Return res.data with the deletion confirmation or result.
+  - The deleteCommunity function removes a community permanently by ID. Use api.delete() with the communityId as a path parameter. Verify status 200; if it fails, throw "Error when deleting community". Return res.data with the deletion confirmation or result.
 
 #### Points to note
 
@@ -250,12 +250,12 @@ npm run lint:fix
 
 #### Testing
 
-You will be provided with starter code that includes a set of tests. Your task is to ensure that all existing tests pass and to create additional tests to cover any new functionality or edge cases in the server. You do not need to write Jest tests for socket code in the server (e.g. `socket.emit` statements in `chat.controller.ts`, `joinChat`, `leaveChat` events). However, you will be able to identify if it's working correctly by interacting with the frontend client.
+You will be provided with starter code that includes a set of tests. Your task is to ensure that all existing tests pass and to create additional tests to cover any new functionality or edge cases in the server. You do not need to write Jest tests for socket code in the server (e.g. `socket.emit` statements in `collection.controller.ts` or `community.controller.ts`). However, you will be able to identify if it's working correctly by interacting with the frontend client.
 
 You do not need to write automated tests for the frontend, but are encouraged to extensively manually test your implementation.
 ##### Cypress Tests
 
-**Please Note -  Running Cypress tests is optional.Cypress tests requires significant system resources, and without them, the tests may be flaky. We will run similar (not the same) tests for grading.**
+**Please Note -  Running Cypress tests is optional. Cypress tests require significant system resources, and without them, the tests may be flaky. We will run similar (not the same) tests for grading.**
 
 The Cypress tests (located in the `testing/` directory) are provided as an example of GUI and end-to-end (E2E) tests. They can be used to check the correctness of your implementation, but **you are not expected to write** Cypress tests. Please see the README for full instructions on running the Cypress tests.
 
@@ -265,7 +265,8 @@ These are end-to-end (E2E) tests and are provided to help validate the existing 
 
 1. Install dependencies for the tests
 ```bash
-npm install in /testing
+cd testing
+npm install
 ```
 2.Create the .env file used by the tests
 ```bash
@@ -284,7 +285,7 @@ npx cypress open
 
 ### Manual Grading
 
-Your code will be manually evaluated for conformance to our [course style guide](https://neu-se.github.io/CS4530-Spring-2025/policies/style/). **Do not wait to run the linter until the last minute**. To check for linter errors, run the command `npm run lint` from the terminal. The handout contains the same ESlint configuration that is used by our grading script.
+Your code will be manually evaluated for conformance to our [course style guide](https://neu-se.github.io/CS4530-Fall-2025/policies/style/). **Do not wait to run the linter until the last minute**. To check for linter errors, run the command `npm run lint` from the terminal. The handout contains the same ESlint configuration that is used by our grading script.
 
 This manual evaluation will account for 10% of your total grade on this assignment. We will manually evaluate your code for style on the following rubric:
 
