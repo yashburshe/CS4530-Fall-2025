@@ -7,12 +7,14 @@ nav_order: 4
 ---
 # Project Plan **Due Wednesday October 8 12:00pm (noon) ET**{: .label .label-red }
 
-All projects will involve frontend and backend development of new features for our StackOverflow.
+All projects will involve frontend and backend development of new features for our StackOverflow project.
 Once teams have been formed, you and your team will decide what kind of new features you would like to build.
 Your features should be something that can be implemented within the timeframe allotted (5 weeks, plus 2 weeks of planning), and will be implemented in a fork of the main codebase.
 In the coming weeks, we will provide tutorials and instructions for you to run the entire application in a local development environment, and also to deploy it to the cloud.
 Given that you will be up-to-speed on the StackOverflow codebase (and have been introduced to TypeScript, React, NodeJS, and testing frameworks),
-and that you will have a team of four, we expect that the features that you propose will be more complex than the features implemented in the individual assignments.
+and that you will have a team of four, we expect that the features that you propose will be more complex than the features implemented in the individual assignments. 
+
+A typical project may be larger than 2x of the size of IP1+IP2 and may take anywhere from 150-250 hours (5 weeks, 4 members).  
 
 Feel free to look at existing systems like [Stackoverlow](https://stackoverflow.com/), [Quora](https://www.quora.com/), [reddit](https://www.reddit.com/) and similar stack exchange sites for inspiration on new features to build. 
 Examples of features that students have proposed include:
@@ -28,7 +30,7 @@ Examples of features that students have proposed include:
 * Add game-playing or other features for collaboration and social interaction.  (If you do this, it should offer some features beyond the ones in IP2)
 * Propose some other cool app using the infrastructure in the starter code (REST, WebSockets, persistent database).  Use your imagination!
 
-Please note that multiple teams might choose to propose the same feature, or a variation of that same feature - this is OK.
+Please note that multiple teams might choose to propose the same feature(s), or a variation of that same feature - this is OK.
 
 When considering your project, please keep in mind that you will be allowed to publicly post your project online: while your immediate audience for the project is the course staff, if you are ultimately looking for software engineering jobs or co-ops, this project can be a useful piece of your portfolio.
 
@@ -53,7 +55,11 @@ Your project plan should begin with a 1-3 paragraph introductory problem stateme
 Given the problem statement, develop 6-8 user stories. User stories are requirements specified in the following format  "As a < stakeholder >, I want < some goal > so that < some reason >." My conditions of satisfaction are < list of common cases and special cases that must work >. The user stories must capture all stakeholders and values described in the problem statement. 
 
 Each user story should include conditions of satisfaction.
+
 Please make sure that your conditions of satisfaction cover all the common cases and can be turned into testable behaviors.
+
+Given the project concept that you have chosen and the functionality that you expect to implement to satisfy your user stories, define a 
+list of testable behaviour that you will be implementing to complete the project. 
 
 Each user story and condition of satisfaction must have a priority (Essential, Desirable, or Extension). The set of Essential items will constitute the "Minimum Viable Product". 
 
@@ -61,14 +67,13 @@ Some of the suggested projects above are primarily about some non-functional qua
 I want machine-readable API specifications (like OpenAPI/Swagger) that are automatically validated against the actual implementation,
 so that I can trust the documentation is accurate and generate reliable client code without wasting time on integration bugs caused by outdated specs".
 
-Your project plan must include at least 4 essential user stories. Your problem statement and description of user stories and conditions of satisfaction should be between 4-6 pages.
+Your project plan must include at least 4 essential or desirable user stories. You suggest that you should have no less than 10-12 conditions of satisfaction and your essential COS be twice the number of desirable COS. Your problem statement and description of user stories and conditions of satisfaction should be between 4-6 pages. Your testable behaviors should be between 2-4 pages.
 
-The user stories must be numbered (1,2,3) and each the conditions of satisfaction must likewise be numbered (1.1, 1.2, 1.3) and laid out in a table for easy reference. 
+The user stories must be numbered (1,2,3,4) and each the conditions of satisfaction must likewise be numbered (1.1, 1.2, 1.3) and laid out in a table for easy reference. 
 
-## Testable Behaviors
-Given the project concept that you have chosen and the functionality that you expect to implement to satisfy your user stories, define a list of testable behaviour that you will be implementing to complete the project.
+Use the INVEST+E criteria to evaluate your user stories. 
 
-## TOBEREMOVED - Work Breakdown (max 10 pages)
+## Work Breakdown (max 10 pages)
 
 A work breakdown includes all of the tasks necessary to accomplish the project, and will be an artifact that we will refer back to throughout the project to evaluate whether you are making satisfactory progress.
 Consider all of the kinds of tasks that your team will need to perform, including knowledge acquisition, design, implementation, testing and documentation tasks.
@@ -102,13 +107,13 @@ Each work item should contain the following information:
     * Large: Currently unable to provide a responsible estimate. 
 * A brief (1-2 sentence max) justification of how you reached the size estimate of the task 
 * Milestone for delivering the task, chosen from one of the following:
-  * Sprint 0: Feb 12-Feb 25
-  * Sprint 1: Feb 26-Mar 11 (Sprint 1 is just a single week, not counting the spring break)
-  * Sprint 2: Mar 12-Mar 25
-  * Sprint 3: Mar 26-Apr 9
+  * Sprint 0: Oct 08-Oct 21
+  * Sprint 1: Oct 22-Oct 28 (Sprint 1 is just a single week)
+  * Sprint 2: Oct 29-Nov 11
+  * Sprint 3: Nov 12-Nov 25
 
-Your work breakdown may take the format of a simple textual list or a table.
- 
+Your work breakdown may take the format of a simple textual list or a table. Pay attention to dependencies between different tasks and schedule them accordingly.
+
 ## Submission 
 Your project plan should be submitted as a single PDF in Canvas to the assignment "Preliminary Project Plan."
 Each team submits a single document to Canvas.
@@ -120,25 +125,29 @@ The project plan will account for 10% of your project grade, and will be graded 
 * Receive full marks if the analysis explains the stakeholders and how value tensions were resolved when collecting the features.
 * Receive partial credit if the analysis is present, but does not give a clear description of the feature or features you are proposing.
 
-### User stories (35 points):
-Your user stories taken together will account for 15% of your grade on this assignment.  Each user story will be graded as follows:
+### User stories, User Stories and Acceptance Criteria (55 points):
+
+Your user stories taken together will account for 15% of your grade on this assignment. Conditions of Satisfaction and Testable behaviors will account for 20% each. 
+
+Each user story will be graded as follows:
 * Receive full marks if:
   * The user story fits the problem statement
   * The user story satisfies the INVEST criteria for good user stories (construed quite broadly)
   * The user story contains a priority (essential, desirable, extension).  
   * The user story includes conditions of satisfaction that cover the "normal" expected behavior of the feature, and any important error cases
   * Each condition of satisfaction is marked with a priority (essential, desirable, extension).
-  * Each user story must include one or more conditions of satisfaction marked as essential, desirable, and extension. We recommend that your essential COS be twice the number of desirable COS.
+  * Each user story must include one or more conditions of satisfaction marked as essential, desirable, and extension. 
+  * Each condition of satisfaction has sufficient testable behaviours
+  * Some conditions of satisfaction include considerations for value sensitive design
 
 The user stories must be numbered (1,2,3) and each the conditions of satisfaction must likewise be numbered (1.1, 1.2, 1.3) and laid out in a table for easy reference.
 
-Remember that you will get full credit for delivering a minimum viable product (MVP) only if you deliver working implementations of all of your essential user stories and conditions of satisfaction. To receive full credit in the project, you must implement MVP AND all desirable conditions of satisfaction. 
+Remember that you will get credit for delivering a minimum viable product (MVP) only if you deliver working implementations of all of your essential user stories and conditions of satisfaction. To receive full credit in the project, you must implement essential AND all desirable conditions of satisfaction. Essential and desirable features are worth 8% and 4% of the overall course grade respectively.
   
-
-### Work breakdown (60 points):
+### Work breakdown (40 points):
 Your work breakdown will be evaluated holistically on the following rubric:
 
-#### Coverage of tasks needed (30 points):
+#### Coverage of tasks needed (20 points):
 Receive full marks if the work breakdown includes all (reasonably expected) tasks to implement your feature, considering these kinds of tasks: 
   * Background research 
   * Design of interfaces and data types
@@ -155,6 +164,7 @@ Receive full marks if:
 * Each element on the work breakdown is assigned to one team member
 * Each team member is assigned work that includes development / coding, even if working with pair programming 
 * The distribution of tasks of each size are roughly similar between the whole team (no single person is assigned significantly more or fewer tasks of one size)
+
 
 #### Sizing of tasks (15 points):
 Receive full marks if each element on the work breakdown:
