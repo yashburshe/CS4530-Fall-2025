@@ -14,7 +14,7 @@ In the coming weeks, we will provide tutorials and instructions for you to run t
 Given that you will be up-to-speed on the StackOverflow codebase (and have been introduced to TypeScript, React, NodeJS, and testing frameworks),
 and that you will have a team of four, we expect that the features that you propose will be more complex than the features implemented in the individual assignments. 
 
-A typical project may be larger than 2x of the size of IP1+IP2 and may take anywhere from 150-250 hours (5 weeks, 4 members).  
+A typical project may be larger than 3x of the size of IP1+IP2 and may take anywhere from 150-250 hours (5 weeks, 3 or 4 members).  
 
 Feel free to look at existing systems like [Stackoverlow](https://stackoverflow.com/), [Quora](https://www.quora.com/), [reddit](https://www.reddit.com/) and similar stack exchange sites for inspiration on new features to build. 
 Examples of features that students have proposed include:
@@ -27,7 +27,7 @@ Examples of features that students have proposed include:
 * Retarget the client to use the Chakra UI library
 * Improve the quality of the tests
 * Add direct messaging and other chat features
-* Add game-playing or other features for collaboration and social interaction.  (If you do this, it should offer some features beyond the ones in IP2)
+* Add game-playing or other features for collaboration and social interaction.  (If you do this, it should offer some features beyond the ones in the codebase)
 * Propose some other cool app using the infrastructure in the starter code (REST, WebSockets, persistent database).  Use your imagination!
 
 Please note that multiple teams might choose to propose the same feature(s), or a variation of that same feature - this is OK.
@@ -50,11 +50,13 @@ We list page *maximums* for each section as general guidance of what we are will
 
 
 ## Problem Statement, User Stories and Acceptance Criteria (max 6 pages)
-Your project plan should begin with a 1-3 paragraph introductory problem statement: what problem in StackOverflow do your (proposed) features solve?  Provide a clear description of the feature or features you are proposing. It must include an analysis of the stakeholders, the value tensions, and the values of the proposed features. You must identify at least 4 stakeholders and 5 values for all the features you propose. For example, if you are proposing a feature to post anonymously then you must clearly describe the rationale for choosing this feature, who would be the stakeholders affected by such a feature and discuss the value tensions this feature resolves. You should use the VSD analysis process to inform your analysis.
+Your project plan should begin with a 2-6 paragraph introductory problem statement: what problem in StackOverflow do your (proposed) features solve? Provide a clear description of the feature or features you are proposing. It must include an analysis of the stakeholders, the value tensions, and the values of the proposed features. You must identify at least 2-3 stakeholders and 3-5 values for all the features you propose. For example, if you are proposing a feature to post anonymously then you must clearly describe the rationale for choosing this feature, who would be the stakeholders affected by such a feature and discuss the value tensions this feature resolves. You should use the VSD analysis process to inform your analysis.
 
-Given the problem statement, develop 6-8 user stories. User stories are requirements specified in the following format  "As a < stakeholder >, I want < some goal > so that < some reason >." My conditions of satisfaction are < list of common cases and special cases that must work >. The user stories must capture all stakeholders and values described in the problem statement. 
+Given the problem statement, develop 4-6 user stories. User stories are high-level requirements specified in the following format  "As a < stakeholder >, I want < some goal > so that < some reason >." 
 
-Each user story should include conditions of satisfaction.
+Each user story should include conditions of satisfaction. The conditions of satisfaction are < list of common cases and special cases that must work >. 
+
+The user stories and conditions of satisfaction must capture all stakeholders and values described in the problem statement. 
 
 Please make sure that your conditions of satisfaction cover all the common cases and can be turned into testable behaviors.
 
@@ -67,7 +69,7 @@ Some of the suggested projects above are primarily about some non-functional qua
 I want machine-readable API specifications (like OpenAPI/Swagger) that are automatically validated against the actual implementation,
 so that I can trust the documentation is accurate and generate reliable client code without wasting time on integration bugs caused by outdated specs".
 
-Your project plan must include at least 4 essential or desirable user stories. You suggest that you should have no less than 10-12 conditions of satisfaction and your essential COS be twice the number of desirable COS. Your problem statement and description of user stories and conditions of satisfaction should be between 4-6 pages. Your testable behaviors should be between 2-4 pages.
+Your project plan must include at least 3 essential or desirable user stories. We suggest that you should have no less than 10-12 conditions of satisfaction and your essential COS be twice the number of desirable COS. You should also include a few extension COS in case you need to negotiate a replacement feature or if you can complete extra work. Your problem statement and description of user stories and conditions of satisfaction should be between 4-6 pages. Your testable behaviors should be between 2-4 pages.
 
 The user stories must be numbered (1,2,3,4) and each the conditions of satisfaction must likewise be numbered (1.1, 1.2, 1.3) and laid out in a table for easy reference. 
 
@@ -122,8 +124,10 @@ Each team submits a single document to Canvas.
 The project plan will account for 10% of your project grade, and will be graded out of 100 points. The grading of the project plan is further broken down as follows:
 
 ### Introductory problem statement (10 points): 
-* Receive full marks if the analysis explains the stakeholders and how value tensions were resolved when collecting the features.
-* Receive partial credit if the analysis is present, but does not give a clear description of the feature or features you are proposing.
+* Receive full marks if 
+  * there is a narrative consisting of 2-6 paragraphs that describes the specific problems that your project aims to solve, and provides a clear description of the feature or features you are proposing.
+  * the analysis explains the stakeholders and how value tensions were resolved when collecting the features.
+* Receive partial credit if the narrative is present, but does not describe the problems that the project aims to solve, or does not give a clear description of the feature or features you are proposing.
 
 ### User stories, User Stories and Acceptance Criteria (55 points):
 
