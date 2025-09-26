@@ -37,8 +37,9 @@ When considering your project, please keep in mind that you will be allowed to p
 The project plan will include:
 * Introductory problem statement
 * User stories and acceptance criteria: high level description of how users will interact with your new feature. 
+* Work breakdown: Define engineering tasks that will be necessary to implement your new feature. Map each task to a sprint. 
 
-You should plan on spending the next two weeks (from Oct 8 until Oct 22) in a "Sprint -1" in which you will undertake organizational and research tasks to help you decide on a project and formulate your plan.
+You should plan on spending the next two weeks (from Sep 29 until Oct 8) in a "Sprint -1" in which you will undertake organizational and research tasks to help you decide on a project and formulate your plan.
 
 You should be in contact with your assigned TA mentor before you submit the project plan, so they can answer questions and make sure you are on the right track. You may wish to share a draft of your plan with them *before* the deadline to get early feedback.
 
@@ -50,9 +51,11 @@ We list page *maximums* for each section as general guidance of what we are will
 
 
 ## Problem Statement, User Stories and Acceptance Criteria (max 6 pages)
-Your project plan should begin with a 2-6 paragraph introductory problem statement: what problem in StackOverflow do your (proposed) features solve? Provide a clear description of the feature or features you are proposing. It must include an analysis of the stakeholders, the value tensions, and the values of the proposed features. You must identify at least 2-3 stakeholders and 3-5 values for all the features you propose. For example, if you are proposing a feature to post anonymously then you must clearly describe the rationale for choosing this feature, who would be the stakeholders affected by such a feature and discuss the value tensions this feature resolves. You should use the VSD analysis process to inform your analysis.
+Your project plan should begin with a 1-3 paragraph introductory problem statement: what problem in StackOverflow do your (proposed) features solve? Provide a clear description of the feature(s) you are proposing. Include an analysis of the stakeholders, the values, and any value tensions. 
 
-Given the problem statement, develop 4-6 user stories. User stories are high-level requirements specified in the following format  "As a < stakeholder >, I want < some goal > so that < some reason >." 
+Given the problem statement, develop 3 user stories to describe your proposed features(s) and 1-2 user stories for value tensions (if any). User stories are high-level requirements specified in the following format "As a < stakeholder >, I want < some goal > so that < some reason >.". Similarly value tensions can be written in the following format "As a < stakeholder >, I would not like to see < some goal > because < some negative consequence or reason > ".
+
+For example, if you are proposing a feature to post anonymously then you must clearly describe the rationale for choosing this feature, who would be the stakeholders affected by such a feature and discuss the value tensions this feature resolves. You should use the VSD analysis process to inform your analysis.
 
 Each user story should include conditions of satisfaction. The conditions of satisfaction are < list of common cases and special cases that must work >. 
 
@@ -60,22 +63,19 @@ The user stories and conditions of satisfaction must capture all stakeholders an
 
 Please make sure that your conditions of satisfaction cover all the common cases and can be turned into testable behaviors.
 
-Given the project concept that you have chosen and the functionality that you expect to implement to satisfy your user stories, define a 
-list of testable behaviour that you will be implementing to complete the project. 
-
 Each user story and condition of satisfaction must have a priority (Essential, Desirable, or Extension). The set of Essential items will constitute the "Minimum Viable Product". 
 
-Some of the suggested projects above are primarily about some non-functional quality of the code base. However, even non-functional requirements have stakeholders and resolve value tensions. Your user stories should clearly identify the stakeholders and values even for such requirements.  For e.g., "As a frontend developer integrating with our REST APIs,
-I want machine-readable API specifications (like OpenAPI/Swagger) that are automatically validated against the actual implementation,
-so that I can trust the documentation is accurate and generate reliable client code without wasting time on integration bugs caused by outdated specs".
+Some of the suggested projects above are primarily about some non-functional quality of the code base. However, even non-functional requirements have stakeholders and offer value. Your user stories should clearly identify the stakeholders and values even for such requirements. For e.g., "As a frontend developer integrating with our REST APIs, I want machine-readable API specifications (like OpenAPI/Swagger) that are automatically validated against the actual implementation, so that I can trust the documentation is accurate and generate reliable client code without wasting time on integration bugs caused by outdated specs".
 
-Your project plan must include at least 3 essential or desirable user stories. We suggest that you should have no less than 10-12 conditions of satisfaction and your essential COS be twice the number of desirable COS. You should also include a few extension COS in case you need to negotiate a replacement feature or if you can complete extra work. Your problem statement and description of user stories and conditions of satisfaction should be between 4-6 pages. Your testable behaviors should be between 2-4 pages.
+Your project plan must include at least 3 essential or desirable user stories. We suggest that you should have no less than 10-12 conditions of satisfaction and your essential COS be twice the number of desirable COS. You should also include a few extension COS in case you need to negotiate a replacement feature or if you can complete extra work. Your problem statement and description of user stories and conditions of satisfaction should be between 4-6 pages.
 
 The user stories must be numbered (1,2,3,4) and each the conditions of satisfaction must likewise be numbered (1.1, 1.2, 1.3) and laid out in a table for easy reference. 
 
 Use the INVEST+E criteria to evaluate your user stories. 
 
 ## Work Breakdown (max 10 pages)
+
+Given the project concept that you have chosen and the functionality that you expect to implement to satisfy your user stories, define a breakdown of the work that will be necessary to complete the project.
 
 A work breakdown includes all of the tasks necessary to accomplish the project, and will be an artifact that we will refer back to throughout the project to evaluate whether you are making satisfactory progress.
 Consider all of the kinds of tasks that your team will need to perform, including knowledge acquisition, design, implementation, testing and documentation tasks.
@@ -123,26 +123,23 @@ Each team submits a single document to Canvas.
 ## Grading
 The project plan will account for 10% of your project grade, and will be graded out of 100 points. The grading of the project plan is further broken down as follows:
 
-### Introductory problem statement (10 points): 
+### Introductory problem statement (15 points): 
 * Receive full marks if 
-  * there is a narrative consisting of 2-6 paragraphs that describes the specific problems that your project aims to solve, and provides a clear description of the feature or features you are proposing.
-  * the analysis explains the stakeholders and how value tensions were resolved when collecting the features.
+  * there is a narrative consisting of 1-3 paragraphs that describes the specific problems that your project aims to solve, and provides a clear description of the feature or features you are proposing.
+  * the analysis explains the stakeholders and how value tensions were resolved when describing the features.
 * Receive partial credit if the narrative is present, but does not describe the problems that the project aims to solve, or does not give a clear description of the feature or features you are proposing.
 
-### User stories, User Stories and Acceptance Criteria (55 points):
+### User Stories and Conditions of Satisfaction (45 points):
 
-Your user stories taken together will account for 15% of your grade on this assignment. Conditions of Satisfaction and Testable behaviors will account for 20% each. 
-
-Each user story will be graded as follows:
 * Receive full marks if:
-  * The user story fits the problem statement
-  * The user story satisfies the INVEST criteria for good user stories (construed quite broadly)
-  * The user story contains a priority (essential, desirable, extension).  
-  * The user story includes conditions of satisfaction that cover the "normal" expected behavior of the feature, and any important error cases
+  * Each user story fits the problem statement
+  * Each user story satisfies the INVEST+E criteria for good user stories (construed quite broadly)
+  * Each user story contains a priority (essential, desirable, extension).  
+  * Each user story includes conditions of satisfaction that cover the "normal" expected behavior of the feature, and any important error cases
+  * Each condition of satisfaction can be turned into testable behavior.
   * Each condition of satisfaction is marked with a priority (essential, desirable, extension).
   * Each user story must include one or more conditions of satisfaction marked as essential, desirable, and extension. 
-  * Each condition of satisfaction has sufficient testable behaviours
-  * Some conditions of satisfaction include considerations for value sensitive design
+  * Some user stories or conditions of satisfaction include considerations for value sensitive design
 
 The user stories must be numbered (1,2,3) and each the conditions of satisfaction must likewise be numbered (1.1, 1.2, 1.3) and laid out in a table for easy reference.
 
@@ -165,10 +162,9 @@ However, we believe that this list is exhaustive (we do not expect other kinds o
 
 #### Assignment of tasks (5 points):
 Receive full marks if:
-* Each element on the work breakdown is assigned to one team member
+* Each element on the work breakdown is assigned to one team member (with primary responsibility)
 * Each team member is assigned work that includes development / coding, even if working with pair programming 
 * The distribution of tasks of each size are roughly similar between the whole team (no single person is assigned significantly more or fewer tasks of one size)
-
 
 #### Sizing of tasks (15 points):
 Receive full marks if each element on the work breakdown:
