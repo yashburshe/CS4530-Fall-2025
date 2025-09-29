@@ -16,8 +16,7 @@ and that you will have a team of four, we expect that the features that you prop
 
 A typical project may be larger than 3x of the size of IP1+IP2 and may take anywhere from 150-250 hours (5 weeks, 3 or 4 members).  
 
-Feel free to look at existing systems like [Stackoverlow](https://stackoverflow.com/), [Quora](https://www.quora.com/), [reddit](https://www.reddit.com/) and similar stack exchange sites for inspiration on new features to build. 
-Examples of features that students have proposed include:
+Feel free to look at existing systems like [Stackoverlow](https://stackoverflow.com/), [Quora](https://www.quora.com/), [reddit](https://www.reddit.com/), similar stack exchange sites or showcase page from Spring semester for inspiration on new features to build. Examples of features that students have proposed include:
 
 * Allow users to pose and answer questions using Markdown
 * Allow users to register and save a profile using some SSO tool for authentication
@@ -32,7 +31,7 @@ Examples of features that students have proposed include:
 
 Please note that multiple teams might choose to propose the same feature(s), or a variation of that same feature - this is OK.
 
-When considering your project, please keep in mind that you will be allowed to publicly post your project online: while your immediate audience for the project is the course staff, if you are ultimately looking for software engineering jobs or co-ops, this project can be a useful piece of your portfolio.
+When considering your project, please keep in mind that you will be allowed to publicly post your project online after the end of semester: while your immediate audience for the project is the course staff, if you are ultimately looking for software engineering jobs or co-ops, this project can be a useful piece of your portfolio.
 
 The project plan will include:
 * Introductory problem statement
@@ -53,7 +52,7 @@ We list page *maximums* for each section as general guidance of what we are will
 ## Problem Statement, User Stories and Acceptance Criteria (max 6 pages)
 Your project plan should begin with a 1-3 paragraph introductory problem statement: what problem in StackOverflow do your (proposed) features solve? Provide a clear description of the feature(s) you are proposing. Include an analysis of the stakeholders, the values, and any value tensions. 
 
-Given the problem statement, develop 3 user stories to describe your proposed features(s) and 1-2 user stories for value tensions (if any). User stories are high-level requirements specified in the following format "As a < stakeholder >, I want < some goal > so that < some reason >.". Similarly value tensions can be written in the following format "As a < stakeholder >, I would not like to see < some goal > because < some negative consequence or reason > ".
+Given the problem statement, develop 3 user stories to describe your proposed features(s) and 1-2 user stories for value tensions (if any). User stories are high-level requirements specified in the following format "As a < stakeholder >, I want < some goal > so that < some reason >". Similarly value tensions can be written in the following format "As a < stakeholder >, I would not like to see < some goal > because < some negative consequence or reason > ".
 
 For example, if you are proposing a feature to post anonymously then you must clearly describe the rationale for choosing this feature, who would be the stakeholders affected by such a feature and discuss the value tensions this feature resolves. You should use the VSD analysis process to inform your analysis.
 
@@ -82,7 +81,7 @@ Consider all of the kinds of tasks that your team will need to perform, includin
 It is hard to say (generically) how many work items are necessary.
 
 Each task on the work breakdown should be assigned to exactly one team member (as primary responsible party), who should provide a "T-Shirt" estimate for how long it will take (along with a justification for that estimate).
-Consider the dependencies between tests: perhaps an API needs to be designed and specified before implementation can begin; perhaps your development environment needs to be configured before anything else can proceed.
+Consider the dependencies between tasks: perhaps an API needs to be designed and specified before implementation can begin; perhaps your development environment needs to be configured before anything else can proceed.
 Assign tasks to sprints considering these dependencies.
 
 Given the preliminary nature of your plan, we do not expect that you will know all of the details about precisely how to implement your feature such that you could break it down into tasks that you feel could be implemented in a day or two. Large tasks (those which you can not provide a responsible estimate for) must be accompanied by smaller “research” tasks that can be performed early on in the project. You may wish to provide deadlines by which the task must either be refined into smaller tasks (based on new knowledge gathered), or reworked/abandoned.
@@ -102,7 +101,7 @@ Throughout the project period, teams will meet regularly with their dedicated TA
 Each work item should contain the following information:
 * Task to be performed
 * User story (or stories) that this task relates to
-* Team member responsible for completing the task
+* Team member {primarily} sponsible for completing the task
 * T-shirt size estimate of how long will be needed to complete the task, using the following buckets:
     * Small: Can likely be completed by one team member in one sitting of less than 3-4 hours
     * Medium: Likely to require involvement of multiple team members, over the course of 1-2 days
@@ -126,8 +125,8 @@ The project plan will account for 10% of your project grade, and will be graded 
 ### Introductory problem statement (15 points): 
 * Receive full marks if 
   * there is a narrative consisting of 1-3 paragraphs that describes the specific problems that your project aims to solve, and provides a clear description of the feature or features you are proposing.
-  * the analysis explains the stakeholders and how value tensions were resolved when describing the features.
-* Receive partial credit if the narrative is present, but does not describe the problems that the project aims to solve, or does not give a clear description of the feature or features you are proposing.
+  * the analysis explains the stakeholder(s) and how value tensions are resolved when describing the features.
+* Receive partial credit if the narrative is present, but does not describe the problems that the project aims to solve, or does not give a clear description of the feature or features you are proposing or doesn't properly use Value Sensitive Design.
 
 ### User Stories and Conditions of Satisfaction (45 points):
 
