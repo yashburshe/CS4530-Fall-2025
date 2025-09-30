@@ -21,10 +21,10 @@
   page: /modules/6-concurrency-patterns-in-typescript
 4a:
   name: Software Processes & Agile
-  page: 
+  page: /modules/7-software-process
 4b:
   name: React Part 1 (Introduction)
-  page: 
+  page: /modules/8-react
 5a:
   name: React Part 2 (Hooks)
   page: 
@@ -85,14 +85,14 @@ ip1:
 ip2:
   name: Individual Project 2 
   type: deadline
-  page: 
+  page: /assignments/ip2
 tp1:
   name: Project Formation
   type: deadline
 tp2:
   name: Preliminary Project Plan
   type: deadline
-  page: 
+  page: /assignments/project-plan
 tp3:
   name: Revised Project Plan
   type: deadline
