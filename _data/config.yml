@@ -23,9 +23,13 @@ deadlines:
     Wed:
       date: 2025/11/25 12:00pm
       content: tp4
+  '15':
+    Wed:
+      date: 2025/12/08 12:00pm
+      content: tp5
 dates:
   firstMonday: 2025/09/03
-  numWeeks: 14
+  numWeeks: 15
 types:
   default:
     className: lesson
