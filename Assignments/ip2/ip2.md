@@ -12,7 +12,7 @@ Welcome back to the Stack Overflow team! In this second deliverable, you will be
 
 ## Change Log
 
-
+- 2024-09-30: Fixed changeCommunityMembership  implementation description to correctly reflect the use of POST request. Added note to create a button to open the modal to save a question to an existing collection.
 - 2024-09-27: Added new task under Collections implementation to verify sidebar navigation route setup.
 - 2024-09-21: 1. Removed Note on the Server tests will fail.2. All sections that say “Complete the component defined in that directory” in collections have been removed.3. Implement community service functions now has the same level of detail as Implement collection service functions.4. Corrected service function names in community service functions.5. Added comprehensive Cypress testing section.
 
@@ -61,6 +61,7 @@ In IP1, you implemented the backend functionality for Collections. In this task,
 #### Steps to Achieve This
 
 ##### In Client
+
 
 **Create `useAllCollectionsPage` custom hook**
 
@@ -124,6 +125,13 @@ In `./client/src/services/collectionService.ts`, implement the following service
 
 - `toggleSaveQuestion`: Adds or removes a question from a collection
   - The toggleSaveQuestion function adds or removes questions from collections using toggle logic. Send a PATCH request using api.patch(), passing { collectionId, questionId, username } as the request body. Check for status 200 and throw "Error while toggling save question" if failed. Return res.data with the operation result.
+
+
+**Create a Save to an Existing Collection Button in Question Component**
+
+In `.client/src/components/main/questionPage/question/index.tsx`, add a button that opens the modal to save a question to an existing collection.The button must have the className='collections-btn'. Clicking this button should  open the modal, which will allow the user to add a question to one of its collections.
+
+
 
 #### Grading (90 points)
 
@@ -204,7 +212,7 @@ In `./client/src/services/communityService.ts`, implement the following service 
 - `getCommunities`: Retrieves all communities
   - The getCommunities function returns the full list of communities. Make a GET request with api.get().Check for status 200 and throw "Error while fetching all communities" if it fails. Return res.data, which should be an array of DatabaseCommunity objects.
 - `changeCommunityMembership`: Toggles user membership in a community
-    - The changeCommunityMembership function adds or removes a user from a community using toggle logic. Send a PATCH request via api.patch()  with { communityId, username } in the request body. Confirm status 200; if not, throw "Error while changing community membership". Return res.data containing the updated community.
+    - The changeCommunityMembership function adds or removes a user from a community using toggle logic. Send a POST request via api.post()  with { communityId, username } in the request body. Confirm status 200; if not, throw "Error while changing community membership". Return res.data containing the updated community.
 - `createCommunity`: Creates a new community
   - The createCommunity function creates a community by sending a POST request with the new Community object as the request body using api.post() to an endpoint.Ensure the response status is 200; otherwise throw "Error while creating community". Return res.data containing the created DatabaseCommunity.
 - `deleteCommunity`: Deletes a community
