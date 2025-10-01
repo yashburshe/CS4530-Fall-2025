@@ -16,7 +16,7 @@ If you are unsure of how to address any of these concerns or if you have address
 
 We list page *maximums* for each section as general guidance of what we are willing to grade. Please do not feel compelled to use all of the pages provided, and remember that a diagram or table can be as expressive (or more) as a comparable amount of text.
 
-## Revised Problem Statement, User Stories and Acceptance Criteria (max 6 pages)
+## Revised Problem Statement, User Stories and Conditions of Satisfaction (max 6 pages)
 Your project plan should begin with a 1-3 paragraph introductory problem statement: what problem in StackOverflow do your (proposed) features solve? Provide a clear description of the feature(s) you are proposing. Include an analysis of the stakeholders, the values, and any value tensions. 
 
 Given the problem statement, develop 3 user stories to describe your proposed features(s) and 1-2 user stories for value tensions (if any). User stories are high-level requirements specified in the following format "As a < stakeholder >, I want < some goal > so that < some reason >". Similarly value tensions can be written in the following format "As a < stakeholder >, I would not like to see < some goal > because < some negative consequence or reason > ".
@@ -87,6 +87,8 @@ Your work breakdown may take the format of a simple textual list or a table. Pay
 
 All teams will be required to use github projects to track their progress. We will provides further instructions later.
 
+**Mandatory update for all teams:** Include in your work breakdown research tasks to perform threat assessment for your proposed feature(s) and {possibly} implement some mitigation stretegies.
+
 **Mandatory update for all teams:** Even if your work breakdown is entirely unchanged compared to the preliminary plan, please be certain to include updates on all "sprint 0" tasks (those which were scheduled to be completed before the due date of this revised plan). Many teams included research/learning tasks in the first week to help inform the rest of the work breakdown: you should be certain to revise your work breakdown based on what you have learned so far.
 
 **Please note that in order to receive full credit for the final delivered product, each team is expected to deliver Minimum Viable Product (marked as essential) as well as additional feature(s) proposed in the project plan (marked as desirables). Please plan your work accordingly.**
@@ -127,6 +129,7 @@ Your work breakdown will be evaluated holistically on the following rubric:
 Receive full marks if the work breakdown includes all (reasonably expected) tasks to implement your feature(s), considering these kinds of tasks: 
   * Background research 
   * Design of interfaces and data types
+  * Threat Assessment
   * Deployment of third-party services
   * Implementation
   * Testing
