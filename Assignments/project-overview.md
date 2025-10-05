@@ -84,7 +84,7 @@ The project plan will include:
 Your team will self-organize, as agile teams do, and will use the work breakdown and schedule as the basis for weekly check-ins with your team's TA.
 
 ### Software Development Process
-Each team is expected to use of a structured development process, including use of pull requests and code reviews for their regular github commits. You will also need to ensure appropriate division of labor within the project (i.e., roughly equal). Teams will also be expected to complete regular progress reports (or sprint retrospectives), and provide honest feedback as part of individual/team surveys. Peer evaluations will also be used (for Week 6, 8, 10-14). 
+Each team is expected to use of a structured development process, including use of pull requests and code reviews for their regular github commits. You will also need to ensure appropriate division of labor within the project (i.e., roughly equal). Teams will also be expected to complete regular progress reports (or sprint retrospectives), and provide honest feedback as part of individual/team surveys. Peer evaluations will also be used (for Week 6, 8-13). 
 Please note that one of the most important factors in successfully completing a team project is having open, honest and effective communication between all team members as well as stakeholders. 
 
 ### Project Implementation and Documentation
