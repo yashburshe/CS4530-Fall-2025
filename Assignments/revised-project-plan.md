@@ -29,13 +29,15 @@ The user stories and conditions of satisfaction must capture all stakeholders an
 
 Please make sure that your conditions of satisfaction cover all the common cases and can be turned into testable behaviors.
 
+If it would be useful to include illustrations or examples to clarify your user stories and conditions of satisfaction, please do so.
+
 Each user story and condition of satisfaction must have a priority (Essential, Desirable, or Extension). The set of Essential items will constitute the "Minimum Viable Product". 
 
 Some of the suggested projects above are primarily about some non-functional quality of the code base. However, even non-functional requirements have stakeholders and offer value. Your user stories should clearly identify the stakeholders and values even for such requirements. For e.g., "As a frontend developer integrating with our REST APIs, I want machine-readable API specifications (like OpenAPI/Swagger) that are automatically validated against the actual implementation, so that I can trust the documentation is accurate and generate reliable client code without wasting time on integration bugs caused by outdated specs".
 
 Your project plan must include at least 3 essential or desirable user stories. We suggest that you should have no less than 10-12 conditions of satisfaction and your essential COS be twice the number of desirable COS. You should also include a few extension COS in case you need to negotiate a replacement feature or if you can complete extra work. Your problem statement and description of user stories and conditions of satisfaction should be between 4-6 pages. 
 
-The user stories must be numbered (1,2,3,4) and each the conditions of satisfaction must likewise be numbered (1.1, 1.2, 1.3) and laid out in a table for easy reference. 
+The user stories must be numbered (1,2,3,4) and the conditions of satisfaction must likewise be numbered (1.1, 1.2, 1.3) and laid out in a table for easy reference. 
 
 Use the INVEST+E criteria to evaluate your user stories. 
 
@@ -112,8 +114,8 @@ The revised project plan will account for 10% of your project grade, and will be
   * Each user story contains a priority (essential, desirable, extension).  
   * Each user story includes conditions of satisfaction that cover the "normal" expected behavior of the feature, and any important error cases
   * Each condition of satisfaction can be turned into testable behavior.
-  * Each condition of satisfaction is marked with a priority (essential, desirable, extension).
-  * Each user story must include one or more conditions of satisfaction marked as essential, desirable, and extension. 
+  * Each condition of satisfaction is marked with a priority (essential, desirable, extension)
+  * Each user story includes one or more conditions of satisfaction marked as essential, desirable, and extension. 
   * Some user stories or conditions of satisfaction include considerations for value sensitive design
   * Any deficiencies or concerns noted by your TA mentor on your preliminary plan are addressed
 
