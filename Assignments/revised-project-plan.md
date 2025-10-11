@@ -19,13 +19,13 @@ We list page *maximums* for each section as general guidance of what we are will
 ## Revised Problem Statement, User Stories and Conditions of Satisfaction (max 6 pages)
 Your project plan should begin with a 1-3 paragraph introductory problem statement: what problem in StackOverflow do your (proposed) features solve? Provide a clear description of the feature(s) you are proposing. Include an analysis of the stakeholders, the values, and any value tensions. 
 
-Given the problem statement, develop 3 user stories to describe your proposed features(s) and 1-2 user stories for value tensions (if any). User stories are high-level requirements specified in the following format "As a < stakeholder >, I want < some goal > so that < some reason >". Similarly value tensions can be written in the following format "As a < stakeholder >, I would not like to see < some goal > because < some negative consequence or reason > ".
+Given the problem statement, develop 3 user stories to describe your proposed features(s) and 1-2 user stories for value tensions (or additional features). User stories are high-level requirements specified in the following format "As a < stakeholder >, I want < some goal > so that < some reason >". Similarly value tensions can be written in the following format "As a < stakeholder >, I would not like to see < some goal > because < some negative consequence or reason > ".
 
 For example, if you are proposing a feature to post anonymously then you must clearly describe the rationale for choosing this feature, who would be the stakeholders affected by such a feature and discuss the value tensions this feature resolves. You should use the VSD analysis process to inform your analysis.
 
 Each user story should include conditions of satisfaction. The conditions of satisfaction are < list of common cases and special cases that must work >. 
 
-The user stories and conditions of satisfaction must capture all stakeholders and values described in the problem statement. 
+The user stories and conditions of satisfaction must capture **all** stakeholders and values described in the problem statement. 
 
 Please make sure that your conditions of satisfaction cover all the common cases and can be turned into testable behaviors.
 
@@ -35,7 +35,7 @@ Each user story and condition of satisfaction must have a priority (Essential, D
 
 Some of the suggested projects above are primarily about some non-functional quality of the code base. However, even non-functional requirements have stakeholders and offer value. Your user stories should clearly identify the stakeholders and values even for such requirements. For e.g., "As a frontend developer integrating with our REST APIs, I want machine-readable API specifications (like OpenAPI/Swagger) that are automatically validated against the actual implementation, so that I can trust the documentation is accurate and generate reliable client code without wasting time on integration bugs caused by outdated specs".
 
-Your project plan must include at least 3 essential or desirable user stories. We suggest that you should have no less than 10-12 conditions of satisfaction and your essential COS be twice the number of desirable COS. You should also include a few extension COS in case you need to negotiate a replacement feature or if you can complete extra work. Your problem statement and description of user stories and conditions of satisfaction should be between 4-6 pages. 
+Your project plan must include at least 3 essential or desirable user stories and atleast 1 extension. We suggest that you should have no less than 10-12 conditions of satisfaction and your essential COS be twice the number of desirable COS. You should also include a few extension COS in case you need to negotiate a replacement feature or if you can complete extra work. Your problem statement and description of user stories and conditions of satisfaction should be between 4-6 pages. 
 
 The user stories must be numbered (1,2,3,4) and the conditions of satisfaction must likewise be numbered (1.1, 1.2, 1.3) and laid out in a table for easy reference. 
 
@@ -89,7 +89,7 @@ Your work breakdown may take the format of a simple textual list or a table. Pay
 
 All teams will be required to use github projects to track their progress. We will provides further instructions later.
 
-**Mandatory update for all teams:** Include in your work breakdown research tasks to perform threat assessment for your proposed feature(s) and {possibly} implement some mitigation stretegies.
+**Mandatory update for all teams:** Include in your work breakdown research tasks to perform threat assessment for your proposed feature(s) and {possibly} implement some mitigation stretegies. Also, be sure to include work related to the considerations for value sensitive design.
 
 **Mandatory update for all teams:** Even if your work breakdown is entirely unchanged compared to the preliminary plan, please be certain to include updates on all "sprint 0" tasks (those which were scheduled to be completed before the due date of this revised plan). Many teams included research/learning tasks in the first week to help inform the rest of the work breakdown: you should be certain to revise your work breakdown based on what you have learned so far.
 
@@ -119,7 +119,7 @@ The revised project plan will account for 10% of your project grade, and will be
   * Some user stories or conditions of satisfaction include considerations for value sensitive design
   * Any deficiencies or concerns noted by your TA mentor on your preliminary plan are addressed
 
-The user stories must be numbered (1,2,3) and each the conditions of satisfaction must likewise be numbered (1.1, 1.2, 1.3) and laid out in a table for easy reference.
+The user stories must be numbered (1,2,3,4) and each the conditions of satisfaction must likewise be numbered (1.1, 1.2, 1.3) and laid out in a table for easy reference.
 
 Remember that you will get credit for delivering a minimum viable product (MVP) only if you deliver working implementations of all of your essential user stories and conditions of satisfaction. To receive full credit in the project, you must implement essential AND all desirable conditions of satisfaction. Essential and desirable features are worth 8% and 4% of the overall course grade respectively.
 
