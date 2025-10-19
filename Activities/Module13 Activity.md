@@ -75,12 +75,12 @@ You will first create the MongoDB database, and then setup the continuous deploy
    2. If you don't have Compass installed, follow the instructions to install MongoDB Compass and then connect.
    3. Otherwise, switch to the "I have MongoDB Compass installed" tab and connect.
 10. Open up MongoDB Compass and see what connections are displayed. You should see a connection to something like `<your repo name>.cvjdm.mongodb.net:27017` That connection should include databases such as such as "admin", "config", and "local".
-11. In Compass nav bar (on the left), select the connection you just created. Mouse to the "..." and select "Copy Connection String". Paste this connection string in some convenient place; you will need it later.
-12. Go to your project repository's server folder and run the `populate_db.ts` script.
+11. In the Compass navigation bar (on the left), click the (+) button and add the connection string of the cluster you just created on MongoDB Atlas. Make sure to replace `<db_password>` in the connection string with your actual password. Finally, click ‘Save and Connect’.
+12. Go to your project repository's server folder and run the `populateDB.ts` script.
 
 ```
 cd server
-npx ts-node populate_db.ts <your connection string>/fake_so
+npx ts-node ./seedData/populateDB.ts <your mongo connection string>
 ```
 
 You can find the connection string in the instructions from step 11.
@@ -92,7 +92,7 @@ You have now completed setting up your MongoDB database.
 {: .note }
 For simplicity, and since you're not handling sensitive data, the Network Access is set to allow connections from anywhere. However, for projects involving sensitive data, you should restrict access to only the necessary range of IP addresses.
 
-You can connect your locally deployed server to the cloud-hosted MongoDB database. This is useful when developing a feature and testing it before deployment. To do this, update the `.env` created as [part of the IP2 setup](https://neu-se.github.io/CS4530-Fall-2024/assignments/ip2#task-0-setup-environment-variables).
+You can connect your locally deployed server to the cloud-hosted MongoDB database. This is useful when developing a feature and testing it before deployment. To do this, update the `.env` created as [part of the IP1 setup](https://neu-se.github.io/CS4530-Fall-2025/assignments/ip1#3-setup-environment-variables).
 
 ```
 MONGODB_URI=<add your connection string here, without the trailing slash>
@@ -105,24 +105,24 @@ Note: The .env file is not required for the Render.com setup. The above instruct
 ### Setup your Server
 
 1. Open the [Render Dashboard](https://dashboard.render.com/).
-2. Click on "Create new project", and create a new project with a name such as "cs4530-s25-XYY" (where XYY is your group number).
+2. Click on "Create new project", and create a new project with a name such as "cs4530-f25-XYY" (where XYY is your group number).
 3. From the top menu, click on the "+ New" button and click on "Web Service".
    1. For the Source Code, choose your project repository. In case you do not see your project repository, go to your GitHub account and authorize access to your project repository.
-   2. For the Name, you can EITHER choose an unique name OR use a name such as "cs4530-s25-XYY-API" or "cs4530-s25-XYY-backend"(where XYY is your group number). The "API" or "backend" in that name is important, because it will let you easily distinguish the "server" (what Render calls a "web service") from the "client" (what Render calls a "static site", which is the URL where you will find the user-facing application).
+   2. For the Name, you can EITHER choose an unique name OR use a name such as "cs4530-f25-XYY-API" or "cs4530-f25-XYY-backend"(where XYY is your group number). The "API" or "backend" in that name is important, because it will let you easily distinguish the "server" (what Render calls a "web service") from the "client" (what Render calls a "static site", which is the URL where you will find the user-facing application).
    3. For the Project, select the project created earlier. For the environment, select Production or any default value.
    4. For Language, select "Node".
    5. For Branch, select "main".
    6. For Region, keep the default value.
    7. For Root Directory, type in `server`.
    8. For Build Command, type in `cd ..; npm install; npm run build --workspace=server`.
-   9. For Start Command, type in `npm run start:prod`.
+   9. For Start Command, type in `npm run start`.
    10. For Instance Type, choose the "Free" option.
-   11. In the Environment Variables section, add a variable called `MONGODB_URI`. For the value, add the connection string of the MongoDB database created earlier. Make sure that you remove the trailing slash, if any.
+   11. In the Environment Variables section, add a variable called `MONGODB_URI`. For the value, use the connection string of the MongoDB database you created earlier. Make sure to remove any trailing slash, if present. After you deploy your frontend client on render (next step), add the client URL too in the env variable as `CLIENT_URL`.
    12. If you need to change any of these, you can do so from the tab called "Settings" (or "Environment")
 4. Click "Deploy Web Service".
 5. The URL of the backend service will be displayed in purple just below near the top of the window in the "Logs" section. Make a copy of this; you will need it later.
 6. Once the deployment is completed, visit the URL and check if you get a "hello world" response.
-7. Append `/question/getQuestion?order=newest&search=` to the URL and check if you get an successful response. A successful response should include the questions that are present in your MongoDB. If you get something like ` MongoDB connection error:  MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017`, that indicates that your server is trying to connect to your local database. Check that the value of `MONGODB_URI` is set correctly in the Render environment section.
+7. Append `/api/question/getQuestion?order=newest&search=` to the URL and check if you get an successful response. A successful response should include the questions that are present in your MongoDB. If you get something like ` MongoDB connection error:  MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017`, that indicates that your server is trying to connect to your local database. Check that the value of `MONGODB_URI` is set correctly in the Render environment section.
 8. You can check the server's logs by going to the "Logs" section.
 
 {: .note }
@@ -135,18 +135,18 @@ In case your server is is not responding to requests after a long period of inac
 1. Open the [Render Dashboard](https://dashboard.render.com/).
 2. From the top menu, click on the "+ New" button and click on "Static Site".
 3. For the Git Provider, choose your project repository. In case you do not see your project repository, go to your GitHub account and authorize access to your project repository.
-4. For the Name, you can either choose an unique name OR use a name such as "cs4530-s25-XYY" (where XYY is your group number).
+4. For the Name, you can either choose an unique name OR use a name such as "cs4530-f25-XYY" (where XYY is your group number).
 5. For the Project, select the project created earlier. For the environment, select Production or any default value.
 6. For Branch, select "main".
 7. For Root Directory, type in `client`.
 8. For Build Command, type in `cd ..; npm install; npm run build --workspace=shared; npm run build --workspace=client`.
-9. For Publish directory, type in `build`.
+9. For Publish directory, type in `dist`.
 10. In the Environment Variables section, add a variable called `REACT_APP_SERVER_URL`. For the value, add the server URL from **Setup your Server** Step 5.
 11. Click "Deploy Static Site".
 12. Once the site is deployed, copy the client URL. As before, you can find this in purple near the top of the "Logs" page.
 13. Open the [Render Dashboard](https://dashboard.render.com/) again. Choose the project you have created, and go back to service called "Web Service".
 14. Click on the "Environment" tab.
-15. Add a new environment variable called `CLIENT_URL`. For the value, add the client URL (make sure you are adding this env. variable in the server's settings, not the client's). You should now have two environment variables for your server: `MONGDB_URI` and `CLIENT_URL`.
+15. In server deployment, add a new environment variable called `CLIENT_URL`. For the value, add the client URL (make sure you are adding this env. variable in the server's settings, not the client's). You should now have two environment variables for your server: `MONGDB_URI` and `CLIENT_URL`.
 16. Click on the "Redirects/Rewrites" tab.
 17. Add a "Rewrite" action with Source "/\*" and Destination "/index.html" this will point all traffic to our React page so that React Router can handle the routing instead of Render.com
 18. Click "Save Changes"
