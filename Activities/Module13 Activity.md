@@ -75,12 +75,12 @@ You will first create the MongoDB database, and then setup the continuous deploy
    2. If you don't have Compass installed, follow the instructions to install MongoDB Compass and then connect.
    3. Otherwise, switch to the "I have MongoDB Compass installed" tab and connect.
 10. Open up MongoDB Compass and see what connections are displayed. You should see a connection to something like `<your repo name>.cvjdm.mongodb.net:27017` That connection should include databases such as such as "admin", "config", and "local".
-11. In Compass nav bar (on the left), select the connection you just created. Mouse to the "..." and select "Copy Connection String". Paste this connection string in some convenient place; you will need it later.
-12. Go to your project repository's server folder and run the `populate_db.ts` script.
+11. In the Compass navigation bar (on the left), click the (+) button and add the connection string of the cluster you just created on MongoDB Atlas. Make sure to replace `<db_password>` in the connection string with your actual password. Finally, click ‘Save and Connect’.
+12. Go to your project repository's server folder and run the `populateDB.ts` script.
 
 ```
 cd server
-npx ts-node populate_db.ts <your connection string>/fake_so
+npx ts-node ./seedData/populateDB.ts <your mongo connection string>
 ```
 
 You can find the connection string in the instructions from step 11.
@@ -92,7 +92,7 @@ You have now completed setting up your MongoDB database.
 {: .note }
 For simplicity, and since you're not handling sensitive data, the Network Access is set to allow connections from anywhere. However, for projects involving sensitive data, you should restrict access to only the necessary range of IP addresses.
 
-You can connect your locally deployed server to the cloud-hosted MongoDB database. This is useful when developing a feature and testing it before deployment. To do this, update the `.env` created as [part of the IP2 setup](https://neu-se.github.io/CS4530-Fall-2024/assignments/ip2#task-0-setup-environment-variables).
+You can connect your locally deployed server to the cloud-hosted MongoDB database. This is useful when developing a feature and testing it before deployment. To do this, update the `.env` created as [part of the IP1 setup](https://neu-se.github.io/CS4530-Fall-2025/assignments/ip1#3-setup-environment-variables).
 
 ```
 MONGODB_URI=<add your connection string here, without the trailing slash>
@@ -105,17 +105,17 @@ Note: The .env file is not required for the Render.com setup. The above instruct
 ### Setup your Server
 
 1. Open the [Render Dashboard](https://dashboard.render.com/).
-2. Click on "Create new project", and create a new project with a name such as "cs4530-s25-XYY" (where XYY is your group number).
+2. Click on "Create new project", and create a new project with a name such as "cs4530-f25-XYY" (where XYY is your group number).
 3. From the top menu, click on the "+ New" button and click on "Web Service".
    1. For the Source Code, choose your project repository. In case you do not see your project repository, go to your GitHub account and authorize access to your project repository.
-   2. For the Name, you can EITHER choose an unique name OR use a name such as "cs4530-s25-XYY-API" or "cs4530-s25-XYY-backend"(where XYY is your group number). The "API" or "backend" in that name is important, because it will let you easily distinguish the "server" (what Render calls a "web service") from the "client" (what Render calls a "static site", which is the URL where you will find the user-facing application).
+   2. For the Name, you can EITHER choose an unique name OR use a name such as "cs4530-f25-XYY-API" or "cs4530-f25-XYY-backend"(where XYY is your group number). The "API" or "backend" in that name is important, because it will let you easily distinguish the "server" (what Render calls a "web service") from the "client" (what Render calls a "static site", which is the URL where you will find the user-facing application).
    3. For the Project, select the project created earlier. For the environment, select Production or any default value.
    4. For Language, select "Node".
    5. For Branch, select "main".
    6. For Region, keep the default value.
    7. For Root Directory, type in `server`.
    8. For Build Command, type in `cd ..; npm install; npm run build --workspace=server`.
-   9. For Start Command, type in `npm run start:prod`.
+   9. For Start Command, type in `npm run start`.
    10. For Instance Type, choose the "Free" option.
    11. In the Environment Variables section, add a variable called `MONGODB_URI`. For the value, add the connection string of the MongoDB database created earlier. Make sure that you remove the trailing slash, if any.
    12. If you need to change any of these, you can do so from the tab called "Settings" (or "Environment")
