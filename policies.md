@@ -23,20 +23,27 @@ There will be individual projects (previously known as assignments) and a team p
 
 Students must work individually on all homework assignments. We encourage you to have high-level discussions with other students in the class about the assignments, however, we require that when you turn in an assignment, it is only your work. That is, copying any part of another student's assignment is strictly prohibited, and repercussions for doing so will be severe (up to and including failing the class outright). You are free to reuse small snippets of example code found on the Internet (e.g. via StackOverflow) provided that it is attributed. If you are concerned that by reusing and attributing that copied code it may appear that you didn't complete the assignment yourself, then please raise a discussion with the instructor.
 
-Your work is late if it is not turned in by the deadline.
+Remember: The basic policy is that you are **responsible for the code you submit. We reserve the right to interview you orally** to make sure that you understand everything in your submission. 
+
+### Late Policy
+Your work is late if it is not turned in by the deadline. 
+For individual submissions (i.e., Individual Projects):
 * 10% will be deducted for late assignments turned in within 24 hours after the due date.
 * Assignments submitted more than 24 hours late will receive a zero.
+For group submissions (i.e., Final Project and Group Activities):
+* No late submission is allowed.
 
 If you're worried about being busy around the time of a HW submission, please plan ahead and get started early. **Homework that does not compile or does not run will receive at most 50% credit**.  
 
 **For fairness to all, there are no exceptions to the above rules.**
 
-## Practice Activities and Attendance:
+## Activities and Attendance:
 
-Most lectures will feature interactive activities (similar to labs) and/or polls that support the material being presented. You must be present in class to participate in the activity or take the poll (participating in an activity while not attending the synchronous session will be considered academic dishonesty and will be treated harshly). Each instructor may have a different style for assigning participation grades, but historical grading information suggests that each style results in a similar overall grade distribution. Participation grades will be posted on Canvas, and will be updated regularly. 
+Most lectures will feature interactive activities (similar to labs) and/or polls that support the material being presented. You must be present in class to participate in the activity or take the poll (participating in an activity while not attending the synchronous session will be considered academic dishonesty and will be treated harshly). In addition, attendance in the synchronous meetings ('work on project' sessions, project meetings, weekly TA meetings and project demos/presentations) is expected. Each instructor may have a different style for assigning participation grades, but historical grading information suggests that each style results in a similar overall grade distribution. Participation grades will be posted on Canvas, and will be updated regularly. 
 
-### Attendance
-Attendance in the synchronous meetings (lectures, 'work on project' sessions, weekly TA meeting and project demos/presentations) is expected. Sometimes you cannot avoid missing a class. If you need to be away from class, it is your responsibility to inform the instructor {as soon as possible, preferably before class} to receive credit for any participation and catch up on the materials discussed in the class. University policy on attendance can be found [here](https://catalog.northeastern.edu/undergraduate/academic-policies-procedures/attendance-requirements/). Please note that we consider lecture days (the ones that include activities), 'work on project' sessions, and project demos/presentations days as lab days. Wellness days are not available for lab days. 
+Sometimes you cannot avoid missing a class. If you need to be away from class, it is your responsibility to inform the instructor {as soon as possible, preferably before class} to receive credit for any participation and catch up on the materials discussed in the class. University policy on attendance can be found [here](https://catalog.northeastern.edu/undergraduate/academic-policies-procedures/attendance-requirements/). 
+
+Please note that we consider lecture days (the ones that include activities), 'work on project' sessions, and project meeting/demos/presentations days as lab days. Wellness days typically cannot be used for lab days. Please work with your instructors if you need to use one. 
 
 If you join class in person, you are strongly encouraged to bring your laptop or phone to class so that you can participate in the activities.
 
