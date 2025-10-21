@@ -30,6 +30,7 @@ Your work is late if it is not turned in by the deadline.
 For individual submissions (i.e., Individual Projects):
 * 10% will be deducted for late assignments turned in within 24 hours after the due date.
 * Assignments submitted more than 24 hours late will receive a zero.
+
 For group submissions (i.e., Final Project and Group Activities):
 * No late submission is allowed.
 
