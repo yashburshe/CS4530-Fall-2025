@@ -141,7 +141,7 @@ In case your server is is not responding to requests after a long period of inac
 7. For Root Directory, type in `client`.
 8. For Build Command, type in `cd ..; npm install; npm run build --workspace=shared; npm run build --workspace=client`.
 9. For Publish directory, type in `dist`.
-10. In the Environment Variables section, add a variable called `REACT_APP_SERVER_URL`. For the value, add the server URL from **Setup your Server** Step 5.
+10. In the Environment Variables section, add a variable called `VITE_SERVER_URL`. For the value, add the server URL from **Setup your Server** Step 5.
 11. Click "Deploy Static Site".
 12. Once the site is deployed, copy the client URL. As before, you can find this in purple near the top of the "Logs" page.
 13. Open the [Render Dashboard](https://dashboard.render.com/) again. Choose the project you have created, and go back to service called "Web Service".
