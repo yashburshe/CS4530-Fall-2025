@@ -148,9 +148,10 @@ In case your server is is not responding to requests after a long period of inac
 14. Click on the "Environment" tab.
 15. In server deployment, add a new environment variable called `CLIENT_URL`. For the value, add the client URL (make sure you are adding this env. variable in the server's settings, not the client's). You should now have two environment variables for your server: `MONGDB_URI` and `CLIENT_URL`.
 16. Click on the "Redirects/Rewrites" tab.
-17. Add a "Rewrite" action with Source "/\*" and Destination "/index.html" this will point all traffic to our React page so that React Router can handle the routing instead of Render.com
-18. Click "Save Changes"
-19. Visit the client URL in your browser to run the application.
+17. Add a "Rewrite" action with Source "/api/\*" and Destination "{your-server-url-from-render}/api/\*". This will redirect all API requests to the server properly.
+18. Add a "Rewrite" action with Source "/\*" and Destination "/index.html" this will point all traffic to our React page so that React Router can handle the routing instead of Render.com
+19. Click "Save Changes"
+20. Visit the client URL in your browser to run the application.
 
 ## Grading
 
