@@ -141,16 +141,17 @@ In case your server is is not responding to requests after a long period of inac
 7. For Root Directory, type in `client`.
 8. For Build Command, type in `cd ..; npm install; npm run build --workspace=shared; npm run build --workspace=client`.
 9. For Publish directory, type in `dist`.
-10. In the Environment Variables section, add a variable called `REACT_APP_SERVER_URL`. For the value, add the server URL from **Setup your Server** Step 5.
+10. In the Environment Variables section, add a variable called `VITE_SERVER_URL`. For the value, add the server URL from **Setup your Server** Step 5.
 11. Click "Deploy Static Site".
 12. Once the site is deployed, copy the client URL. As before, you can find this in purple near the top of the "Logs" page.
 13. Open the [Render Dashboard](https://dashboard.render.com/) again. Choose the project you have created, and go back to service called "Web Service".
 14. Click on the "Environment" tab.
 15. In server deployment, add a new environment variable called `CLIENT_URL`. For the value, add the client URL (make sure you are adding this env. variable in the server's settings, not the client's). You should now have two environment variables for your server: `MONGDB_URI` and `CLIENT_URL`.
 16. Click on the "Redirects/Rewrites" tab.
-17. Add a "Rewrite" action with Source "/\*" and Destination "/index.html" this will point all traffic to our React page so that React Router can handle the routing instead of Render.com
-18. Click "Save Changes"
-19. Visit the client URL in your browser to run the application.
+17. Add a "Rewrite" action with Source "/api/\*" and Destination "{your-server-url-from-render}/api/\*". This will redirect all API requests to the server properly.
+18. Add a "Rewrite" action with Source "/\*" and Destination "/index.html" this will point all traffic to our React page so that React Router can handle the routing instead of Render.com
+19. Click "Save Changes"
+20. Visit the client URL in your browser to run the application.
 
 ## Grading
 
