@@ -121,7 +121,7 @@ Note: The .env file is not required for the Render.com setup. The above instruct
    12. If you need to change any of these, you can do so from the tab called "Settings" (or "Environment")
 4. Click "Deploy Web Service".
 5. The URL of the backend service will be displayed in purple just below near the top of the window in the "Logs" section. Make a copy of this; you will need it later.
-6. Append `/api/question/getQuestion?order=newest&search=` to the URL and check if you get an successful response. A successful response should include the questions that are present in your MongoDB. If you get something like ` MongoDB connection error:  MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017`, that indicates that your server is trying to connect to your local database. Check that the value of `MONGODB_URI` is set correctly in the Render environment section.
+6. Append `/api/question/getQuestion?order=newest&search=` to the URL and open it in a browser to check if you get an successful response. A successful response should include the questions that are present in your MongoDB. If you get something like ` MongoDB connection error:  MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017`, that indicates that your server is trying to connect to your local database. Check that the value of `MONGODB_URI` is set correctly in the Render environment section.
 7. You can check the server's logs by going to the "Logs" section.
 
 {: .note }
